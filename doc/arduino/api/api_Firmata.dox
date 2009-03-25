@@ -1,20 +1,69 @@
 ﻿
 /**
-\class EthernetClass
+\class FirmataClass
 
 \code
-00008 class EthernetClass {
-00009 private:
-00010 public:
-00011   static uint8_t _state[MAX_SOCK_NUM];
-00012   static uint16_t _server_port[MAX_SOCK_NUM];
-00013   void begin(uint8_t *, uint8_t *);
-00014   void begin(uint8_t *, uint8_t *, uint8_t *);
-00015   void begin(uint8_t *, uint8_t *, uint8_t *, uint8_t *);
-00016   friend class Client;
-00017   friend class Server;
-00018 };
-00019 
-00020 extern EthernetClass Ethernet;
+00070 class FirmataClass
+00071 {
+00072 public:
+00073     FirmataClass();
+00074 /* Arduino constructors */
+00075     void begin();
+00076     void begin(long);
+00077 /* querying functions */
+00078     void printVersion(void);
+00079     void blinkVersion(void);
+00080     void printFirmwareVersion(void);
+00081 //  void setFirmwareVersion(byte major, byte minor);  // see macro below
+00082     void setFirmwareNameAndVersion(const char *name, byte major, byte minor);
+00083 /* serial receive handling */
+00084     int available(void);
+00085     void processInput(void);
+00086 /* serial send handling */
+00087     void sendAnalog(byte pin, int value);
+00088     void sendDigital(byte pin, int value);
+00089     void sendDigitalPort(byte portNumber, int portData);
+00090     void sendString(const char* string);
+00091     void sendString(byte command, const char* string);
+00092     void sendSysex(byte command, byte bytec, byte* bytev);
+00093 //    void print();  // TODO implement so it's compatible to Serial
+00094 //    void println();  // TODO implement so it's compatible to Serial
+00095 /* attach & detach callback functions to messages */
+00096     void attach(byte command, callbackFunction newFunction);
+00097     void attach(byte command, systemResetCallbackFunction newFunction);
+00098     void attach(byte command, stringCallbackFunction newFunction);
+00099     void attach(byte command, sysexCallbackFunction newFunction);
+00100     void detach(byte command);
+00101 // void flush();  // TODO implement flush, probably by subclassing
+00102 
+00103 private:
+00104 /* firmware name and version */
+00105     byte firmwareVersionCount;
+00106     byte *firmwareVersionVector;
+00107 /* input message handling */
+00108     byte waitForData; // this flag says the next serial input will be data
+00109     byte executeMultiByteCommand; // execute this after getting multi-byte data
+00110     byte multiByteChannel; // channel data for multiByteCommands
+00111     byte storedInputData[MAX_DATA_BYTES]; // multi-byte data
+00112 /* sysex */
+00113     boolean parsingSysex;
+00114     int sysexBytesRead;
+00115 /* callback functions */
+00116     callbackFunction currentAnalogCallback;
+00117     callbackFunction currentDigitalCallback;
+00118     callbackFunction currentReportAnalogCallback;
+00119     callbackFunction currentReportDigitalCallback;
+00120     callbackFunction currentPinModeCallback;
+00121     systemResetCallbackFunction currentSystemResetCallback;
+00122     stringCallbackFunction currentStringCallback;
+00123     sysexCallbackFunction currentSysexCallback;
+00124 
+00125 /* private methods ------------------------------ */
+00126     void processSysexMessage(void);
+00127     void systemReset(void);
+00128     void pin13strobe(int count, int onInterval, int offInterval);
+00129 };
+00130 
+00131 extern FirmataClass Firmata;
 \endcode
 */

@@ -6,12 +6,6 @@
 \code
 class SoftwareSerial
 00026 {
-00027   private:
-00028     uint8_t _receivePin;
-00029     uint8_t _transmitPin;
-00030     long _baudRate;
-00031     int _bitPeriod;
-00032     void printNumber(unsigned long, uint8_t);
 00033   public:
 00034     SoftwareSerial(uint8_t, uint8_t);
 00035     void begin(long);

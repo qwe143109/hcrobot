@@ -1,5 +1,31 @@
 ﻿
 /**
 \class HardwareSerial
-\brief 串口(硬件实现)
+\brief 串口(核心功能)
+
+*/
+
+/**
+\fn void HardwareSerial::begin(long)
+\brief 打开串口
+*/
+
+/**
+\fn uint8_t HardwareSerial::available(void)
+\brief 有串口数据
+*/
+
+/**
+\fn int HardwareSerial::read(void)
+\brief 读串口
+*/
+
+/**
+\fn void HardwareSerial::flush(void)
+\brief 刷新串口数据
+*/
+
+/**
+\fn virtual void HardwareSerial::write(uint8_t)
+\brief 写串口
 */
