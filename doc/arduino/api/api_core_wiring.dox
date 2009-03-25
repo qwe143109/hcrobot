@@ -1,0 +1,104 @@
+/**
+\file wiring.h
+
+\def HIGH 
+\brief 高电平
+\def LOW
+\brief 低电平
+
+\def INPUT
+\brief 输入
+\def OUTPUT
+\brief 输出
+
+\def constrain(amt,low,high)
+\brief 是否在区间
+\def radians(deg) ((deg)*DEG_TO_RAD)
+\brief 角度转弧度
+\def degrees(rad) ((rad)*RAD_TO_DEG)
+\brief 弧度转角度
+
+\def interrupts()
+\brief 开中断
+\def noInterrupts()
+\brief 关中断
+
+\fn unsigned long pulseIn(uint8_t pin, uint8_t state, unsigned long timeout = 1000000L)
+\brief fff
+
+
+
+\def lowByte(w)
+\brief 低字节
+\def highByte(w)
+\brief 高字节
+
+\fn void setup(void)
+\brief 初始化
+\fn void loop(void)
+\brief 主体程序2
+*/
+
+
+
+
+/**
+
+\code
+
+00037 
+
+00025 #ifndef Wiring_h
+00026 #define Wiring_h
+00027 
+00077 
+00080 
+00081 #define clockCyclesPerMicrosecond() ( F_CPU / 1000000L )
+00082 #define clockCyclesToMicroseconds(a) ( (a) / clockCyclesPerMicrosecond() )
+00083 #define microsecondsToClockCycles(a) ( (a) * clockCyclesPerMicrosecond() )
+00084 
+00085 #define lowByte(w) ((w) & 0xff)
+00086 #define highByte(w) ((w) >> 8)
+00087 
+00088 #define bitRead(value, bit) (((value) >> (bit)) & 0x01)
+00089 #define bitSet(value, bit) ((value) |= (1UL << (bit)))
+00090 #define bitClear(value, bit) ((value) &= ~(1UL << (bit)))
+00091 #define bitWrite(value, bit, bitvalue) (bitvalue ? bitSet(value, bit) : bitClear(value, bit))
+00092 
+00093 typedef unsigned int word;
+00094 
+00095 #define bit(b) (1 << (b))
+00096 
+00097 typedef uint8_t boolean;
+00098 typedef uint8_t byte;
+00099 
+00100 void init(void);
+00101 
+00102 void pinMode(uint8_t, uint8_t);
+00103 void digitalWrite(uint8_t, uint8_t);
+00104 int digitalRead(uint8_t);
+00105 int analogRead(uint8_t);
+00106 void analogReference(uint8_t mode);
+00107 void analogWrite(uint8_t, int);
+00108 
+00109 void beginSerial(long);
+00110 void serialWrite(unsigned char);
+00111 int serialAvailable(void);
+00112 int serialRead(void);
+00113 void serialFlush(void);
+00114 
+00115 unsigned long millis(void);
+00116 unsigned long micros(void);
+00117 void delay(unsigned long);
+00118 void delayMicroseconds(unsigned int us);
+00119 unsigned long pulseIn(uint8_t pin, uint8_t state, unsigned long timeout);
+00120 
+00121 void shiftOut(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder, byte val);
+00122 
+00123 void attachInterrupt(uint8_t, void (*)(void), int mode);
+00124 void detachInterrupt(uint8_t);
+00125 
+00126 void setup(void);
+00127 void loop(void);
+\endcode
+*/

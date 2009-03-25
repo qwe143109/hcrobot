@@ -1,0 +1,33 @@
+
+/**
+\class Servo
+\brief ËÅ·þµç»ú
+
+\code
+00026 class Servo
+00027 {
+00028   private:
+00029     uint8_t pin;
+00030     uint8_t angle;       // in degrees
+00031     uint8_t min16;       // minimum pulse, 16uS units  (default is 34)
+00032     uint8_t max16;       // maximum pulse, 16uS units, 0-4ms range (default is 150)
+00033     static void seizeTimer1();
+00034     static void releaseTimer1();
+00035     static uint8_t attached9;
+00036     static uint8_t attached10;
+00037   public:
+00038     Servo();
+00039     uint8_t attach(int);
+00040                              // pulse length for 0 degrees in microseconds, 544uS default
+00041                              // pulse length for 180 degrees in microseconds, 2400uS default
+00042     uint8_t attach(int, int, int);
+00043                              // attach to a pin, sets pinMode, returns 0 on failure, won't
+00044                              // position the servo until a subsequent write() happens
+00045                              // Only works for 9 and 10.
+00046     void detach();
+00047     void write(int);         // specify the angle in degrees, 0 to 180
+00048     uint8_t read();
+00049     uint8_t attached();
+00050 };
+\endcode
+*/

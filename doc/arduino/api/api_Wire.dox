@@ -1,0 +1,43 @@
+
+/**
+\class TwoWire
+
+\code
+00027 class TwoWire
+00028 {
+00029   private:
+00030     static uint8_t* rxBuffer;
+00031     static uint8_t rxBufferIndex;
+00032     static uint8_t rxBufferLength;
+00033 
+00034     static uint8_t txAddress;
+00035     static uint8_t* txBuffer;
+00036     static uint8_t txBufferIndex;
+00037     static uint8_t txBufferLength;
+00038 
+00039     static uint8_t transmitting;
+00040     static void (*user_onRequest)(void);
+00041     static void (*user_onReceive)(int);
+00042     static void onRequestService(void);
+00043     static void onReceiveService(uint8_t*, int);
+00044   public:
+00045     TwoWire();
+00046     void begin();
+00047     void begin(uint8_t);
+00048     void begin(int);
+00049     void beginTransmission(uint8_t);
+00050     void beginTransmission(int);
+00051     uint8_t endTransmission(void);
+00052     uint8_t requestFrom(uint8_t, uint8_t);
+00053     uint8_t requestFrom(int, int);
+00054     void send(uint8_t);
+00055     void send(uint8_t*, uint8_t);
+00056     void send(int);
+00057     void send(char*);
+00058     uint8_t available(void);
+00059     uint8_t receive(void);
+00060     void onReceive( void (*)(int) );
+00061     void onRequest( void (*)(void) );
+00062 };
+\endcode
+*/

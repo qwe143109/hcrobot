@@ -1,0 +1,107 @@
+
+/**
+\example Blink.pde 
+
+In most programming languages, the first program you write prints "hello world" to the screen. Since an Arduino board doesn't have a screen, we blink an LED instead.
+
+The boards are designed to make it easy to blink an LED using digital pin 13. Some (like the Diecimila and LilyPad) have the LED built-in to the board. On most others (like the Mini and BT), there is a 1 KB resistor on the pin, allowing you to connect an LED directly. (To connect an LED to another digital pin, you should use an external resistor.)
+
+LEDs have polarity, which means they will only light up if you orient the legs properly. The long leg is typically positive, and should connect to pin 13. The short leg connects to GND; the bulb of the LED will also typically have a flat edge on this side. If the LED doesn't light up, trying reversing the legs (you won't hurt the LED if you plug it in backwards for a short period of time).
+
+\image html LedOnPin13.jpg
+*/
+
+/**
+\example AnalogInput.pde
+*/
+
+/**
+\example Calibration.pde
+*/
+
+/**
+\example Fading.pde
+*/
+
+/**
+\example Smoothing.pde
+*/
+
+/**
+\example ASCIITable.pde
+*/
+
+/**
+\example Dimmer.pde
+*/
+
+/**
+\example Graph.pde
+*/
+
+/**
+\example PhysicalPixel.pde
+*/
+
+/**
+\example VirtualColorMixer.pde
+*/
+
+/**
+\example Blink.pde
+*/
+
+/**
+\example BlinkWithoutDelay.pde
+*/
+
+/**
+\example Button.pde
+*/
+
+/**
+\example Debounce.pde
+*/
+
+/**
+\example Loop.pde
+*/
+
+/**
+\example Melody.pde
+*/
+
+/**
+\example ADXL3xx.pde
+*/
+
+/**
+\example Knock.pde
+*/
+
+/**
+\example Memsic2125.pde
+*/
+
+
+/**
+\example Ping.pde
+*/
+
+
+
+// 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

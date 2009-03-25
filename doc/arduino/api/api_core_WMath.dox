@@ -1,0 +1,19 @@
+/**
+\file WMath.cpp
+
+
+\fn void randomSeed(unsigned int seed)
+\brief 设置随机种子
+\fn long random(long howbig)
+\brief 生成随机数
+\fn long random(long howsmall, long howbig)
+\brief 生成随机数
+\fn long map(long x, long in_min, long in_max, long out_min, long out_max)
+\brief 等比映射
+
+\fn unsigned int makeWord (unsigned int w)
+\brief 构造一个字
+\fn unsigned int makeWord (unsigned char h, unsigned char l)
+\brief 构造一个字
+ 
+*/

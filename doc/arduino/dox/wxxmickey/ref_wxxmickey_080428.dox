@@ -1,0 +1,51 @@
+
+/**
+\page ref_wxxmickey_080428 Arduino Diecimila样品完成
+\author wxxmickey
+\date 2008-4-28
+
+昨天拿到了Arduino Diecimila的PCB，做工还行吧，没有蓝色的好看就是了，晚上加班焊接了一块。Arduino Diecimila在NG的基础上作了一些改进，首先是芯片从MEGA8升级到MEGA168，PWM输出口由3个升级为6个，NG在下载程序时需要先按复位键后才可以进行，DM不需要，其原理就是利用FT232的DTR进行自动复位，按官方网站原话“If you have an Arduino NG and you're envious of all the seconds saved by those Diecimila owners who don't have to press the reset button anymore, this page is for you. You can upgrade an Arduino NG to take advantage of the auto-reset ality in Arduino 0009 and beyond with just a 0.1uF (100 nano-farad) capacitor and a soldering iron. ”将原来接到DTR的电阻改成100nF的电容。
+
+\image html ref_wxxmickey_080428_01.jpg
+
+\image html ref_wxxmickey_080428_02.jpg
+
+接下来就是准备好必要的工具，带并口的台式电脑或笔记本电脑，下载线（编程器），USB通讯电缆，下载软件。这里只讲讲下载线的用法，下载线是自己做的，使用了74HC244作隔离，下载完成后不用拔下载线，目标板也能立即运行程序。当然这里ISP只做Bootloader程序下载，只用一次（如果在以后的实验中破坏了Bootloader程序，就需要这个下载线恢复了）。下载线如下图：
+
+\image html ref_wxxmickey_080428_03.jpg
+
+使用并口ISP下载线，电脑的BIOS里面要将并口设置为ECP模式地址378，具体设置方法请自行搜索。
+
+ISP下载软件如下图：
+
+\image html ref_wxxmickey_080428_04.jpg
+
+注：Arduino Diecimila的ISP使用的是ATMEL标准下载接口，如上图。
+
+第一步：启动SPI-PgmV3.7；
+
+第二步：选择芯片MEGA168（SPI-PgmV3.7能下载的芯片很多，是个很不错的ISP下载软件哦！）；
+
+第三步：给芯片配置熔丝位，AVR通过熔丝来控制芯片内部的一些功能，比如JTAG，时钟的使用，掉电检测电压，是否允许调试等。熔丝位的配置是 Arduino下载bootloader过程中最复杂的一步，而且设置出错很有可能导致芯片锁死（锁死后只能使用编程器解锁），所以一定要仔细选择，点击 “Fuse Bytes”菜单，打开相应的熔丝设置对话框。MEGA168的熔丝位配置如下图：
+
+
+\image html ref_wxxmickey_080428_05.jpg
+
+第四步：选择需要烧写的文件。点Open File，如果你已经下载了Arduino-0011版本的编译环境,那么在arduino-0011\hardware\bootloaders \atmega168的路径下可以找到ATmegaBOOT_168_diecimila.hex。
+
+第五步：先烧写熔丝，点Write LBs，然后烧写bootloader，点Program，只要电路没有问题，ISP 已经插好，理论上片刻就可以烧写好，下载过程中Arduino上的绿色发光二极管L会不断闪烁，下载完成后如果成功，绿色发光二极管L会有规律的闪烁。当然记得USB电缆要插上（电脑提示安装驱动先不用管，下面会讲如何安装驱动），电源切换插到USB端。
+
+
+\image html ref_wxxmickey_080428_06.jpg
+
+我在下载bootloader程序的时候遇到过这样的问题，程序成功写入，但L灯不亮，并且编译环境无法通过USB下载实验程序。具我分析，可能是 bootloader程序选择错误，或者是熔丝位选择错误，检查了bootloader程序选择无误，打开熔丝配置窗口，发现熔丝位完全变了，估计是装载 bootloader程序时，被自动配置了。更改回来，重新烧写一次熔丝，问题解决！
+
+接下来安装USB驱动，arduino-0011-win\drivers\FTDI USB Drivers路径下面有FTDI公司提供的安装程序，我在笔记本上安装没有成功，但在台式机上安装成功了。
+
+\image html ref_wxxmickey_080428_07.jpg
+
+这只能认为是windows版本不同造成的。于是到FTDI公司主页找了个最新的驱动，然后到硬件管理器里面更新驱动程序，问题解决！
+
+注意到上面图片中“USB Serial Port（COM15）”没有，这个就是Arduino Diecimila USB映射的串口地址，我就没有搞懂他为什么映射到15去了！后来又做了几块Arduino Diecimila，发现串口地址分别是16、17。。。终于明白原来是以前用过其他USB设备，他们占用了前面的串口地址。记住这个串口地址，在 Arduino编译环境里面会用到。
+
+*/

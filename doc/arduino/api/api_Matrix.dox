@@ -1,0 +1,33 @@
+
+/**
+\class Matrix
+\brief LEDµ„’Ûøÿ÷∆
+
+\code
+00027 class Matrix
+00028 {
+00029   private:
+00030     uint8_t _pinData;
+00031     uint8_t _pinClock;
+00032     uint8_t _pinLoad;
+00033 
+00034     uint8_t* _buffer;
+00035     uint8_t _screens;
+00036     uint8_t _maximumX;
+00037 
+00038     void putByte(uint8_t);
+00039     void setRegister(uint8_t, uint8_t);
+00040     void syncRow(uint8_t);
+00041 
+00042     void setScanLimit(uint8_t);
+00043 
+00044     void buffer(uint8_t, uint8_t, uint8_t);
+00045   public:
+00046     Matrix(uint8_t, uint8_t, uint8_t, uint8_t = 1);
+00047     void setBrightness(uint8_t);
+00048     void write(uint8_t, uint8_t, uint8_t);
+00049     void write(uint8_t, uint8_t, Sprite);
+00050     void clear(void);
+00051 };
+\endcode
+*/
