@@ -1,0 +1,22 @@
+
+/**
+\class EEPROMClass
+\headerfile EEPROM.h
+\brief EEPROM¶ÁÐ´
+
+Çå¿Õ:
+
+\include eeprom_clear.pde
+
+ËµÃ÷
+
+\fn uint8_t EEPROMClass::read(int)
+\brief ¶Á
+\include eeprom_read.pde
+
+
+\fn void EEPROMClass::write(int, uint8_t)
+\brief Ð´
+\include eeprom_write.pde
+*/
+

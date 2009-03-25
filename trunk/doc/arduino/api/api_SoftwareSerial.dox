@@ -1,0 +1,37 @@
+
+/**
+\class SoftwareSerial
+\brief 串口(软件实现)
+
+\code
+class SoftwareSerial
+00026 {
+00027   private:
+00028     uint8_t _receivePin;
+00029     uint8_t _transmitPin;
+00030     long _baudRate;
+00031     int _bitPeriod;
+00032     void printNumber(unsigned long, uint8_t);
+00033   public:
+00034     SoftwareSerial(uint8_t, uint8_t);
+00035     void begin(long);
+00036     int read();
+00037     void print(char);
+00038     void print(const char[]);
+00039     void print(uint8_t);
+00040     void print(int);
+00041     void print(unsigned int);
+00042     void print(long);
+00043     void print(unsigned long);
+00044     void print(long, int);
+00045     void println(void);
+00046     void println(char);
+00047     void println(const char[]);
+00048     void println(uint8_t);
+00049     void println(int);
+00050     void println(long);
+00051     void println(unsigned long);
+00052     void println(long, int);
+00053 };
+\endcode
+*/

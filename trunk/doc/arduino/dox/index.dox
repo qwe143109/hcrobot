@@ -1,0 +1,37 @@
+
+/**
+\mainpage Arduino开发文档
+\author 柴树杉[翻译] (chaishushan@gmail.com)
+\date 2009-03-22 于深圳
+\note 该文档根据<a href="http://arduino.cc/">http://arduino.cc/</a>翻译，依照<a href="http://www.creativecommons.cn/licenses/by-nd-nc/1.0/">
+创作公用约定</a>发布。
+\note 该文档的doxygen源文件可以从<a href="http://chaishushan.googlecode.com/svn/trunk/arduino/">Arduino-doc-cn</a>下载。
+\note 该文档依托HCR开源项目.
+
+\section index_01  简介
+
+from: http://zh.wikipedia.org/w/index.php?title=Arduino&variant=zh-hans
+
+让您可以快速使用 Arduino 语言与 Macromedia Flash, Processing, Max/MSP, Pure Data, SuperCollider…等软体，作出互动作品。Arduino可以使用开发完成的电子元件例如Switch或感测器或其他控制器件、LED、步进马达或其他输出装置。Arduino也可以独立运作成为一个可以跟软体沟通的介面，例如说： Macromedia Flash, Processing, Max/MSP, Pure Data, VVVV 或其他互动软体…。Arduino开发ＩＤＥ介面基于开放原始码原，可以让您免费下载使用开发出更多令人惊艳的互动作品。
+
+
+
+无.
+
+\section index_userdocs 使用手册
+
+ -# \ref arduino_guide_win
+ -# \ref arduino_core
+
+\section index_link 相关连接
+
+ - <a href="http://sites.google.com/site/chaishushan/">个人主页 - 柴树杉</a>
+
+\htmlonly
+<p>
+$Id: index.dox 2008-04-10 柴树杉 $
+</p>
+\endhtmlonly
+
+*/
+

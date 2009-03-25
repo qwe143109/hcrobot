@@ -1,0 +1,5 @@
+
+/**
+\class HardwareSerial
+\brief 串口(硬件实现)
+*/

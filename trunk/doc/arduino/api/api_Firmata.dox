@@ -1,0 +1,20 @@
+
+/**
+\class EthernetClass
+
+\code
+00008 class EthernetClass {
+00009 private:
+00010 public:
+00011   static uint8_t _state[MAX_SOCK_NUM];
+00012   static uint16_t _server_port[MAX_SOCK_NUM];
+00013   void begin(uint8_t *, uint8_t *);
+00014   void begin(uint8_t *, uint8_t *, uint8_t *);
+00015   void begin(uint8_t *, uint8_t *, uint8_t *, uint8_t *);
+00016   friend class Client;
+00017   friend class Server;
+00018 };
+00019 
+00020 extern EthernetClass Ethernet;
+\endcode
+*/
