@@ -1,23 +1,23 @@
-
+﻿
 /**
 \page ref_wxxmickey_080509 Arduino&LCD1602
 \author wxxmickey
 \date 2008-05-09
 
- Arduino���Ѿ��Ӵ�һ��ʱ���ˣ����ڹ���ԭ�򣬲������������������ֻ�ܸ�������ĸ��ʵ�飬���ڰ�һЩ�ĵø���ҷ���һ�¡�
+ Arduino我已经接触一段时间了，由于工作原因，不能天天玩这个，所以只能隔三岔五的搞点实验，现在把一些心得给大家分享一下。
 
-  ����������ַ�Һ��1602�������1602�ַ�Һ�������Ѷ�֪�������Һ����4���ߺ�8����2��������ʽ�����ڸ�Һ������ϸ���ϣ���ҿ����Լ�����������Ͳ�����ϸ˵���ˣ��������õ�Ƭ������1602Һ����ʹ�ò��ڲ��������׾����������ˣ���ʹ�� Arduino������1602Һ���������е�Ѿ�����Ϊ��ֻ��λ���������ݹٷ���վ�ṩ�����̣������׿�������ʹ�õ�����õ�8����������ʽ��Ȼ���������ʹ��forѭ����������λ�����ĸ�ֵ�������������ٷ��Ĺ��̴��룺
+  今天玩的是字符液晶1602，有玩过1602字符液晶的朋友都知道，这个液晶分4总线和8总线2种驱动方式（关于该液晶的详细资料，大家可以自己搜索，这里就不做详细说明了）。我们用单片机驱动1602液晶，使用并口操作很容易就驱动起来了，但使用 Arduino板驱动1602液晶，还真有点费劲，因为他只能位操作。根据官方网站提供的例程，很容易看出他们使用的是最常用的8总线驱动方式，然而他巧妙的使用for循环语句完成了位操作的赋值。我们来看看官方的工程代码：
 
 \code
 int DI = 12;
 int RW = 11;
-int DB[] = {3, 4, 5, 6, 7, 8, 9, 10};//ʹ������������������Ҫ�Ĺܽ�
+int DB[] = {3, 4, 5, 6, 7, 8, 9, 10};//使用数组来定义总线需要的管脚
 int Enable = 2;
 
 void LcdCommandWrite(int value) {
  // poll all the pins
  int i = 0;
- for (i=DB[0]; i <= DI; i++) //���߸�ֵ
+ for (i=DB[0]; i <= DI; i++) //总线赋值
 {
    digitalWrite(i,value & 01);
    value >>= 1;
@@ -100,36 +100,36 @@ void loop (void) {
 }
 \endcode
 
-ʵ�����ģ�Arduino DM һ����USB����һ����LCD1602һ������о�Ű������ɡ�
+实验器材：Arduino DM 一个，USB电缆一根，LCD1602一个，单芯杜邦线若干。
 
-�������̶������ͼ���£�
+根据例程定义接线图如下：
 
 \image html ref_wxxmickey_080509_01.jpg
 
-�����Ҫע����ǣ�Һ�����ݲ�ͬ����ɫ��ͬ���ͺţ��Աȶȣ�VEE�����ڵ�ѹҲ��ͬ��һ�㶼��Ҫ�Ӹ���λ�����е��ڣ�����ʹ�õ��ǻ�ĤҺ����VEEֱ�ӽӵ��ؼ��ɡ�
+大家需要注意的是，液晶根据不同的颜色不同的型号，对比度（VEE）调节电压也不同，一般都需要接个电位器进行调节，本人使用的是灰膜液晶，VEE直接接到地即可。
 
 \image html ref_wxxmickey_080509_02.jpg
 
-���̱�������ؽ�Arduino����ʾ��Ȼ����������ͼ��
+例程编译后，下载进Arduino，显示居然不正常，如图：
 
 \image html ref_wxxmickey_080509_03.jpg
 
-һ������Һ���ϵ��û��������ʼ���ͻ����һ�źڿ飬������ϸ����˳���͵�·���ߣ�Ҳû�п���ʲô���⣬�ѵ�Һ�����ˣ����ְ�Һ�����ҵ�51ʵ�������֤�Ǻõģ��ҿ�ʼ�����ǶԱȶȵ��ڵ����⣬���ǰ�Һ��������һ������Ȼ�ǶԱȶȲ��ԡ�
+一般这种液晶上电或没有正常初始化就会出现一排黑块，但我仔细检查了程序和电路连线，也没有看出什么问题，难道液晶坏了？我又把液晶拆到我的51实验板上验证是好的，我开始怀疑是对比度调节的问题，于是把液晶拿起来一看，果然是对比度不对。
 
 
 \image html ref_wxxmickey_080509_04.jpg
  
 
-б�ſ������ܿ�����Hola Caracila����������Ҳ��������ʵ����Ҫ��ʾ�����ݡ�����ĤҺ����ʹ�úܶ�Σ��Աȶȵ��ڶ˶���ֱ�ӽӵأ�û���κ����⣬��ô���������ͳ������������⣬���������ҵ��ٷ���վ��ϸ̽ͷ���������ڱ��ҷ�����������ڣ��ٷ���վʹ�õ���2001��Һ��������������ͺţ����ǵ�����ʾ��һ����ʾ20���ַ��� ����������ͳ���Һ���Ĺ��ܳ�ʼ���������ˣ��ҿ�ʼû��ע�⣬���Ծ�ֱ�����ó����ˡ�
+斜着看，就能看见“Hola Caracila”的字样，也就是我们实验需要显示的内容。这款灰膜液晶我使用很多次，对比度调节端都是直接接地，没有任何问题，怎么用这个程序就出现这样的问题，于是我又找到官方网站仔细探头究竟，终于被我发现问题的所在，官方网站使用的是2001的液晶（好象是这个型号），是单排显示的一排显示20个字符， 因此这个问题就出在液晶的功能初始化设置上了，我开始没有注意，所以就直接套用程序了。
 
-��������ʹ�õ�Һ�����Ĺ��ܳ�ʼ�����ã�ָ����±���
+根据我们使用的液晶更改功能初始化设置，指令集如下表：
 
 
 \image html ref_wxxmickey_080509_05.jpg
 
 \image html ref_wxxmickey_080509_06.jpg
 
-����ָ��6�����ٷ��ṩ�Ĵ����ʼ�����֣�
+根据指令6，将官方提供的代码初始化部分：
 
 \code
  LcdCommandWrite(0x30);  // set:
@@ -142,7 +142,7 @@ void loop (void) {
                          // 8-bit interface, 1 display lines, 5x7 font
 \endcode
 
-����Ϊ8���ߡ�˫����ʾ��5x7��
+更改为8总线、双行显示、5x7：
 
 \code
  LcdCommandWrite(0x38);  // set:
@@ -155,13 +155,13 @@ void loop (void) {
                          // 8-bit interface, 2 display lines, 5x7 font
 \endcode
 
-���ĺ���롢���أ���ʾ������£�
+更改后编译、下载，显示结果如下：
 
 \image html ref_wxxmickey_080509_07.jpg
 
-�ǲ����ܹ�������Ŀ�����Hola Caracila���������ˡ�
+是不是能够很清楚的看见“Hola Caracila”的字样了。
 
-Arduino DM�����ֶ˿�ֻ��14������ôLCD1602��ռ����10�����˷��˲�����Դ���������Ժ�ĵ�·��չ�����˼���Ĳ��㡣�����ҾͿ���ʹ�ø�Һ����4����������ʽ�����Խ�ʡ3�����ֶ˿ڳ�����������չ�����˱�д�Ĺ��̴������£�
+Arduino DM的数字端口只有14个，那么LCD1602就占用了10个，浪费了不少资源，对我们以后的电路扩展带来了极大的不便。于是我就可以使用该液晶的4总线驱动方式，可以节省3个数字端口出来作其他扩展。本人编写的工程代码如下：
 
 \code
 /********************************************************************/
@@ -267,8 +267,8 @@ void LCD_Write_Char( int x,int y,int dat)
 /********************************************************************/
 void LCD_Write_String(int X,int Y,char *s)
 {
-    LCD_SET_XY( X, Y );    //���õ�ַ
-    while (*s)             //д�ַ���
+    LCD_SET_XY( X, Y );    //设置地址
+    while (*s)             //写字符串
     {
       LCD_Data_Write(*s);  
       s ++;
@@ -286,7 +286,7 @@ void setup (void)
      pinMode(i,OUTPUT);
    }
   delay(100);
-  LCD_Command_Write(0x28);//4�� 2�� 5x7
+  LCD_Command_Write(0x28);//4线 2行 5x7
   delay(50);
   LCD_Command_Write(0x06);
   delay(50);
@@ -305,39 +305,39 @@ void loop (void)
 {
    LCD_Command_Write(0x02);
    delay(50);
-   LCD_Write_String(3,0,str1);//��1�У���4����ַ��
+   LCD_Write_String(3,0,str1);//第1行，第4个地址起
    delay(50);
-   LCD_Write_String(1,1,str2);//��2�У���2����ַ��
+   LCD_Write_String(1,1,str2);//第2行，第2个地址起
    while(1);
 }
 \endcode
 
-���ݳ��������ͼ���£�
+根据程序定义接线图如下：
 
 \image html ref_wxxmickey_080509_08.jpg
 
 \image html ref_wxxmickey_080509_09.jpg
 
-��������ؽ�Arduino����ʾ��ͼ��
+编译后，下载进Arduino，显示如图：
 
 
 \image html ref_wxxmickey_080509_10.jpg
 
-�������������ֲ���Ժ���Ҫ�õ���ʾ�ĵط���������ֱ�����á�
+这个代码容易移植，以后需要用到显示的地方，都可以直接引用。
 
-�ҵ���Arduino���Թ����ַ�Һ��4���ߵĿ⺯����ʹ�øÿ⺯������ͱ���൱����ˡ������������£�
+找到了Arduino语言关于字符液晶4总线的库函数，使用该库函数程序就变的相当简洁了。函数例程如下：
 
 \code
 #include <LCD4Bit.h>
-LCD4Bit lcd = LCD4Bit(1);   //���ݲ���1��2����ʾѡ��1�ߺ�2���ַ�Һ����
-lcd.clear();//����
-delay(1000);//��ʱ
-lcd.printIn("arduino");//��ʾ�ַ���
+LCD4Bit lcd = LCD4Bit(1);   //传递参数1和2，表示选择1线和2线字符液晶。
+lcd.clear();//清屏
+delay(1000);//延时
+lcd.printIn("arduino");//显示字符串
 lcd.cursorTo(2, 0);  //line=2, x=0
-lcd.leftScroll(20, 50);//��LCD�����е�������50ms���ٶ������ƶ�20���ַ�λ
+lcd.leftScroll(20, 50);//將LCD上现有的文字以50ms的速度向左移动20个字符位
 \endcode
 
-ע��:��ʹ��LCD4Bit.h�Ļ�,RW��Ҫ�ӵ�.
+注意:若使用LCD4Bit.h的话,RW需要接地.
 
-���ء�LCD4Bit.h��
+下载“LCD4Bit.h”
 */

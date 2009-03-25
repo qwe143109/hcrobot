@@ -1,19 +1,19 @@
-/**
+ï»¿/**
 \file WMath.cpp
 
 
 \fn void randomSeed(unsigned int seed)
-\brief ÉèÖÃËæ»úÖÖ×Ó
+\brief è®¾ç½®éšæœºç§å­
 \fn long random(long howbig)
-\brief Éú³ÉËæ»úÊı
+\brief ç”Ÿæˆéšæœºæ•°
 \fn long random(long howsmall, long howbig)
-\brief Éú³ÉËæ»úÊı
+\brief ç”Ÿæˆéšæœºæ•°
 \fn long map(long x, long in_min, long in_max, long out_min, long out_max)
-\brief µÈ±ÈÓ³Éä
+\brief ç­‰æ¯”æ˜ å°„
 
 \fn unsigned int makeWord (unsigned int w)
-\brief ¹¹ÔìÒ»¸ö×Ö
+\brief æ„é€ ä¸€ä¸ªå­—
 \fn unsigned int makeWord (unsigned char h, unsigned char l)
-\brief ¹¹ÔìÒ»¸ö×Ö
+\brief æ„é€ ä¸€ä¸ªå­—
  
 */

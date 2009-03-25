@@ -1,36 +1,36 @@
-
+﻿
 /**
-\page ref_wxxmickey_080429 ����ţ����Arduino����
+\page ref_wxxmickey_080429 初试牛刀与Arduino博弈
 \author wxxmickey
 \date 2008-4-29
 
-Arduino�ڴ�Bootloader������ϵͳ�ϵ�����еĵ�һ�δ��룬�ͺñ�PC��BIOS�еĳ��������ͽ����Լ죬���ö˿ڵȵȣ���Ȼ��Ƭ�����ǿ���д��˿λ���趨�ϵ��boot�������ģ�ʹ���������Ϳ���ֱ�ӰѴӴ��ڷ����ĳ����ŵ�flash���С�������ʹ��Arduino���뻷�����س���ʱ�������õ�Ƭ����λ������Bootloader�����������ڷ������ĳ���˳��д��flash���У�flash �����ظ���д��������������������ô�ķ��㡣���������򵥵Ľ���һ�±��뻷����ʹ�á�
+Arduino内带Bootloader程序，是系统上电后运行的第一段代码，就好比PC机BIOS中的程序，启动就进行自检，配置端口等等，当然单片机就是靠烧写熔丝位来设定上电从boot区启动的，使用这个程序就可以直接把从串口发来的程序存放到flash区中。我们在使用Arduino编译环境下载程序时，就先让单片机复位，启动Bootloader程序引导串口发过来的程序顺利写入flash区中，flash 可以重复烧写，因此想更新软件就是这么的方便。下面我来简单的介绍一下编译环境的使用。
 
-�����������µı�������Arduino0011����ѹ��Ϳ���ֱ��ʹ�ã�����Arduino USB�ӿڣ�����װ��������ǰ����ܹ��������ǾͿ��Կ�ʼ�����ˣ�����ҵĵ����Ҽ�->����->Ӳ��->�豸�������鿴��USBӳ��Ĵ��ڵ�ַ��Ȼ���Arduino0011��
+首先下载最新的编译软件Arduino0011，解压后就可以直接使用，插上Arduino USB接口，并安装好驱动（前面介绍过），我们就可以开始练手了，点击我的电脑右键->属性->硬件->设备管理器查看到USB映射的串口地址，然后打开Arduino0011，
 
 \image html ref_wxxmickey_080429_01.jpg
 
-Arduino�������뻷���ܼ�࣬�������ܼ������������£�
+Arduino开发编译环境很简洁，各个功能键功能描述如下：
 
 \image html ref_wxxmickey_080429_02.jpg
 
-��������Tools->Boardѡ�񿪷����ͺţ�
+接下来点Tools->Board选择开发板型号，
 
 \image html ref_wxxmickey_080429_03.jpg
 
-��������ʹ�õ���Arduino Diecimila��Ȼ���Tools-->Serisl Portѡ�񴮿ڣ���USBӳ��Ĵ��ڵ�ַ��
+这里我们使用的是Arduino Diecimila，然后点Tools-->Serisl Port选择串口，即USB映射的串口地址，
 
 \image html ref_wxxmickey_080429_04.jpg
 
-ǰ��Ĺ������ú����Ǿ��Ҹ�������ʵ��ʵ�飬��File->Sketchbook��
+前面的工作做好后，我们就找个例程来实验实验，点File->Sketchbook，
 
 \image html ref_wxxmickey_080429_05.jpg
 
-��������ѡ��LOOP������̡�
+这里我们选择LOOP这个例程。
 
-��Ҳ�սӴ����ƽ̨�����Զ�Arduino����Ҳ��̫�˽⣬���¿���һ�£�������setup()��ͷ��loop() ��Ϊ�����һ�����򹹼ܡ��ٷ���վ����������setup()�ģ�������ʼ���������ܽ�ģʽ�����ÿ⺯���ȵȣ��˺���ֻ����һ�Ρ�loop()������һ��ѭ�������������ڵ�����ܶ���ʼ��ѭ��ִ�У�����c�����еġ�while(1){};����
+我也刚接触这个平台，所以对Arduino语言也不太了解，大致看了一下，他是以setup()开头，loop() 作为主体的一个程序构架。官方网站是这样描述setup()的：用来初始化变量，管脚模式，调用库函数等等，此函数只运行一次。loop()函数是一个循环函数，函数内的语句周而复始的循环执行，类似c语言中的“while(1){};”。
 
-LOOPʵ�������ҪһЩ����������������������ܺͼ����Ű��ߣ�����������1����������ܺ�2���Ű�����ʾ���ɡ����̴������£�
+LOOP实验程序需要一些额外器件，几个发光二极管和几根杜邦线，这里我们用1个发光二极管和2根杜邦线演示即可。工程代码如下：
 
 \code
 int timer = 100;                   // The higher the number, the slower the timing.
@@ -62,14 +62,14 @@ void loop()
 }
 \endcode
 
-ʵ��Ŀ������ 2, 3, 4, 5, 6, 13 ����������ܽŵ�ƽ�����������ø��õͣ��ٴ��ҵ��������ø��õ͡�ע��13����������ܽ����Ҹ���ȥ�ģ�ԭ������7�ţ�ֻ��Ϊ�˽�ʡ��Χ���ð��ص�LED����۲�����
+实验目的是让 2, 3, 4, 5, 6, 13 号数字输出管脚电平从左到右依次置高置低，再从右到左依次置高置低。注：13号数字输出管脚是我改上去的，原程序是7号，只是为了节省外围，用板载的LED方便观察结果。
 
-digitalWrite();   �������Ǹı���Ӧ�ܽŵĵ�ƽ״̬���ڲ���2��������ֵ��
+digitalWrite();   函数就是改变相应管脚的电平状态，内部有2个参数赋值。
 
-�ȱ�����������ļ�������밴ť��Ctrl+R��������ɺ�Ϳ������ص�Ŀ����ˣ���ͨ��USB���ش����Ctrl+U�����ع����У�����Թ۲쵽TX��RXָʾ�Ʋ�ͣ����˸��
+先编译这个工程文件，点编译按钮或Ctrl+R，编译完成后就可以下载到目标板了，点通过USB下载代码或Ctrl+U。下载过程中，你可以观察到TX和RX指示灯不停的闪烁。
 
 \image html ref_wxxmickey_080429_06.jpg
 
-ͼ����6�Ž��Ͻӷ����������������������ܸ�����GND�����Կ���6�ź�13������������ϵĵ�������˸��ע�⣺�������������û�н��������裬ֱ�ӽ�LED�Ǻ�Σ�յģ���͵�˸�������ʾһ��û�ж�����⣬��������������⣬���Կ�����������������Ǻǡ�
+图上在6号脚上接发光二极管正极，发光二极管负极接GND，可以看见6号和13号数字输出脚上的灯依次闪烁。注意：由于数字输出口没有接限流电阻，直接接LED是很危险的，我偷了个懒，演示一下没有多大问题，由于相机开了闪光，所以看不出灯亮的情况，呵呵。
 
 */

@@ -1,67 +1,67 @@
-/**
+ï»¿/**
 \class Print
-\brief ´òÓ¡»ùÀà
+\brief æ‰“å°åŸºç±»
 
 \fn void Print::write(uint8_t b)
-\brief ÏòÉè±¸Ğ´Êı¾İ
+\brief å‘è®¾å¤‡å†™æ•°æ®
 
-Ğéº¯Êı, ¿ÉÒÔÔÚÅÉÉúµÄ×ÓÀàÖĞ´ÓĞÂÊµÏÖ, ½«´òÓ¡µÄ×Ö·ûÊä³öµ½¸÷ÖÖÉè±¸.
+è™šå‡½æ•°, å¯ä»¥åœ¨æ´¾ç”Ÿçš„å­ç±»ä¸­ä»æ–°å®ç°, å°†æ‰“å°çš„å­—ç¬¦è¾“å‡ºåˆ°å„ç§è®¾å¤‡.
 
 \fn void Print::print(char)
-\brief ´òÓ¡×Ö·û
+\brief æ‰“å°å­—ç¬¦
 
 \fn void Print::print(const char[])
-\brief ´òÓ¡×Ö·û´®
+\brief æ‰“å°å­—ç¬¦ä¸²
 
 \fn void Print::print(uint8_t)
-\brief ´òÓ¡ÕûÊı
+\brief æ‰“å°æ•´æ•°
 
 \fn void Print::print(int)
-\brief ´òÓ¡ÕûÊı
+\brief æ‰“å°æ•´æ•°
 
 \fn void Print::print(unsigned int)
-\brief ´òÓ¡ÕûÊı
+\brief æ‰“å°æ•´æ•°
 
 \fn void Print::print(long)
-\brief ´òÓ¡ÕûÊı
+\brief æ‰“å°æ•´æ•°
 
 \fn void Print::print(unsigned long)
-\brief ´òÓ¡ÕûÊı
+\brief æ‰“å°æ•´æ•°
 
 \fn void Print::print(long, int)
-\brief ´òÓ¡ÕûÊı
+\brief æ‰“å°æ•´æ•°
 
 \fn void Print::print(double)
-\brief ´òÓ¡¸¡µãÊı
+\brief æ‰“å°æµ®ç‚¹æ•°
 
 \fn void Print::println(void)
-\brief ´òÓ¡»»ĞĞ
+\brief æ‰“å°æ¢è¡Œ
 
 \fn void Print::println(char)
-\brief ´òÓ¡×Ö·û, »»ĞĞ
+\brief æ‰“å°å­—ç¬¦, æ¢è¡Œ
 
 \fn void Print::println(const char[])
-\brief ´òÓ¡ÕûÊı, »»ĞĞ
+\brief æ‰“å°æ•´æ•°, æ¢è¡Œ
 
 \fn void Print::println(uint8_t)
-\brief ´òÓ¡ÕûÊı, »»ĞĞ
+\brief æ‰“å°æ•´æ•°, æ¢è¡Œ
 
 \fn void Print::println(int)
-\brief ´òÓ¡ÕûÊı, »»ĞĞ
+\brief æ‰“å°æ•´æ•°, æ¢è¡Œ
 
 \fn void Print::println(unsigned int)
-\brief ´òÓ¡ÕûÊı, »»ĞĞ
+\brief æ‰“å°æ•´æ•°, æ¢è¡Œ
 
 \fn void Print::println(long)
-\brief ´òÓ¡ÕûÊı, »»ĞĞ
+\brief æ‰“å°æ•´æ•°, æ¢è¡Œ
 
 \fn void Print::println(unsigned long)
-\brief ´òÓ¡ÕûÊı, »»ĞĞ
+\brief æ‰“å°æ•´æ•°, æ¢è¡Œ
 
 \fn void Print::println(long, int)
-\brief ´òÓ¡ÕûÊı, »»ĞĞ
+\brief æ‰“å°æ•´æ•°, æ¢è¡Œ
 
 \fn void Print::println(double)
-\brief ´òÓ¡¸¡µãÊı, »»ĞĞ
+\brief æ‰“å°æµ®ç‚¹æ•°, æ¢è¡Œ
 
 */

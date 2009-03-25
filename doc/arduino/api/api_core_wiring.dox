@@ -1,27 +1,27 @@
-/**
+ï»¿/**
 \file wiring.h
 
 \def HIGH 
-\brief ¸ßµçÆ½
+\brief é«˜ç”µå¹³
 \def LOW
-\brief µÍµçÆ½
+\brief ä½ç”µå¹³
 
 \def INPUT
-\brief ÊäÈë
+\brief è¾“å…¥
 \def OUTPUT
-\brief Êä³ö
+\brief è¾“å‡º
 
 \def constrain(amt,low,high)
-\brief ÊÇ·ñÔÚÇø¼ä
+\brief æ˜¯å¦åœ¨åŒºé—´
 \def radians(deg) ((deg)*DEG_TO_RAD)
-\brief ½Ç¶È×ª»¡¶È
+\brief è§’åº¦è½¬å¼§åº¦
 \def degrees(rad) ((rad)*RAD_TO_DEG)
-\brief »¡¶È×ª½Ç¶È
+\brief å¼§åº¦è½¬è§’åº¦
 
 \def interrupts()
-\brief ¿ªÖĞ¶Ï
+\brief å¼€ä¸­æ–­
 \def noInterrupts()
-\brief ¹ØÖĞ¶Ï
+\brief å…³ä¸­æ–­
 
 \fn unsigned long pulseIn(uint8_t pin, uint8_t state, unsigned long timeout = 1000000L)
 \brief fff
@@ -29,14 +29,14 @@
 
 
 \def lowByte(w)
-\brief µÍ×Ö½Ú
+\brief ä½å­—èŠ‚
 \def highByte(w)
-\brief ¸ß×Ö½Ú
+\brief é«˜å­—èŠ‚
 
 \fn void setup(void)
-\brief ³õÊ¼»¯
+\brief åˆå§‹åŒ–
 \fn void loop(void)
-\brief Ö÷Ìå³ÌĞò2
+\brief ä¸»ä½“ç¨‹åº2
 */
 
 

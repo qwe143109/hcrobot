@@ -1,7 +1,7 @@
-
+ï»¿
 /**
 \class SoftwareSerial
-\brief ´®¿Ú(Èí¼şÊµÏÖ)
+\brief ä¸²å£(è½¯ä»¶å®ç°)
 
 \code
 class SoftwareSerial

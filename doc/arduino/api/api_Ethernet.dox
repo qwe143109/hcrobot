@@ -1,7 +1,7 @@
-
+ï»¿
 /**
 \class EthernetClass
-\brief ÍøÂç
+\brief ç½‘ç»œ
 
 \include ChatServer.pde
 
@@ -23,7 +23,7 @@
 
 /**
 \class Server
-\brief ÍøÂç·şÎñ¶Ë
+\brief ç½‘ç»œæœåŠ¡ç«¯
 
 \include WebServer.pde
 
@@ -44,7 +44,7 @@
 
 /**
 \class Client
-\brief ÍøÂç¿Í»§¶Ë
+\brief ç½‘ç»œå®¢æˆ·ç«¯
 
 \include WebClient.pde
 
