@@ -5,16 +5,6 @@
 \code
 00027 class Sprite
 00028 {
-00029   private:
-00030     uint8_t _width;
-00031     uint8_t _height;
-00032     uint8_t _depth;
-00033     uint8_t _ppb;
-00034     uint8_t _bpr;
-00035     uint8_t _mask;
-00036     uint8_t *_buffer;
-00037     
-00038     void init(uint8_t width, uint8_t height);
 00039   public: 
 00040     Sprite(uint8_t width, uint8_t height);
 00041     Sprite(uint8_t width, uint8_t height, uint8_t row, ...);

@@ -5,21 +5,6 @@
 \code
 00027 class TwoWire
 00028 {
-00029   private:
-00030     static uint8_t* rxBuffer;
-00031     static uint8_t rxBufferIndex;
-00032     static uint8_t rxBufferLength;
-00033 
-00034     static uint8_t txAddress;
-00035     static uint8_t* txBuffer;
-00036     static uint8_t txBufferIndex;
-00037     static uint8_t txBufferLength;
-00038 
-00039     static uint8_t transmitting;
-00040     static void (*user_onRequest)(void);
-00041     static void (*user_onReceive)(int);
-00042     static void onRequestService(void);
-00043     static void onReceiveService(uint8_t*, int);
 00044   public:
 00045     TwoWire();
 00046     void begin();

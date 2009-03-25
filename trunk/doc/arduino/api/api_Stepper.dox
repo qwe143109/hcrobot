@@ -18,23 +18,6 @@
 00060 
 00061     int version(void);
 00062 
-00063   private:
-00064     void stepMotor(int this_step);
-00065     
-00066     int direction;        // Direction of rotation
-00067     int speed;          // Speed in RPMs
-00068     unsigned long step_delay;    // delay between steps, in ms, based on speed
-00069     int number_of_steps;      // total number of steps this motor can take
-00070     int pin_count;        // whether you're driving the motor with 2 or 4 pins
-00071     int step_number;        // which step the motor is on
-00072     
-00073     // motor pin numbers:
-00074     int motor_pin_1;
-00075     int motor_pin_2;
-00076     int motor_pin_3;
-00077     int motor_pin_4;
-00078     
-00079     long last_step_time;      // time stamp in ms of when the last step was taken
 00080 };
 \endcode
 */
