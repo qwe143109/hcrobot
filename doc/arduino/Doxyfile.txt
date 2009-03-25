@@ -1,15 +1,15 @@
-# Doxyfile 1.5.3
+﻿# Doxyfile 1.5.3
 
 #---------------------------------------------------------------------------
 # Project related configuration options
 #---------------------------------------------------------------------------
-DOXYFILE_ENCODING      = UTF-8				# ���ı�������ΪGB2312����			
-PROJECT_NAME           = Arduino			# ��������
-PROJECT_NUMBER         = 					# ���̰汾��
-OUTPUT_DIRECTORY       = 					# ����ļ�Ŀ¼
+DOXYFILE_ENCODING      = UTF-8				# 中文必须设置为GB2312编码			
+PROJECT_NAME           = Arduino			# 工程名字
+PROJECT_NUMBER         = 					# 工程版本号
+OUTPUT_DIRECTORY       = 					# 输出文件目录
 CREATE_SUBDIRS         = NO
-OUTPUT_LANGUAGE        = Chinese			# ����Ϊ����
-BRIEF_MEMBER_DESC      = YES				# ����ժҪ����
+OUTPUT_LANGUAGE        = Chinese			# 设置为中文
+BRIEF_MEMBER_DESC      = YES				# 生成摘要描述
 REPEAT_BRIEF           = YES
 ABBREVIATE_BRIEF       = "The $name class  " \
                          "The $name widget  " \
@@ -34,7 +34,7 @@ MULTILINE_CPP_IS_BRIEF = NO
 DETAILS_AT_TOP         = NO
 INHERIT_DOCS           = YES
 SEPARATE_MEMBER_PAGES  = NO
-TAB_SIZE               = 4				# TAB���ŵĴ�С
+TAB_SIZE               = 4				# TAB符号的大小
 ALIASES                = 
 OPTIMIZE_OUTPUT_FOR_C  = NO
 OPTIMIZE_OUTPUT_JAVA   = NO
@@ -97,11 +97,11 @@ INPUT                  = .  dox dox\wxxmickey api api_ex		\
 						 arduino-0014\libraries\Sprite			\
 						 arduino-0014\libraries\Stepper			\
 						 arduino-0014\libraries\Wire
-						 # �������ڵ�Ŀ¼
-INPUT_ENCODING         = UTF-8				# ���ı���
+						 # 代码所在的目录
+INPUT_ENCODING         = UTF-8				# 中文编码
 
-							# Ҫ�����ļ��ĺ�׺��
-							# '\'֮�������ַ�
+							# 要分析文件的后缀名
+							# '\'之后不能有字符
 FILE_PATTERNS          = *.h *.c *.cpp \
                          *.dox 
 RECURSIVE              = NO
@@ -135,7 +135,7 @@ EXAMPLE_PATH           = . example	\
 						 arduino-0014\libraries\Ethernet\examples\WebServer		\
 						 arduino-0014\libraries\Ethernet\examples\WebClient		\
 						 arduino-0014\libraries\Ethernet\examples\ChatServer		\
-						 # ���ӳ���
+						 # 例子程序
 EXAMPLE_PATTERNS       = *
 EXAMPLE_RECURSIVE      = NO
 IMAGE_PATH             = image
@@ -145,7 +145,7 @@ FILTER_SOURCE_FILES    = NO
 #---------------------------------------------------------------------------
 # configuration options related to source browsing
 #---------------------------------------------------------------------------
-SOURCE_BROWSER         = YES				# �Ƿ����ɴ���
+SOURCE_BROWSER         = YES				# 是否生成代码
 INLINE_SOURCES         = NO
 STRIP_CODE_COMMENTS    = YES
 REFERENCED_BY_RELATION = NO
