@@ -1,35 +1,35 @@
-
+ï»¿
 /**
-\mainpage Arduino¿ª·¢ÎÄµµ
-\author ²ñÊ÷É¼[·­Òë] (chaishushan@gmail.com)
-\date 2009-03-22 ÓÚÉîÛÚ
-\note ¸ÃÎÄµµ¸ù¾İ<a href="http://arduino.cc/">http://arduino.cc/</a>·­Òë£¬ÒÀÕÕ<a href="http://www.creativecommons.cn/licenses/by-nd-nc/1.0/">
-´´×÷¹«ÓÃÔ¼¶¨</a>·¢²¼¡£
-\note ¸ÃÎÄµµµÄdoxygenÔ´ÎÄ¼ş¿ÉÒÔ´Ó<a href="http://chaishushan.googlecode.com/svn/trunk/arduino/">Arduino-doc-cn</a>ÏÂÔØ¡£
-\note ¸ÃÎÄµµÒÀÍĞHCR¿ªÔ´ÏîÄ¿.
+\mainpage Arduinoå¼€å‘æ–‡æ¡£
+\author æŸ´æ ‘æ‰[ç¿»è¯‘] (chaishushan@gmail.com)
+\date 2009-03-22 äºæ·±åœ³
+\note è¯¥æ–‡æ¡£æ ¹æ®<a href="http://arduino.cc/">http://arduino.cc/</a>ç¿»è¯‘ï¼Œä¾ç…§<a href="http://www.creativecommons.cn/licenses/by-nd-nc/1.0/">
+åˆ›ä½œå…¬ç”¨çº¦å®š</a>å‘å¸ƒã€‚
+\note è¯¥æ–‡æ¡£çš„doxygenæºæ–‡ä»¶å¯ä»¥ä»<a href="http://chaishushan.googlecode.com/svn/trunk/arduino/">Arduino-doc-cn</a>ä¸‹è½½ã€‚
+\note è¯¥æ–‡æ¡£ä¾æ‰˜HCRå¼€æºé¡¹ç›®.
 
-\section index_01  ¼ò½é
+\section index_01  ç®€ä»‹
 
 from: http://zh.wikipedia.org/w/index.php?title=Arduino&variant=zh-hans
 
-ÈÃÄú¿ÉÒÔ¿ìËÙÊ¹ÓÃ Arduino ÓïÑÔÓë Macromedia Flash, Processing, Max/MSP, Pure Data, SuperCollider¡­µÈÈíÌå£¬×÷³ö»¥¶¯×÷Æ·¡£Arduino¿ÉÒÔÊ¹ÓÃ¿ª·¢Íê³ÉµÄµç×ÓÔª¼şÀıÈçSwitch»ò¸Ğ²âÆ÷»òÆäËû¿ØÖÆÆ÷¼ş¡¢LED¡¢²½½øÂí´ï»òÆäËûÊä³ö×°ÖÃ¡£ArduinoÒ²¿ÉÒÔ¶ÀÁ¢ÔË×÷³ÉÎªÒ»¸ö¿ÉÒÔ¸úÈíÌå¹µÍ¨µÄ½éÃæ£¬ÀıÈçËµ£º Macromedia Flash, Processing, Max/MSP, Pure Data, VVVV »òÆäËû»¥¶¯ÈíÌå¡­¡£Arduino¿ª·¢£É£Ä£Å½éÃæ»ùÓÚ¿ª·ÅÔ­Ê¼ÂëÔ­£¬¿ÉÒÔÈÃÄúÃâ·ÑÏÂÔØÊ¹ÓÃ¿ª·¢³ö¸ü¶àÁîÈË¾ªÑŞµÄ»¥¶¯×÷Æ·¡£
+è®©æ‚¨å¯ä»¥å¿«é€Ÿä½¿ç”¨ Arduino è¯­è¨€ä¸ Macromedia Flash, Processing, Max/MSP, Pure Data, SuperColliderâ€¦ç­‰è½¯ä½“ï¼Œä½œå‡ºäº’åŠ¨ä½œå“ã€‚Arduinoå¯ä»¥ä½¿ç”¨å¼€å‘å®Œæˆçš„ç”µå­å…ƒä»¶ä¾‹å¦‚Switchæˆ–æ„Ÿæµ‹å™¨æˆ–å…¶ä»–æ§åˆ¶å™¨ä»¶ã€LEDã€æ­¥è¿›é©¬è¾¾æˆ–å…¶ä»–è¾“å‡ºè£…ç½®ã€‚Arduinoä¹Ÿå¯ä»¥ç‹¬ç«‹è¿ä½œæˆä¸ºä¸€ä¸ªå¯ä»¥è·Ÿè½¯ä½“æ²Ÿé€šçš„ä»‹é¢ï¼Œä¾‹å¦‚è¯´ï¼š Macromedia Flash, Processing, Max/MSP, Pure Data, VVVV æˆ–å…¶ä»–äº’åŠ¨è½¯ä½“â€¦ã€‚Arduinoå¼€å‘ï¼©ï¼¤ï¼¥ä»‹é¢åŸºäºå¼€æ”¾åŸå§‹ç åŸï¼Œå¯ä»¥è®©æ‚¨å…è´¹ä¸‹è½½ä½¿ç”¨å¼€å‘å‡ºæ›´å¤šä»¤äººæƒŠè‰³çš„äº’åŠ¨ä½œå“ã€‚
 
 
 
-ÎŞ.
+æ— .
 
-\section index_userdocs Ê¹ÓÃÊÖ²á
+\section index_userdocs ä½¿ç”¨æ‰‹å†Œ
 
  -# \ref arduino_guide_win
  -# \ref arduino_core
 
-\section index_link Ïà¹ØÁ¬½Ó
+\section index_link ç›¸å…³è¿æ¥
 
- - <a href="http://sites.google.com/site/chaishushan/">¸öÈËÖ÷Ò³ - ²ñÊ÷É¼</a>
+ - <a href="http://sites.google.com/site/chaishushan/">ä¸ªäººä¸»é¡µ - æŸ´æ ‘æ‰</a>
 
 \htmlonly
 <p>
-$Id: index.dox 2008-04-10 ²ñÊ÷É¼ $
+$Id: index.dox 2008-04-10 æŸ´æ ‘æ‰ $
 </p>
 \endhtmlonly
 

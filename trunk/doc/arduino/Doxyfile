@@ -3,7 +3,7 @@
 #---------------------------------------------------------------------------
 # Project related configuration options
 #---------------------------------------------------------------------------
-DOXYFILE_ENCODING      = GBK				# 中文必须设置为GB2312编码			
+DOXYFILE_ENCODING      = UTF-8				# 中文必须设置为GB2312编码			
 PROJECT_NAME           = Arduino			# 工程名字
 PROJECT_NUMBER         = 					# 工程版本号
 OUTPUT_DIRECTORY       = 					# 输出文件目录
@@ -98,7 +98,7 @@ INPUT                  = .  dox dox\wxxmickey api api_ex		\
 						 arduino-0014\libraries\Stepper			\
 						 arduino-0014\libraries\Wire
 						 # 代码所在的目录
-INPUT_ENCODING         = GBK				# 中文编码
+INPUT_ENCODING         = UTF-8				# 中文编码
 
 							# 要分析文件的后缀名
 							# '\'之后不能有字符

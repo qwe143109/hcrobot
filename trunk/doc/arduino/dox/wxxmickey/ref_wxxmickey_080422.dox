@@ -1,15 +1,15 @@
-
+﻿
 /**
-\page ref_wxxmickey_080422 ������Arduino����ý��
+\page ref_wxxmickey_080422 新事物Arduino互动媒体
 \author wxxmickey
 \date 2008-4-22
 
-"����ý��"զһ������Ϊ��ʲô���ӽ�Ŀ������Ϸ����Ϊ��"ý��"���֣���Ȼ����������Щ������ϸgoogleһ�£���Ȼ��һ�ֿ�Դ��ѧϰƽ̨�����Ǹ���һ�����ã���������һ���ñ�����Arduino���ư��Ӳ���ܼ�࣬�]��ʲô�������ƣ����˿���ʽӲ���ܹ�֮�⣬�ص��������ṩ��һ������ C/C++�ĳ�������������Arduino���K����Windows, Mac OS X��Linux�ȿ�ƽ̨�����ĳ�����빤�ߡ����˵��ɿɶ���������΢������֮�⣬��Ҳ��͸�����మ���߿������ĳ���ģ�죬�͵����ϵ�������������ͨѶ�����磺Flash Action, Processing, Python, PHP,���ȵȡ�
+"互动媒体"咋一听还以为是什么电视节目娱乐游戏，因为有"媒体"两字，固然会联想起这些来。仔细google一下，居然是一种开源的学习平台。于是搞了一块用用，发现真是一个好宝贝。Arduino控制板的硬件很简洁，沒有什么特殊的设计，除了开放式硬件架构之外，重点在于它提供了一个基于 C/C++的程序语言来控制Arduino，並且有Windows, Mac OS X和Linux等跨平台环境的程序编译工具。除了当成可独立运作的微控制器之外，它也能透过许多爱好者开发出的程序模快，和电脑上的其他程序语言通讯，例如：Flash Action, Processing, Python, PHP,…等等。
 
 \image html ArduinoNG.jpg
 
-��������ʹ��Ҳ�ܼ򵥣���<a href="www.arduino.cc">��ҳ</a>������������ѹ�󼴿�����ʹ�á�Ŀǰ�Ѿ�������arduino0011�档
+编译软件使用也很简单，从<a href="www.arduino.cc">主页</a>上下载下来解压后即可运行使用。目前已经更新至arduino0011版。
 
-��ƽ̨�İ�װʹ�ÿ��Բο��������ӣ�http://www.arduino.cc/en/Guide/Windows
+该平台的安装使用可以参看如下链接：http://www.arduino.cc/en/Guide/Windows
 
 */
