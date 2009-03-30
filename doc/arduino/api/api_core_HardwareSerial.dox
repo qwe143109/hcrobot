@@ -1,7 +1,7 @@
 ﻿
 /**
 \class HardwareSerial
-\brief 串口(核心功能)
+\brief 串口(硬件实现)
 
 */
 

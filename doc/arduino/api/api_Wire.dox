@@ -1,6 +1,7 @@
 ﻿
 /**
 \class TwoWire
+\brief I2C接口
 
 \code
 00027 class TwoWire

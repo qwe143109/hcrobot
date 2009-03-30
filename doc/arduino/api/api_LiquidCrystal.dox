@@ -1,6 +1,7 @@
 ﻿
 /**
 \class LiquidCrystal
+\brief LCD控制
 
 \code
 00007 class LiquidCrystal : public Print {
