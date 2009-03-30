@@ -3,16 +3,14 @@
 \class Sprite
 \brief LED像素控制
 
-\code
-00027 class Sprite
-00028 {
-00039   public: 
-00040     Sprite(uint8_t width, uint8_t height);
-00041     Sprite(uint8_t width, uint8_t height, uint8_t row, ...);
-00042     uint8_t width() const;
-00043     uint8_t height() const;
-00044     void write(uint8_t x, uint8_t y, uint8_t value);
-00045     uint8_t read(uint8_t x, uint8_t y) const;
-00046 };
-\endcode
+\fn uint8_t Sprite::width() const
+\brief 宽度
+\fn uint8_t Sprite::height() const
+\brief 高度
+\fn void Sprite::write(uint8_t x, uint8_t y, uint8_t value)
+\brief 写
+\fn uint8_t Sprite::read(uint8_t x, uint8_t y) const
+\brief 读
+
+
 */
