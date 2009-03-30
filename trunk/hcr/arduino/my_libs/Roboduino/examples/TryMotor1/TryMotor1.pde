@@ -35,7 +35,7 @@ void loop()
     
     {
         uint8_t m1 = RoboduinoMotor::instance().motorRead(0);
-        uint8_t m2 = RoboduinoMotor::instance().motorRead(0);
+        uint8_t m2 = RoboduinoMotor::instance().motorRead(1);
         
         Serial.print("M1: ");
         Serial.println(m1);
