@@ -15,3 +15,4 @@ my_libs目录为UTF-8编码, 不能直接使用(需要转为ASCII编码).
 网络资源:
 
 http://spatialinteraction2009.blogspot.com/
+http://rainage.blogspot.com/
