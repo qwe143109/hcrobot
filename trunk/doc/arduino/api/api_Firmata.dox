@@ -1,6 +1,7 @@
 ﻿
 /**
 \class FirmataClass
+\brief 基于串口的通信协议
 
 \code
 00070 class FirmataClass

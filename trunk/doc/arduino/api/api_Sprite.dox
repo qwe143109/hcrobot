@@ -1,6 +1,7 @@
 ﻿
 /**
 \class Sprite
+\brief LED像素控制
 
 \code
 00027 class Sprite
