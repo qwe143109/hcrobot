@@ -16,7 +16,7 @@
 
 Roboduino Motor扩展板说明
 
-\image html RoboduinoMotor.jpg
+\image html Roboduino.jpg
 
 采用L293B专用电机驱动芯片, 1A大电流H桥驱动叠层设计, 可与其他模块配合使用,
 占用数字端口PIN6/PIN7/PIN8/PIN9.
