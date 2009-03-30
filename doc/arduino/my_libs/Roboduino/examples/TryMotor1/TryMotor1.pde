@@ -1,4 +1,4 @@
-#include <RoboduinoMotor.h>
+ï»¿#include <RoboduinoMotor.h>
 
 void setup()
 {
@@ -11,27 +11,27 @@ void loop()
     int val = Serial.read();
     if(val == 'a')
     {
-        // M1/M2Õı×ª
+        // M1/M2æ­£è½¬
         
         RoboduinoMotor::instance().motorWrite(0, 100);
         RoboduinoMotor::instance().motorWrite(1, 100);
     }
     else if(val == 'b')
     {
-        // M1/M2·´×ª
+        // M1/M2åè½¬
         
         RoboduinoMotor::instance().motorWrite(0, -100);
         RoboduinoMotor::instance().motorWrite(1, -100);
     }
     else
     {
-        // Í£Ö¹
+        // åœæ­¢
         
         RoboduinoMotor::instance().motorWrite(0, 0);
         RoboduinoMotor::instance().motorWrite(1, 0);
     }
     
-    // Êä³öËÙ¶È
+    // è¾“å‡ºé€Ÿåº¦
     
     {
         uint8_t m1 = RoboduinoMotor::instance().motorRead(0);

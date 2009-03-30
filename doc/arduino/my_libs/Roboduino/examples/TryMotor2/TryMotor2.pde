@@ -1,13 +1,13 @@
-#include <RoboduinoMotor.h>
+ï»¿#include <RoboduinoMotor.h>
 
 void setup()
 {
     Serial.begin(9600);
     
-    // ×óÓÒÂÖºÍµç»úµÄÓ³Éä¹ØÏµ:
+    // å·¦å³è½®å’Œç”µæœºçš„æ˜ å°„å…³ç³»:
     //
-    // 1. ×óÂÖ¶ÔÓ¦µç»úM2, µç»úÕı×ªÇ°½ø, ·´×ªºóÍË.
-    // 2. ÓÒÂÖ¶ÔÓ¦µç»úM1, µç»úÕı×ªºóÍË, ·´×ªÇ°½ø.
+    // 1. å·¦è½®å¯¹åº”ç”µæœºM2, ç”µæœºæ­£è½¬å‰è¿›, åè½¬åé€€.
+    // 2. å³è½®å¯¹åº”ç”µæœºM1, ç”µæœºæ­£è½¬åé€€, åè½¬å‰è¿›.
     
     RoboduinoMotor::instance().mapMotor(1, -1, true);
 }
@@ -18,26 +18,26 @@ void loop()
     int val = Serial.read();
     if(val == 'a')
     {
-        // ×óÂÖËÙ¶È100
-        // ÓÒÂÖËÙ¶È-100
+        // å·¦è½®é€Ÿåº¦100
+        // å³è½®é€Ÿåº¦-100
         
         RoboduinoMotor::instance().start(100, -100);
     }
     else if(val == 'b')
     {
-        // ×óÂÖËÙ¶È-100
-        // ÓÒÂÖÍ£Ö¹
+        // å·¦è½®é€Ÿåº¦-100
+        // å³è½®åœæ­¢
         
         RoboduinoMotor::instance().start(-100, 0);
     }
     else
     {
-        // È«²¿Í£Ö¹
+        // å…¨éƒ¨åœæ­¢
         
         RoboduinoMotor::instance().stop();
     }
     
-    // Êä³öËÙ¶È
+    // è¾“å‡ºé€Ÿåº¦
     
     {
         uint8_t left = RoboduinoMotor::instance().leftSpeed();
