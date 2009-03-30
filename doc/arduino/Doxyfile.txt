@@ -96,7 +96,8 @@ INPUT                  = .  dox dox\wxxmickey api api_ex		\
 						 arduino-0014\libraries\SoftwareSerial	\
 						 arduino-0014\libraries\Sprite			\
 						 arduino-0014\libraries\Stepper			\
-						 arduino-0014\libraries\Wire
+						 arduino-0014\libraries\Wire			\
+						 my_libs\Roboduino
 						 # 代码所在的目录
 INPUT_ENCODING         = UTF-8				# 中文编码
 
