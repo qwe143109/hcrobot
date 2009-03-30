@@ -8,3 +8,6 @@
 api_ex 目录文件还是GBK编码, 以后转换.
 
 http://www.burncg.cn/burnblog/article.asp?id=33
+
+my_libs目录为UTF-8编码, 不能直接使用(需要转为ASCII编码).
+或者从
