@@ -3,29 +3,15 @@
 \class LiquidCrystal
 \brief LCD控制
 
-\code
-00007 class LiquidCrystal : public Print {
-00008 public:
-00009   LiquidCrystal(uint8_t, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t);
-00010   LiquidCrystal(uint8_t, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t,
-00011     uint8_t, uint8_t, uint8_t, uint8_t);
-00012   void clear();
-00013   void home();
-00014   void setCursor(int, int); 
-00015   /*
-00016   void shiftDisplayLeft();
-00017   void shiftDisplayRight();
-00018   */
-00019   virtual void write(uint8_t);
-00020   void command(uint8_t);
-00021 private:
-00022   void send(uint8_t, uint8_t);
-00023   
-00024   uint8_t _four_bit_mode;
-00025   uint8_t _rs_pin; // LOW: command.  HIGH: character.
-00026   uint8_t _rw_pin; // LOW: write to LCD.  HIGH: read from LCD.
-00027   uint8_t _enable_pin; // activated by a HIGH pulse.
-00028   uint8_t _data_pins[8];
-00029 };
-\endcode
+\fn void LiquidCrystal::clear()
+\brief 清空
+\fn void LiquidCrystal::home()
+\brief 原点
+\fn void LiquidCrystal::setCursor(int, int)
+\brief 设置坐标
+\fn virtual void LiquidCrystal::write(uint8_t)
+\brief 写
+\fn void LiquidCrystal::command(uint8_t)
+\brief 指令
+
 */

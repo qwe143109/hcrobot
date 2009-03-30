@@ -3,21 +3,11 @@
 \class Stepper
 \brief 步进电机
 
-\code
-00049 class Stepper {
-00050   public:
-00051     // constructors:
-00052     Stepper(int number_of_steps, int motor_pin_1, int motor_pin_2);
-00053     Stepper(int number_of_steps, int motor_pin_1, int motor_pin_2, int motor_pin_3, int motor_pin_4);
-00054 
-00055     // speed setter method:
-00056     void setSpeed(long whatSpeed);
-00057 
-00058     // mover method:
-00059     void step(int number_of_steps);
-00060 
-00061     int version(void);
-00062 
-00080 };
-\endcode
+\fn void Stepper::setSpeed(long whatSpeed)
+\brief 设置速度
+\fn void Stepper::step(int number_of_steps)
+\brief 设置步长
+\fn int Stepper::version(void)
+\brief 版本号
+
 */
