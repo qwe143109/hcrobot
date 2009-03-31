@@ -1,6 +1,11 @@
 ﻿/**
 \file wiring.h
 
+该文件包含许多Arduino的基本函数, 以及相关的常量定义. 它们属于Arduino的
+核心功能, 在使用这些函数或常量的时候不需要指定头文件.
+*/
+
+/**
 \def HIGH 
 \brief 高电平
 \def LOW
@@ -116,18 +121,87 @@
 /**
 \fn void init(void);
 \brief 内部函数
-\fn void pinMode(uint8_t, uint8_t);
+*/
+
+/**
+\fn void pinMode(uint8_t pin, uint8_t mode);
 \brief 设置引脚模式
-\fn void digitalWrite(uint8_t, uint8_t);
+
+配置引脚为输出或输出模式.
+
+\param pin  引脚编号
+\param mode INPUT或OUTPUT
+*/
+
+/**
+\fn void digitalWrite(uint8_t pin, uint8_t value);
 \brief 写数字引脚
-\fn int digitalRead(uint8_t);
+
+写数字引脚, 对应引脚的高低电平. 在写引脚之前, 需要将引脚设置为OUTPUT模式.
+
+\param pin   引脚编号
+\param value HIGH或LOW
+*/
+
+/**
+\fn int digitalRead(uint8_t pin);
 \brief 读数字引脚
-\fn int analogRead(uint8_t);
+
+读数字引脚, 返回引脚的高低电平. 在读引脚之前, 需要将引脚设置为INPUT模式.
+
+\param pin   引脚编号
+\return      HIGH或LOW
+*/
+
+/**
+\fn int analogRead(uint8_t pin);
 \brief 读模拟引脚
+
+读模拟引脚, 返回[0-1023]之间的值. 每读一次需要花1微妙的时间.
+
+\param pin   引脚编号
+\return      0到1023之间的值
+*/
+
+/**
 \fn void analogReference(uint8_t mode);
 \brief 待完善
-\fn void analogWrite(uint8_t, int);
+*/
+
+/**
+\fn void analogWrite(uint8_t pin, int value);
 \brief 写模拟引脚
+
+写一个模拟值(PWM)到引脚. 可以用来控制LED的亮度, 或者控制电机的转速. 在执行该操作后,
+应该等待一定时间后才能对该引脚进行下一次的读或写操作. PWM的频率大约为490Hz.
+
+在一些基于ATmega168的新的Arduino控制板(如Mini 和BT)中, 该函数支持以下引脚: 3, 5, 6, 9, 10, 11.
+在基于ATmega8的型号中支持9, 10, 11引脚.
+
+例子:
+
+\code
+int ledPin = 9;      // LED connected to digital pin 9
+int analogPin = 3;   // potentiometer connected to analog pin 3
+int val = 0;         // variable to store the read value
+
+void setup()
+{
+  pinMode(ledPin, OUTPUT);   // sets the pin as output
+}
+
+void loop()
+{
+  val = analogRead(analogPin);   // read the input pin
+  analogWrite(ledPin, val / 4);  // analogRead values go from 0 to 1023, analogWrite values from 0 to 255
+}
+\endcode
+
+\param pin   引脚编号
+\param value 0到255之间的值, 0对应off, 255对应on
+*/
+
+/**
 
 \fn void beginSerial(long);
 \brief 打开串口
@@ -139,6 +213,9 @@
 \brief 读串口
 \fn void serialFlush(void);
 \brief 刷新串口数据
+*/
+
+/**
 
 \fn unsigned long millis(void);
 \brief 毫秒
@@ -150,15 +227,35 @@
 \brief 延时(微秒)
 \fn unsigned long pulseIn(uint8_t pin, uint8_t state, unsigned long timeout);
 \brief 引脚脉冲
+*/
+
+/**
 
 \fn void shiftOut(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder, byte val);
 \brief 待完善
+*/
 
-\fn void attachInterrupt(uint8_t, void (*)(void), int mode);
+/**
+\fn void attachInterrupt(uint8_t pin, void (*fun)(void), int mode);
 \brief 设置中断
-\fn void detachInterrupt(uint8_t);
+
+给引脚设置中断函数.
+
+\param pin   引脚编号
+\param fun   中断函数
+\param mode  中断模式
+*/
+
+/**
+\fn void detachInterrupt(uint8_t pin);
 \brief 取消中断
 
+取消指定引脚的中断函数.
+
+\param pin   引脚编号
+*/
+
+/**
 \fn void setup(void)
 \brief 初始化
 \fn void loop(void)

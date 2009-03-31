@@ -1,19 +1,52 @@
 ﻿/**
 \file WMath.cpp
 
+*/
 
+/**
 \fn void randomSeed(unsigned int seed)
 \brief 设置随机种子
+
+可以用当前时间作为随机种子. 随机种子的设置对产生的随机序列有影响.
+
+\param seed 随机种子
+*/
+
+/**
 \fn long random(long howbig)
 \brief 生成随机数
+
+生成[0, howbig-1]范围的随机数.
+
+\param howbig 最大值
+*/
+
+/**
 \fn long random(long howsmall, long howbig)
 \brief 生成随机数
+
+生成[howsmall, howbig-1]范围的随机数.
+
+\param howsmall 最小值
+\param howbig   最大值
+*/
+
+/**
 \fn long map(long x, long in_min, long in_max, long out_min, long out_max)
 \brief 等比映射
 
+将位于[in_min, in_max]之间的x映射到[out_min, out_max].
+
+\param x       要映射的值
+\param in_min  映射前区间
+\param in_max  映射前区间
+\param out_min 映射后区间
+\param out_max 映射后区间
+*/
+
+/**
 \fn unsigned int makeWord (unsigned int w)
 \brief 构造一个字
 \fn unsigned int makeWord (unsigned char h, unsigned char l)
 \brief 构造一个字
- 
 */

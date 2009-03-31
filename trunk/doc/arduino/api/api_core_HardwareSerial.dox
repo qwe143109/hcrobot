@@ -6,8 +6,10 @@
 */
 
 /**
-\fn void HardwareSerial::begin(long)
+\fn void HardwareSerial::begin(long speed)
 \brief 打开串口
+
+\param speed 波特率
 */
 
 /**
