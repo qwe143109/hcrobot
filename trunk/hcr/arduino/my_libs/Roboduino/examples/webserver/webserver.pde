@@ -11,15 +11,13 @@ static uint8_t buf[BUFFER_SIZE+1];
 #define STR_BUFFER_SIZE 22
 static char strbuf[STR_BUFFER_SIZE+1];
 
-RoboduinoEthernet es;
-
 // prepare the webpage by writing the data to the tcp send buffer
 uint16_t print_webpage(uint8_t *buf);
 int8_t analyse_cmd(char *str);
 
 void setup()
 {
-    es.begin(mymac, myip);
+    RoboduinoEthernet.begin(mymac, myip);
 }
 
 void loop()
@@ -29,24 +27,24 @@ void loop()
     
     // plen will ne unequal to zero if there is a valid packet 
     
-    plen = es.E_enc28j60PacketReceive(BUFFER_SIZE, buf);
+    plen = RoboduinoEthernet.E_enc28j60PacketReceive(BUFFER_SIZE, buf);
     if(plen == 0) return;
     
 	// arp is broadcast if unknown but a host may also verify 
 	// the mac address by sending it to a unicast address.
-	if(es.E_eth_type_is_arp_and_my_ip(buf,plen)){
-	    es.E_make_arp_answer_from_request(buf);
+	if(RoboduinoEthernet.E_eth_type_is_arp_and_my_ip(buf,plen)){
+	    RoboduinoEthernet.E_make_arp_answer_from_request(buf);
 	    return;
 	}
 	
 	// check if ip packets are for us:
-	if(es.E_eth_type_is_ip_and_my_ip(buf,plen)==0){
+	if(RoboduinoEthernet.E_eth_type_is_ip_and_my_ip(buf,plen)==0){
 	    return;
 	}
     
 	if(buf[IP_PROTO_P]==IP_PROTO_ICMP_V 
 	   && buf[ICMP_TYPE_P]==ICMP_TYPE_ECHOREQUEST_V){
-	    es.E_make_echo_reply_from_request(buf,plen);
+	    RoboduinoEthernet.E_make_echo_reply_from_request(buf,plen);
 	    return;
 	}
     
@@ -57,22 +55,22 @@ void loop()
     {
 	    if (buf[TCP_FLAGS_P] & TCP_FLAGS_SYN_V){
 		// make_tcp_synack_from_syn does already send the syn,ack
-		es.E_make_tcp_synack_from_syn(buf); 
+		RoboduinoEthernet.E_make_tcp_synack_from_syn(buf); 
 		return;     
 	    }
 	    if (buf[TCP_FLAGS_P] & TCP_FLAGS_ACK_V){
-		es.E_init_len_info(buf); // init some data structures
-		dat_p=es.E_get_tcp_data_pointer();
+		RoboduinoEthernet.E_init_len_info(buf); // init some data structures
+		dat_p=RoboduinoEthernet.E_get_tcp_data_pointer();
 		if (dat_p==0){ // we can possibly have no data, just ack:
 		    if (buf[TCP_FLAGS_P] & TCP_FLAGS_FIN_V){
-			es.E_make_tcp_ack_from_any(buf);
+			RoboduinoEthernet.E_make_tcp_ack_from_any(buf);
 		    }
 		    return;
 		}
 		if (strncmp("GET ",(char *)&(buf[dat_p]),4)!=0){
 		    // head, post and other methods for possible status codes 
 		    // http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
-		    plen=es.E_fill_tcp_data_p(buf, 0, PSTR("HTTP/1.0 200 OK\r\nContent-Type: text/html\r\n\r\n<h1>200 OK</h1>"));
+		    plen=RoboduinoEthernet.E_fill_tcp_data_p(buf, 0, PSTR("HTTP/1.0 200 OK\r\nContent-Type: text/html\r\n\r\n<h1>200 OK</h1>"));
 		    goto SENDTCP;
 		}
 		if (strncmp("/ ",(char *)&(buf[dat_p+4]),2)==0){
@@ -84,9 +82,9 @@ void loop()
 		    plen=print_webpage(buf);
 		}
 		// send ack for http get
-		SENDTCP:  es.E_make_tcp_ack_from_any(buf); 
+		SENDTCP:  RoboduinoEthernet.E_make_tcp_ack_from_any(buf); 
 		// send data
-		es.E_make_tcp_ack_with_data(buf,plen); 
+		RoboduinoEthernet.E_make_tcp_ack_with_data(buf,plen); 
 	    }
 	}
 }
@@ -142,13 +140,13 @@ int8_t analyse_cmd(char *str)
 uint16_t print_webpage(uint8_t *buf)
 {
     uint16_t plen;
-    plen=es.E_fill_tcp_data_p(buf,0,PSTR("HTTP/1.0 200 OK\r\nContent-Type: text/html\r\n\r\n"));
-    plen=es.E_fill_tcp_data_p(buf,plen,PSTR("<center><p><h1>Welcome to Arduino RoboduinoEthernet Shield V1.0</h1></p> "));
-    plen=es.E_fill_tcp_data_p(buf,plen,PSTR("<hr><br> <h2><font color=\"blue\">-- Your Arduino is online now  -- "));
-    plen=es.E_fill_tcp_data_p(buf,plen,PSTR("<br> Control digital outputs "));
-    plen=es.E_fill_tcp_data_p(buf,plen,PSTR("<br> Read digital analog inputs HERE "));
-    plen=es.E_fill_tcp_data_p(buf,plen,PSTR("  <br></font></h2> ") );
-    plen=es.E_fill_tcp_data_p(buf,plen,PSTR("</center><hr> <a href=\"http://www.flamingoeda.com\">www.flamingoeda.com<a>"));
+    plen=RoboduinoEthernet.E_fill_tcp_data_p(buf,0,PSTR("HTTP/1.0 200 OK\r\nContent-Type: text/html\r\n\r\n"));
+    plen=RoboduinoEthernet.E_fill_tcp_data_p(buf,plen,PSTR("<center><p><h1>Welcome to Arduino RoboduinoEthernet Shield V1.0</h1></p> "));
+    plen=RoboduinoEthernet.E_fill_tcp_data_p(buf,plen,PSTR("<hr><br> <h2><font color=\"blue\">-- Your Arduino is online now  -- "));
+    plen=RoboduinoEthernet.E_fill_tcp_data_p(buf,plen,PSTR("<br> Control digital outputs "));
+    plen=RoboduinoEthernet.E_fill_tcp_data_p(buf,plen,PSTR("<br> Read digital analog inputs HERE "));
+    plen=RoboduinoEthernet.E_fill_tcp_data_p(buf,plen,PSTR("  <br></font></h2> ") );
+    plen=RoboduinoEthernet.E_fill_tcp_data_p(buf,plen,PSTR("</center><hr> <a href=\"http://www.flamingoeda.com\">www.flamingoeda.com<a>"));
     
     return(plen);
  }
