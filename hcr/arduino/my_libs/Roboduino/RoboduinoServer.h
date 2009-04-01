@@ -1,3 +1,10 @@
+
+/*
+  RoboduinoServer.h - Library for Roboduino Ethernet.
+  Created by ChaiShushan(chaishushan@gmail.com), March 28, 2009.
+  Released into the public domain.
+*/
+
 #ifndef RoboduinoServer_H
 #define RoboduinoServer_H
 
@@ -8,6 +15,8 @@ class RoboduinoClient;
 
 /**
 \brief Roboduino网络服务端
+\author 柴树杉(chaishushan@gmail.com)
+\date 2009-04-01 于深圳
 
 \code
 #include <Ethernet.h>
