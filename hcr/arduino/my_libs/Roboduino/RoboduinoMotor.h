@@ -67,8 +67,8 @@ void loop()
     // 输出速度
     
     {
-        uint8_t m1 = RoboduinoMotor.motorRead(0);
-        uint8_t m2 = RoboduinoMotor.motorRead(1);
+        int m1 = RoboduinoMotor.motorRead(0);
+        int m2 = RoboduinoMotor.motorRead(1);
         
         Serial.print("M1: ");
         Serial.println(m1);
@@ -102,16 +102,18 @@ void loop()
     if(val == 'a')
     {
         // 左轮速度100
-        // 右轮速度-100
+        // 右轮速度100
+        // 前进
         
-        RoboduinoMotor.start(100, -100);
+        RoboduinoMotor.start(100, 100);
     }
     else if(val == 'b')
     {
         // 左轮速度-100
-        // 右轮停止
+        // 右轮速度-100
+        // 后退
         
-        RoboduinoMotor.start(-100, 0);
+        RoboduinoMotor.start(-100, -100);
     }
     else
     {
@@ -178,7 +180,7 @@ public:
      *
      *\param idx 电机索引(从0开始)
      */
-    uint8_t motorRead(uint8_t idx)const;
+    int motorRead(int idx)const;
     
     /**
      *\brief 设置电机速度
@@ -189,7 +191,7 @@ public:
      *\param idx 电机索引(从0开始)
      *\param val 电机速度, 正负表示方向
      */
-    void motorWrite(uint8_t idx, uint8_t val);
+    void motorWrite(int idx, int val);
     
     //================================================================
     // 高级控制(基于低级函数封装)
@@ -211,7 +213,7 @@ public:
      *                false表示M1对应左轮, M2对应右轮(不需要交换).
      */
     
-    void mapMotor(uint8_t lCoff, uint8_t rCoff, bool swapM1M2);
+    void mapMotor(int lCoff, int rCoff, bool swapM1M2);
     
     /**
      *\brief 启动电机
@@ -238,7 +240,7 @@ public:
      *\param rSpeed 右轮速度
      */
     
-    void start(uint8_t lSpeed, uint8_t rSpeed);
+    void start(int lSpeed, int rSpeed);
     
     /// 停止
     
@@ -251,7 +253,7 @@ public:
      * 如果用户是通过 \ref RoboduinoMotor#motorWrite 设置电机速度, 那么
      * 应该用 \ref RoboduinoMotor#motorRead 查询. 
      */
-    uint8_t leftSpeed()const;
+    int leftSpeed()const;
     /**
      *\brief 右轮速度
      *
@@ -259,7 +261,7 @@ public:
      * 如果用户是通过 \ref RoboduinoMotor#motorWrite 设置电机速度, 那么
      * 应该用 \ref RoboduinoMotor#motorRead 查询. 
      */
-    uint8_t rightSpeed()const;
+    int rightSpeed()const;
     
     //================================================================
     //================================================================
@@ -272,16 +274,16 @@ private:
     
     bool        m_bSwapM1M2;    // 是否交换电机
     
-    uint8_t     m_u8LCoff;      // 左轮系数
-    uint8_t     m_u8RCoff;      // 右轮系数
+    int         m_u8LCoff;      // 左轮系数
+    int         m_u8RCoff;      // 右轮系数
     
-    uint8_t     m_u8LSpeed;     // 左轮速度
-    uint8_t     m_u8RSpeed;     // 右轮速度
+    int         m_u8LSpeed;     // 左轮速度
+    int         m_u8RSpeed;     // 右轮速度
     
     //================================================================
     
-    uint8_t     m_u8M1Speed;    // M1电机速度
-    uint8_t     m_u8M2Speed;    // M2电机速度
+    int         m_u8M1Speed;    // M1电机速度
+    int         m_u8M2Speed;    // M2电机速度
     
     //================================================================
     //================================================================

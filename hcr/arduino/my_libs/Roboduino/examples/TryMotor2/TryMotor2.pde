@@ -19,16 +19,18 @@ void loop()
     if(val == 'a')
     {
         // 左轮速度100
-        // 右轮速度-100
+        // 右轮速度100
+        // 前进
         
-        RoboduinoMotor.start(100, -100);
+        RoboduinoMotor.start(100, 100);
     }
     else if(val == 'b')
     {
         // 左轮速度-100
-        // 右轮停止
+        // 右轮速度-100
+        // 后退
         
-        RoboduinoMotor.start(-100, 0);
+        RoboduinoMotor.start(-100, -100);
     }
     else
     {
