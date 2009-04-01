@@ -44,7 +44,7 @@ RoboduinoMotorClass::RoboduinoMotorClass()
 
 // 读电机速度
 
-uint8_t RoboduinoMotorClass::motorRead(uint8_t idx)const
+int RoboduinoMotorClass::motorRead(int idx)const
 {
     if(idx == 0)
     {
@@ -63,10 +63,10 @@ uint8_t RoboduinoMotorClass::motorRead(uint8_t idx)const
 // 设置电机速度
 // 目前只支持全速前进/全速后退/停止
 
-void RoboduinoMotorClass::motorWrite(uint8_t idx, uint8_t val)
+void RoboduinoMotorClass::motorWrite(int idx, int val)
 {
     if(idx != 0 && idx != 1) return;
-    
+
     // 对应引脚
     
     int enPin = (idx==0)? M1_Enable: M2_Enable;
@@ -135,14 +135,14 @@ void RoboduinoMotorClass::motorWrite(uint8_t idx, uint8_t val)
 
 // 映射电机到左右轮
     
-void RoboduinoMotorClass::mapMotor(uint8_t lCoff, uint8_t rCoff, bool swapM1M2)
+void RoboduinoMotorClass::mapMotor(int lCoff, int rCoff, bool swapM1M2)
 {
     m_bSwapM1M2 = swapM1M2;
     
-    m_u8RCoff = lCoff;
+    m_u8LCoff = lCoff;
     m_u8RCoff = rCoff;
     
-    if(m_u8RCoff == 1 && m_u8RCoff == 1 && (!m_bSwapM1M2))
+    if(m_u8LCoff == 1 && m_u8RCoff == 1 && (!m_bSwapM1M2))
     {
         m_bMapMotor = false;
     }
@@ -154,7 +154,7 @@ void RoboduinoMotorClass::mapMotor(uint8_t lCoff, uint8_t rCoff, bool swapM1M2)
     
 // 启动电机
     
-void RoboduinoMotorClass::start(uint8_t lSpeed, uint8_t rSpeed)
+void RoboduinoMotorClass::start(int lSpeed, int rSpeed)
 {
     // 速度调整到[-100, 100]
     
@@ -191,7 +191,8 @@ void RoboduinoMotorClass::start(uint8_t lSpeed, uint8_t rSpeed)
     
     // 启动电机
     
-    motorWrite(m_u8M1Speed, m_u8M2Speed);
+    motorWrite(0, m_u8M1Speed);
+    motorWrite(1, m_u8M2Speed);
 }
     
 // 停止
@@ -207,14 +208,14 @@ void RoboduinoMotorClass::stop()
     
 // 左轮速度
 
-uint8_t RoboduinoMotorClass::leftSpeed()const
+int RoboduinoMotorClass::leftSpeed()const
 {
     return m_u8LSpeed;
 }
 
 // 右轮速度
 
-uint8_t RoboduinoMotorClass::rightSpeed()const
+int RoboduinoMotorClass::rightSpeed()const
 {
     return m_u8RSpeed;
 }
