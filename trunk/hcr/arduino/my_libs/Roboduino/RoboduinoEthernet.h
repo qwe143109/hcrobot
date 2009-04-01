@@ -1,4 +1,10 @@
 /*
+  RoboduinoEthernet.h - Library for Roboduino Ethernet.
+  Created by ChaiShushan(chaishushan@gmail.com), March 28, 2009.
+  Released into the public domain.
+*/
+
+/*
   Ethernet library for Arduino ethernet shield
 
   Copyright (c) 2008 DFRobot.  All right reserved.
@@ -33,6 +39,8 @@
 
 /**
 \brief Roboduino网络
+\author 柴树杉(chaishushan@gmail.com)
+\date 2009-04-01 于深圳
 
 \code
 #include <Ethernet.h>
@@ -75,9 +83,32 @@ class RoboduinoEthernetClass
     
 public:
     RoboduinoEthernetClass();
-    
+
+	/**
+	 *\brief 开启网络
+	 *
+	 *\param mac     网卡地址
+	 *\param ip      IP地址
+	 */
     void begin(uint8_t *mac, uint8_t *ip);
+
+	/**
+	 *\brief 开启网络
+	 *
+	 *\param mac     网卡地址
+	 *\param ip      IP地址
+	 *\param gateway 网关地址, 默认对应IP地址最低为1
+	 */
     void begin(uint8_t *mac, uint8_t *ip, uint8_t *gateway);
+
+	/**
+	 *\brief 开启网络
+	 *
+	 *\param mac     网卡地址
+	 *\param ip      IP地址
+	 *\param gateway 网关地址, 默认对应IP地址最低为1
+	 *\param subnet  子网掩码
+	 */
     void begin(uint8_t *mac, uint8_t *ip, uint8_t *gateway, uint8_t *subnet);
     
     uint16_t E_fill_tcp_data_p(uint8_t *buf,uint16_t pos, const prog_char *progmem_s);

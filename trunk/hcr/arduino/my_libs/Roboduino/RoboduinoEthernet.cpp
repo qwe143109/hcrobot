@@ -1,4 +1,10 @@
 /*
+  RoboduinoEthernet.h - Library for Roboduino Ethernet.
+  Created by ChaiShushan(chaishushan@gmail.com), March 28, 2009.
+  Released into the public domain.
+*/
+
+/*
   Ethernet library for Arduino ethernet shield
 
   Copyright (c) 2008 DFRobot.  All right reserved.
