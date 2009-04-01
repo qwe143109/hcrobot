@@ -23,7 +23,7 @@
 
 #include <inttypes.h>
 #include <avr/pgmspace.h>
-#include <Ethernet.h>
+//#include "Ethernet.h"
 
 #include "utility/enc28j60.h"
 #include "utility/net.h"
@@ -31,18 +31,50 @@
 #include "RoboduinoClient.h"
 #include "RoboduinoServer.h"
 
-class RoboduinoEthernet
+/**
+\brief Roboduino网络
+
+\code
+#include <Ethernet.h>
+
+// network configuration.  gateway and subnet are optional.
+byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
+byte ip[] = { 10, 0, 0, 177 };
+byte gateway[] = { 10, 0, 0, 1 };
+byte subnet[] = { 255, 255, 0, 0 };
+
+// telnet defaults to port 23
+Server server(23);
+
+void setup()
+{
+  // initialize the ethernet device
+  Ethernet.begin(mac, ip, gateway, subnet);
+  
+  // start listening for clients
+  server.begin();
+}
+
+void loop()
+{
+  Client client = server.available();
+  if (client) {
+    server.write(client.read());
+  }
+}
+\endcode
+*/
+
+class RoboduinoEthernetClass
 {
     friend class RoboduinoClient;
     friend class RoboduinoServer;
   
-    RoboduinoEthernet(const RoboduinoEthernet&);
-    RoboduinoEthernet& operator=(const RoboduinoEthernet&);
+    RoboduinoEthernetClass(const RoboduinoEthernetClass&);
+    RoboduinoEthernetClass& operator=(const RoboduinoEthernetClass&);
     
 public:
-    RoboduinoEthernet();
-
-    static RoboduinoEthernet& instance();
+    RoboduinoEthernetClass();
     
     void begin(uint8_t *mac, uint8_t *ip);
     void begin(uint8_t *mac, uint8_t *ip, uint8_t *gateway);
@@ -69,10 +101,24 @@ private:
     void E_init_ip_arp_udp_tcp(uint8_t *mymac,uint8_t *myip,uint8_t wwwp);
     
     
-    static uint8_t              sm_state[MAX_SOCK_NUM];
-    static uint16_t             sm_server_port[MAX_SOCK_NUM];
-    static RoboduinoEthernet    sm_ethernet;       // 单件
+    //static uint8_t              sm_state[MAX_SOCK_NUM];
+    //static uint16_t             sm_server_port[MAX_SOCK_NUM];
+    //static RoboduinoEthernet    sm_ethernet;       // 单件
 };
+
+/**
+\relates RoboduinoEthernetClass
+\brief 操作实体
+
+由于只有一个网络对象, 因此一般直接通过 \ref RoboduinoEthernet 来控制.
+例如:
+
+\code
+RoboduinoEthernet.begin(mac, ip);
+\endcode
+*/
+
+extern RoboduinoEthernetClass RoboduinoEthernet;
 
 #endif  // RoboduinoEthernet_H
 

@@ -3,6 +3,75 @@
 #include "RoboduinoClient.h"
 #include "RoboduinoServer.h"
 
+//====================================================================
+//====================================================================
+
+RoboduinoClient::RoboduinoClient(uint8_t sock)
+{
+
+}
+RoboduinoClient::RoboduinoClient(uint8_t *ip, uint16_t port)
+{
+
+}
+
+//====================================================================
+//====================================================================
+
+uint8_t RoboduinoClient::connect()
+{
+    return 0;
+}
+uint8_t RoboduinoClient::connected()
+{
+    return 0;
+}
+uint8_t RoboduinoClient::status()
+{
+    return 0;
+}
+
+//====================================================================
+//====================================================================
+int RoboduinoClient::available()
+{
+    return 0;
+}
+    
+int RoboduinoClient::read()
+{
+    return 0;
+}
+void RoboduinoClient::write(uint8_t c)
+{
+}
+void RoboduinoClient::flush()
+{
+}
+void RoboduinoClient::stop()
+{
+}
+
+//====================================================================
+//====================================================================
+
+uint8_t RoboduinoClient::operator==(int p)
+{
+    return 0;
+}
+uint8_t RoboduinoClient::operator!=(int p)
+{
+    return 0;
+}
+RoboduinoClient::operator bool()
+{
+    return 0;
+}
+
+//====================================================================
+//====================================================================
+
+
 #if 0
 
 extern "C" {

@@ -16,7 +16,7 @@
 
 Roboduino Motor扩展板说明
 
-\image html RoboduinoMotor.jpg
+\image html Roboduino.jpg
 
 采用L293B专用电机驱动芯片, 1A大电流H桥驱动叠层设计, 可与其他模块配合使用,
 占用数字端口PIN6/PIN7/PIN8/PIN9.
@@ -46,29 +46,29 @@ void loop()
     {
         // M1/M2正转
         
-        RoboduinoMotor::instance().motorWrite(0, 100);
-        RoboduinoMotor::instance().motorWrite(1, 100);
+        RoboduinoMotor.motorWrite(0, 100);
+        RoboduinoMotor.motorWrite(1, 100);
     }
     else if(val == 'b')
     {
         // M1/M2反转
         
-        RoboduinoMotor::instance().motorWrite(0, -100);
-        RoboduinoMotor::instance().motorWrite(1, -100);
+        RoboduinoMotor.motorWrite(0, -100);
+        RoboduinoMotor.motorWrite(1, -100);
     }
     else
     {
         // 停止
         
-        RoboduinoMotor::instance().motorWrite(0, 0);
-        RoboduinoMotor::instance().motorWrite(1, 0);
+        RoboduinoMotor.motorWrite(0, 0);
+        RoboduinoMotor.motorWrite(1, 0);
     }
     
     // 输出速度
     
     {
-        uint8_t m1 = RoboduinoMotor::instance().motorRead(0);
-        uint8_t m2 = RoboduinoMotor::instance().motorRead(1);
+        uint8_t m1 = RoboduinoMotor.motorRead(0);
+        uint8_t m2 = RoboduinoMotor.motorRead(1);
         
         Serial.print("M1: ");
         Serial.println(m1);
@@ -92,7 +92,7 @@ void setup()
     // 1. 左轮对应电机M2, 电机正转前进, 反转后退.
     // 2. 右轮对应电机M1, 电机正转后退, 反转前进.
     
-    RoboduinoMotor::instance().mapMotor(1, -1, true);
+    RoboduinoMotor.mapMotor(1, -1, true);
 }
 void loop()
 {
@@ -104,27 +104,27 @@ void loop()
         // 左轮速度100
         // 右轮速度-100
         
-        RoboduinoMotor::instance().start(100, -100);
+        RoboduinoMotor.start(100, -100);
     }
     else if(val == 'b')
     {
         // 左轮速度-100
         // 右轮停止
         
-        RoboduinoMotor::instance().start(-100, 0);
+        RoboduinoMotor.start(-100, 0);
     }
     else
     {
         // 全部停止
         
-        RoboduinoMotor::instance().stop();
+        RoboduinoMotor.stop();
     }
     
     // 输出速度
     
     {
-        uint8_t left = RoboduinoMotor::instance().leftSpeed();
-        uint8_t right = RoboduinoMotor::instance().rightSpeed();
+        uint8_t left = RoboduinoMotor.leftSpeed();
+        uint8_t right = RoboduinoMotor.rightSpeed();
         
         Serial.print("left speed: ");
         Serial.println(left);
@@ -138,16 +138,16 @@ void loop()
 \todo 和速度编码器结合.
 */
 
-class RoboduinoMotor
+class RoboduinoMotorClass
 {
-    RoboduinoMotor();
-    RoboduinoMotor(const RoboduinoMotor&);
-    RoboduinoMotor& operator=(const RoboduinoMotor&);
+    RoboduinoMotorClass(const RoboduinoMotorClass&);
+    RoboduinoMotorClass& operator=(const RoboduinoMotorClass&);
     
     //================================================================
     //================================================================
     
 public:
+    RoboduinoMotorClass();
 
     /// 电机引脚
 
@@ -165,10 +165,6 @@ public:
     {
         SpeedMax    = 100   ///< 速度范围[-100,100]
     };
-
-    /// 获取电机对象引用
-    
-    static RoboduinoMotor& instance();
     
     //================================================================
     // 低级控制(最基本的函数)
@@ -267,15 +263,6 @@ public:
     
     //================================================================
     //================================================================
-    
-private:
-
-    // 设置管脚模式
-    
-    static void initPinMode();
-    
-    //================================================================
-    //================================================================
 	
 private:
 
@@ -297,13 +284,23 @@ private:
     uint8_t     m_u8M2Speed;    // M2电机速度
     
     //================================================================
-    
-    static bool             sm_bPinMode;    // 管脚模式
-    static RoboduinoMotor   sm_motor;       // 单件
-    
-    //================================================================
     //================================================================
 };
+
+/**
+\relates RoboduinoMotorClass
+\brief 操作实体
+
+由于只有一个电机控制对象, 因此一般直接通过 \ref RoboduinoMotor 来控制.
+例如:
+
+\code
+RoboduinoMotor.start(100, 100);
+\endcode
+*/
+
+extern RoboduinoMotorClass RoboduinoMotor;
+
 
 #endif	// RoboduinoMotor_H
 
