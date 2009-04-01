@@ -9,7 +9,7 @@ void setup()
     // 1. 左轮对应电机M2, 电机正转前进, 反转后退.
     // 2. 右轮对应电机M1, 电机正转后退, 反转前进.
     
-    RoboduinoMotor::instance().mapMotor(1, -1, true);
+    RoboduinoMotor.mapMotor(1, -1, true);
 }
 void loop()
 {
@@ -21,27 +21,27 @@ void loop()
         // 左轮速度100
         // 右轮速度-100
         
-        RoboduinoMotor::instance().start(100, -100);
+        RoboduinoMotor.start(100, -100);
     }
     else if(val == 'b')
     {
         // 左轮速度-100
         // 右轮停止
         
-        RoboduinoMotor::instance().start(-100, 0);
+        RoboduinoMotor.start(-100, 0);
     }
     else
     {
         // 全部停止
         
-        RoboduinoMotor::instance().stop();
+        RoboduinoMotor.stop();
     }
     
     // 输出速度
     
     {
-        uint8_t left = RoboduinoMotor::instance().leftSpeed();
-        uint8_t right = RoboduinoMotor::instance().rightSpeed();
+        uint8_t left = RoboduinoMotor.leftSpeed();
+        uint8_t right = RoboduinoMotor.rightSpeed();
         
         Serial.print("left speed: ");
         Serial.println(left);

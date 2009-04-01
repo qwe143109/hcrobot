@@ -3,6 +3,41 @@
 #include "RoboduinoClient.h"
 #include "RoboduinoServer.h"
 
+
+//====================================================================
+//====================================================================
+
+RoboduinoServer::RoboduinoServer(uint16_t port)
+{
+
+}
+
+//====================================================================
+//====================================================================
+
+void RoboduinoServer::begin()
+{
+
+}
+void RoboduinoServer::write(uint8_t c)
+{
+
+}
+    
+RoboduinoClient RoboduinoServer::available()
+{
+    RoboduinoClient c(0);
+    return c;
+}
+    
+void RoboduinoServer::accept()
+{
+
+}
+
+//====================================================================
+//====================================================================
+
 #if 0
 extern "C" {
   #include "types.h"

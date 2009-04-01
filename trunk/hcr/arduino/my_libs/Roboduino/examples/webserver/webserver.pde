@@ -27,9 +27,11 @@ void loop()
     uint16_t plen, dat_p;
     int8_t cmd;
     
-    plen = es.E_enc28j60PacketReceive(BUFFER_SIZE, buf);
     // plen will ne unequal to zero if there is a valid packet 
-    if(plen!=0){
+    
+    plen = es.E_enc28j60PacketReceive(BUFFER_SIZE, buf);
+    if(plen == 0) return;
+    
 	// arp is broadcast if unknown but a host may also verify 
 	// the mac address by sending it to a unicast address.
 	if(es.E_eth_type_is_arp_and_my_ip(buf,plen)){
@@ -51,7 +53,8 @@ void loop()
 	// tcp port www start, compare only the lower byte
 	if (buf[IP_PROTO_P]==IP_PROTO_TCP_V
 	    && buf[TCP_DST_PORT_H_P]== 0
-	    && buf[TCP_DST_PORT_L_P]== mywwwport){
+	    && buf[TCP_DST_PORT_L_P]== mywwwport)
+    {
 	    if (buf[TCP_FLAGS_P] & TCP_FLAGS_SYN_V){
 		// make_tcp_synack_from_syn does already send the syn,ack
 		es.E_make_tcp_synack_from_syn(buf); 
@@ -86,7 +89,6 @@ void loop()
 		es.E_make_tcp_ack_with_data(buf,plen); 
 	    }
 	}
-    }
 }
 
 // The returned value is stored in the global var strbuf
