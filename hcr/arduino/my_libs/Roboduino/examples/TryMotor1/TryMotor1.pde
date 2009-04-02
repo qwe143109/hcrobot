@@ -18,6 +18,20 @@ void loop()
     }
     else if(val == 'b')
     {
+        // M1/M2正转
+        
+        RoboduinoMotor.motorWrite(0, 50);
+        RoboduinoMotor.motorWrite(1, 50);
+    }
+    else if(val == 'c')
+    {
+        // M1/M2反转
+        
+        RoboduinoMotor.motorWrite(0, -50);
+        RoboduinoMotor.motorWrite(1, -50);
+    }
+    else if(val == 'd')
+    {
         // M1/M2反转
         
         RoboduinoMotor.motorWrite(0, -100);

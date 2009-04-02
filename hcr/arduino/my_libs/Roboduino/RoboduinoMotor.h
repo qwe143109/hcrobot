@@ -51,6 +51,20 @@ void loop()
     }
     else if(val == 'b')
     {
+        // M1/M2正转
+        
+        RoboduinoMotor.motorWrite(0, 50);
+        RoboduinoMotor.motorWrite(1, 50);
+    }
+    else if(val == 'c')
+    {
+        // M1/M2反转
+        
+        RoboduinoMotor.motorWrite(0, -50);
+        RoboduinoMotor.motorWrite(1, -50);
+    }
+    else if(val == 'd')
+    {
         // M1/M2反转
         
         RoboduinoMotor.motorWrite(0, -100);
@@ -89,10 +103,10 @@ void setup()
     
     // 左右轮和电机的映射关系:
     //
-    // 1. 左轮对应电机M2, 电机正转前进, 反转后退.
-    // 2. 右轮对应电机M1, 电机正转后退, 反转前进.
+    // 1. 左轮对应电机M1, 电机正转前进, 反转后退.
+    // 2. 右轮对应电机M2, 电机正转后退, 反转前进.
     
-    RoboduinoMotor.mapMotor(1, -1, true);
+    RoboduinoMotor.mapMotor(1, -1, false);
 }
 void loop()
 {
@@ -103,15 +117,27 @@ void loop()
     {
         // 左轮速度100
         // 右轮速度100
-        // 前进
         
         RoboduinoMotor.start(100, 100);
     }
     else if(val == 'b')
     {
+        // 左轮速度50
+        // 右轮速度50
+        
+        RoboduinoMotor.start(50, 50);
+    }
+    else if(val == 'c')
+    {
+        // 左轮速度-50
+        // 右轮速度-50
+        
+        RoboduinoMotor.start(-50, -50);
+    }
+    else if(val == 'd')
+    {
         // 左轮速度-100
         // 右轮速度-100
-        // 后退
         
         RoboduinoMotor.start(-100, -100);
     }
@@ -125,8 +151,8 @@ void loop()
     // 输出速度
     
     {
-        uint8_t left = RoboduinoMotor.leftSpeed();
-        uint8_t right = RoboduinoMotor.rightSpeed();
+        int left = RoboduinoMotor.leftSpeed();
+        int right = RoboduinoMotor.rightSpeed();
         
         Serial.print("left speed: ");
         Serial.println(left);
@@ -180,7 +206,7 @@ public:
      *
      *\param idx 电机索引(从0开始)
      */
-    int motorRead(int idx)const;
+    int8_t motorRead(int8_t idx)const;
     
     /**
      *\brief 设置电机速度
@@ -191,7 +217,7 @@ public:
      *\param idx 电机索引(从0开始)
      *\param val 电机速度, 正负表示方向
      */
-    void motorWrite(int idx, int val);
+    void motorWrite(int8_t idx, int8_t val);
     
     //================================================================
     // 高级控制(基于低级函数封装)
@@ -213,7 +239,7 @@ public:
      *                false表示M1对应左轮, M2对应右轮(不需要交换).
      */
     
-    void mapMotor(int lCoff, int rCoff, bool swapM1M2);
+    void mapMotor(int8_t lCoff, int8_t rCoff, bool swapM1M2);
     
     /**
      *\brief 启动电机
@@ -240,7 +266,7 @@ public:
      *\param rSpeed 右轮速度
      */
     
-    void start(int lSpeed, int rSpeed);
+    void start(int8_t lSpeed, int8_t rSpeed);
     
     /// 停止
     
@@ -253,7 +279,7 @@ public:
      * 如果用户是通过 \ref RoboduinoMotor#motorWrite 设置电机速度, 那么
      * 应该用 \ref RoboduinoMotor#motorRead 查询. 
      */
-    int leftSpeed()const;
+    int8_t leftSpeed()const;
     /**
      *\brief 右轮速度
      *
@@ -261,7 +287,7 @@ public:
      * 如果用户是通过 \ref RoboduinoMotor#motorWrite 设置电机速度, 那么
      * 应该用 \ref RoboduinoMotor#motorRead 查询. 
      */
-    int rightSpeed()const;
+    int8_t rightSpeed()const;
     
     //================================================================
     //================================================================
@@ -274,16 +300,16 @@ private:
     
     bool        m_bSwapM1M2;    // 是否交换电机
     
-    int         m_u8LCoff;      // 左轮系数
-    int         m_u8RCoff;      // 右轮系数
+    int8_t         m_u8LCoff;      // 左轮系数
+    int8_t         m_u8RCoff;      // 右轮系数
     
-    int         m_u8LSpeed;     // 左轮速度
-    int         m_u8RSpeed;     // 右轮速度
+    int8_t         m_u8LSpeed;     // 左轮速度
+    int8_t         m_u8RSpeed;     // 右轮速度
     
     //================================================================
     
-    int         m_u8M1Speed;    // M1电机速度
-    int         m_u8M2Speed;    // M2电机速度
+    int8_t         m_u8M1Speed;    // M1电机速度
+    int8_t         m_u8M2Speed;    // M2电机速度
     
     //================================================================
     //================================================================
