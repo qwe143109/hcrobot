@@ -110,6 +110,39 @@ public:
 	 *\param subnet  子网掩码
 	 */
     void begin(uint8_t *mac, uint8_t *ip, uint8_t *gateway, uint8_t *subnet);
+
+	/**
+	 *\brief 可读的数据
+	 *
+	 * 返回目前网络收到的数据数目.
+	 */
+	int available();
+
+	/**
+	 *\brief 发送数据
+	 *
+	 * 基于TCP协议发送数据.
+	 *
+	 *\param data 数据
+	 *\param len  数据大小
+	 */
+	int send(void *data, int8_t len);
+
+	/**
+	 *\brief 发送数据
+	 *
+	 * 基于TCP协议接收数据.
+	 *
+	 *\param vuf  数据空间
+	 *\param len  数据大小
+	 */
+	int recv(void *vuf, int8_t len);
+
+	//================================================================
+	//================================================================
+
+	//
+private:
     
     uint16_t E_fill_tcp_data_p(uint8_t *buf,uint16_t pos, const prog_char *progmem_s);
     uint16_t E_fill_tcp_data(uint8_t *buf,uint16_t pos, const char *s);
@@ -131,7 +164,14 @@ private:
     void E_enc28j60PhyWrite(uint8_t address, uint16_t data);
     void E_init_ip_arp_udp_tcp(uint8_t *mymac,uint8_t *myip,uint8_t wwwp);
     
-    
+    //#define BUFFER_SIZE 500
+	//#define STR_BUFFER_SIZE 22
+
+	int			m_wwwport;
+
+	static uint8_t	sm_buf[500+1];
+	static char		sm_strbuf[500+1];
+
     //static uint8_t              sm_state[MAX_SOCK_NUM];
     //static uint16_t             sm_server_port[MAX_SOCK_NUM];
     //static RoboduinoEthernet    sm_ethernet;       // 单件

@@ -43,7 +43,9 @@ RoboduinoEthernetClass RoboduinoEthernet;
 //====================================================================
 
 //constructor
-RoboduinoEthernetClass::RoboduinoEthernetClass(){
+RoboduinoEthernetClass::RoboduinoEthernetClass()
+{
+	m_wwwport = 80;
 }
 
 //====================================================================
@@ -116,11 +118,132 @@ void RoboduinoEthernetClass::begin(uint8_t *mac, uint8_t *ip, uint8_t *gateway, 
 //====================================================================
 //====================================================================
 
-uint16_t RoboduinoEthernetClass::E_fill_tcp_data_p(uint8_t *buf,uint16_t pos, const prog_char *progmem_s){
+#define BUFFER_SIZE 500
+#define STR_BUFFER_SIZE 22
+
+// 可读的数据
+
+int RoboduinoEthernetClass::available()
+{
+	uint16_t plen, dat_p;
+    int8_t cmd;
+    
+    // plen will ne unequal to zero if there is a valid packet 
+    
+    plen = E_enc28j60PacketReceive(BUFFER_SIZE, sm_buf);
+    if(plen == 0) return 0;
+    
+    // arp is broadcast if unknown but a host may also verify 
+    // the mac address by sending it to a unicast address.
+	
+    if(E_eth_type_is_arp_and_my_ip(sm_buf, plen))
+	{
+        E_make_arp_answer_from_request(sm_buf);
+        return 0;
+    }
+    
+    // check if ip packets are for us:
+	
+    if(RoboduinoEthernet.E_eth_type_is_ip_and_my_ip(sm_buf, plen)==0)
+	{
+        return 0;
+    }
+    
+    if(sm_buf[IP_PROTO_P] == IP_PROTO_ICMP_V 
+		&& sm_buf[ICMP_TYPE_P]==ICMP_TYPE_ECHOREQUEST_V)
+	{
+        E_make_echo_reply_from_request(sm_buf,plen);
+        return 0;
+    }
+    
+    // tcp port www start, compare only the lower byte
+	
+    if (sm_buf[IP_PROTO_P]==IP_PROTO_TCP_V
+        && sm_buf[TCP_DST_PORT_H_P]== 0
+        && sm_buf[TCP_DST_PORT_L_P]== m_wwwport)
+    {
+        if (sm_buf[TCP_FLAGS_P] & TCP_FLAGS_SYN_V)
+		{
+			// make_tcp_synack_from_syn does already send the syn,ack
+			
+			E_make_tcp_synack_from_syn(sm_buf); 
+			return 0;     
+        }
+        if (sm_buf[TCP_FLAGS_P] & TCP_FLAGS_ACK_V)
+		{
+			E_init_len_info(sm_buf); // init some data structures
+			dat_p = E_get_tcp_data_pointer();
+			
+			// we can possibly have no data, just ack:
+			
+			if(dat_p==0)
+			{ 
+				if (sm_buf[TCP_FLAGS_P] & TCP_FLAGS_FIN_V)
+				{
+					E_make_tcp_ack_from_any(sm_buf);
+				}
+				return 0;
+			}
+			
+			if (strncmp("GET ",(char *)&(sm_buf[dat_p]),4)!=0)
+			{
+				// head, post and other methods for possible status codes 
+				// http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
+
+				const char *httphead = "HTTP/1.0 200 OK\r\nContent-Type: text/html\r\n\r\n<h1>200 OK</h1>";
+				
+				E_fill_tcp_data_p(sm_buf, 0, httphead);
+				goto SENDTCP;
+			}
+			if (strncmp("/ ",(char *)&(sm_buf[dat_p+4]),2)==0)
+			{
+				// 打印页面
+				
+				//plen = print_webpage(sm_buf);
+				goto SENDTCP;
+			}
+			
+			// 分析
+			
+			//cmd = analyse_cmd((char *)&(buf[dat_p+5]));
+			if (cmd==1)
+			{
+				//	plen=print_webpage(buf);
+			}
+SENDTCP:
+			// send ack for http get
+			E_make_tcp_ack_from_any(sm_buf); 
+			// send data
+			E_make_tcp_ack_with_data(sm_buf,plen); 
+        }
+    }
+	return 0;
+}
+
+// 发送数据
+
+int RoboduinoEthernetClass::send(void *data, int8_t len)
+{
+	return 0;
+}
+
+// 发送数据
+
+int RoboduinoEthernetClass::recv(void *vuf, int8_t len)
+{
+	return 0;
+}
+
+//====================================================================
+//====================================================================
+
+uint16_t RoboduinoEthernetClass::E_fill_tcp_data_p(uint8_t *buf,uint16_t pos, const prog_char *progmem_s)
+{
 	return fill_tcp_data_p(buf, pos, progmem_s);
 }
 
-uint16_t RoboduinoEthernetClass::E_fill_tcp_data(uint8_t *buf,uint16_t pos, const char *s){
+uint16_t RoboduinoEthernetClass::E_fill_tcp_data(uint8_t *buf,uint16_t pos, const char *s)
+{
 	return fill_tcp_data(buf,pos, s);
 }
 
