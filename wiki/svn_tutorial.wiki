@@ -1,7 +1,7 @@
 #summary SVN使用向导
 #labels Featured
 
-作者：[http://code.google.com/p/opencv-extension-library/ ChaiShushan (chaishushan@gmail.com)]
+作者：[http://sites.google.com/site/chaishushan/ ChaiShushan (chaishushan@gmail.com)]
 
 = SVN简介 =
 
