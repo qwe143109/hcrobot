@@ -9,6 +9,8 @@
 
 基本的SVN功能，以及一些平台上的集成工具。
 
+[http://docs.google.com/Presentation?id=ajkff9kr2s6g_532dm8c97g8 SVN使用向导]
+
 
 = Details =
 
