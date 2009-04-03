@@ -39,6 +39,10 @@ extern uint16_t fill_tcp_data(uint8_t *buf,uint16_t pos, const char *s);
 extern void make_tcp_ack_from_any(uint8_t *buf);
 extern void make_tcp_ack_with_data(uint8_t *buf,uint16_t dlen);
 
+//
+
+extern uint8_t* getMyData(uint8_t *buf, int *len);
+
 
 #ifdef __cplusplus
 }
