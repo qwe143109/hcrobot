@@ -3,3 +3,6 @@
 arduino 底层控制代码
 pc_qt   基于Qt开发的上位机代码.
 
+Project members:
+
+chai2010
