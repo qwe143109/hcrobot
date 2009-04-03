@@ -138,39 +138,20 @@ public:
 	 */
 	int recv(void *vuf, int8_t len);
 
-	//================================================================
-	//================================================================
-
 	//
-private:
-    
-    uint16_t E_fill_tcp_data_p(uint8_t *buf,uint16_t pos, const prog_char *progmem_s);
-    uint16_t E_fill_tcp_data(uint8_t *buf,uint16_t pos, const char *s);
-    
-    uint16_t E_enc28j60PacketReceive(uint16_t len, uint8_t* packet);
-    uint8_t E_eth_type_is_arp_and_my_ip(uint8_t *buf,uint16_t len);
-    void E_make_arp_answer_from_request(uint8_t *buf);
-    uint8_t E_eth_type_is_ip_and_my_ip(uint8_t *buf,uint16_t len);
-    void E_make_echo_reply_from_request(uint8_t *buf,uint16_t len);
-    void E_make_tcp_synack_from_syn(uint8_t *buf);
-    void E_init_len_info(uint8_t *buf);
-    uint16_t E_get_tcp_data_pointer(void);
-    void E_make_tcp_ack_from_any(uint8_t *buf);
-    void E_make_tcp_ack_with_data(uint8_t *buf,uint16_t dlen);
-    
-private:
-    void E_enc28j60Init(uint8_t* macaddr);
-    void E_enc28j60clkout(uint8_t clk);
-    void E_enc28j60PhyWrite(uint8_t address, uint16_t data);
-    void E_init_ip_arp_udp_tcp(uint8_t *mymac,uint8_t *myip,uint8_t wwwp);
-    
-    //#define BUFFER_SIZE 500
-	//#define STR_BUFFER_SIZE 22
 
-	int			m_wwwport;
+	char* getData22(){ return sm_strbuf2; }
+
+	//================================================================
+	//================================================================
+    
+private:
+
+	int				m_wwwport;
 
 	static uint8_t	sm_buf[500+1];
 	static char		sm_strbuf[500+1];
+	static char		sm_strbuf2[500+1];
 
     //static uint8_t              sm_state[MAX_SOCK_NUM];
     //static uint16_t             sm_server_port[MAX_SOCK_NUM];
