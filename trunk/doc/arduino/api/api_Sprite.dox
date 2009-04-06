@@ -1,16 +1,16 @@
-ï»¿
+
 /**
 \class Sprite
-\brief LEDåƒç´ æ§åˆ¶
+\brief LEDÏñËØ¿ØÖÆ
 
 \fn uint8_t Sprite::width() const
-\brief å®½åº¦
+\brief ¿í¶È
 \fn uint8_t Sprite::height() const
-\brief é«˜åº¦
+\brief ¸ß¶È
 \fn void Sprite::write(uint8_t x, uint8_t y, uint8_t value)
-\brief å†™
+\brief Ğ´
 \fn uint8_t Sprite::read(uint8_t x, uint8_t y) const
-\brief è¯»
+\brief ¶Á
 
 
 */

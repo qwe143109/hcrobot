@@ -1,13 +1,13 @@
-ï»¿
+
 /**
 \class SoftwareSerial
-\brief ä¸²å£(è½¯ä»¶å®ç°)
+\brief ´®¿Ú(Èí¼şÊµÏÖ)
 
 The Arduino hardware has built-in support for serial communication on pins 0 and 1 (which also goes to the computer via the USB connection). The native serial support happens via a piece of hardware (built into the chip) called a UART. This hardware allows the Atmega chip to receive serial communication even while working on other tasks, as long as there room in the 64 byte serial buffer.
 
 The SoftwareSerial library has been developed to allow serial communication on other digital pins of the Arduino, using software to replicate the functionality (hence the name "SoftwareSerial").
 
-å› ä¸ºæ˜¯åŸºäºè½¯ä»¶æ¨¡æ‹Ÿ, æ‰€ä»¥æœ‰ä¸€ä¸‹é™åˆ¶:
+ÒòÎªÊÇ»ùÓÚÈí¼şÄ£Äâ, ËùÒÔÓĞÒ»ÏÂÏŞÖÆ:
 
  -# Only speeds up to 9600 baud work
  -# Serial.available() doesn't work
@@ -16,7 +16,7 @@ The SoftwareSerial library has been developed to allow serial communication on o
 
 SoftwareSerial appears to have some timing issues and/or software issues. Check this forum thread for discussion. Software Serial Discussion. In particular, if you are having problems using SoftwareSerial with an Atmega168 chip delete SoftwareSerial.o in your Arduino directory. 
 
-ä¾‹å­:
+Àı×Ó:
 
 \code
 /*
@@ -75,63 +75,63 @@ void toggle(int pinNum) {
 
 /**
 \fn void SoftwareSerial::SoftwareSerial(uint8_t receivePin, uint8_t transmitPin);
-\brief å®šä¹‰æ¨¡æ‹Ÿä¸²å£
+\brief ¶¨ÒåÄ£Äâ´®¿Ú
 
 \fn void SoftwareSerial::begin(long);
-\brief æ‰“å¼€æ¨¡æ‹Ÿä¸²å£
+\brief ´ò¿ªÄ£Äâ´®¿Ú
 
 \fn int SoftwareSerial::read();
-\brief ä»ä¸²å£è¯»æ•°æ®
+\brief ´Ó´®¿Ú¶ÁÊı¾İ
 
 \fn void SoftwareSerial::print(char)
-\brief æ‰“å°å­—ç¬¦
+\brief ´òÓ¡×Ö·û
 
 \fn void SoftwareSerial::print(const char[])
-\brief æ‰“å°å­—ç¬¦ä¸²
+\brief ´òÓ¡×Ö·û´®
 
 \fn void SoftwareSerial::print(uint8_t)
-\brief æ‰“å°æ•´æ•°
+\brief ´òÓ¡ÕûÊı
 
 \fn void SoftwareSerial::print(int)
-\brief æ‰“å°æ•´æ•°
+\brief ´òÓ¡ÕûÊı
 
 \fn void SoftwareSerial::print(unsigned int)
-\brief æ‰“å°æ•´æ•°
+\brief ´òÓ¡ÕûÊı
 
 \fn void SoftwareSerial::print(long)
-\brief æ‰“å°æ•´æ•°
+\brief ´òÓ¡ÕûÊı
 
 \fn void SoftwareSerial::print(unsigned long)
-\brief æ‰“å°æ•´æ•°
+\brief ´òÓ¡ÕûÊı
 
 \fn void SoftwareSerial::print(long, int)
-\brief æ‰“å°æ•´æ•°
+\brief ´òÓ¡ÕûÊı
 
 \fn void SoftwareSerial::println(void)
-\brief æ‰“å°æ¢è¡Œ
+\brief ´òÓ¡»»ĞĞ
 
 \fn void SoftwareSerial::println(char)
-\brief æ‰“å°å­—ç¬¦, æ¢è¡Œ
+\brief ´òÓ¡×Ö·û, »»ĞĞ
 
 \fn void SoftwareSerial::println(const char[])
-\brief æ‰“å°æ•´æ•°, æ¢è¡Œ
+\brief ´òÓ¡ÕûÊı, »»ĞĞ
 
 \fn void SoftwareSerial::println(uint8_t)
-\brief æ‰“å°æ•´æ•°, æ¢è¡Œ
+\brief ´òÓ¡ÕûÊı, »»ĞĞ
 
 \fn void SoftwareSerial::println(int)
-\brief æ‰“å°æ•´æ•°, æ¢è¡Œ
+\brief ´òÓ¡ÕûÊı, »»ĞĞ
 
 \fn void SoftwareSerial::println(unsigned int)
-\brief æ‰“å°æ•´æ•°, æ¢è¡Œ
+\brief ´òÓ¡ÕûÊı, »»ĞĞ
 
 \fn void SoftwareSerial::println(long)
-\brief æ‰“å°æ•´æ•°, æ¢è¡Œ
+\brief ´òÓ¡ÕûÊı, »»ĞĞ
 
 \fn void SoftwareSerial::println(unsigned long)
-\brief æ‰“å°æ•´æ•°, æ¢è¡Œ
+\brief ´òÓ¡ÕûÊı, »»ĞĞ
 
 \fn void SoftwareSerial::println(long, int)
-\brief æ‰“å°æ•´æ•°, æ¢è¡Œ
+\brief ´òÓ¡ÕûÊı, »»ĞĞ
 
 */

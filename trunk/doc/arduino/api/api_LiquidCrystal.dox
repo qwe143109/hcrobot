@@ -1,17 +1,17 @@
-ï»¿
+
 /**
 \class LiquidCrystal
-\brief LCDæ§åˆ¶
+\brief LCD¿ØÖÆ
 
 \fn void LiquidCrystal::clear()
-\brief æ¸…ç©º
+\brief Çå¿Õ
 \fn void LiquidCrystal::home()
-\brief åŸç‚¹
+\brief Ô­µã
 \fn void LiquidCrystal::setCursor(int, int)
-\brief è®¾ç½®åæ ‡
+\brief ÉèÖÃ×ø±ê
 \fn virtual void LiquidCrystal::write(uint8_t)
-\brief å†™
+\brief Ğ´
 \fn void LiquidCrystal::command(uint8_t)
-\brief æŒ‡ä»¤
+\brief Ö¸Áî
 
 */

@@ -30,137 +30,11 @@ Roboduino Motor扩展板说明
 
 基于电机的用法如下:
 
-\code
-#include <RoboduinoMotor.h>
-
-void setup()
-{
-    Serial.begin(9600);
-}
-void loop()
-{
-    if(Serial.available() <= 0) return;
-    
-    int val = Serial.read();
-    if(val == 'a')
-    {
-        // M1/M2正转
-        
-        RoboduinoMotor.motorWrite(0, 100);
-        RoboduinoMotor.motorWrite(1, 100);
-    }
-    else if(val == 'b')
-    {
-        // M1/M2正转
-        
-        RoboduinoMotor.motorWrite(0, 50);
-        RoboduinoMotor.motorWrite(1, 50);
-    }
-    else if(val == 'c')
-    {
-        // M1/M2反转
-        
-        RoboduinoMotor.motorWrite(0, -50);
-        RoboduinoMotor.motorWrite(1, -50);
-    }
-    else if(val == 'd')
-    {
-        // M1/M2反转
-        
-        RoboduinoMotor.motorWrite(0, -100);
-        RoboduinoMotor.motorWrite(1, -100);
-    }
-    else
-    {
-        // 停止
-        
-        RoboduinoMotor.motorWrite(0, 0);
-        RoboduinoMotor.motorWrite(1, 0);
-    }
-    
-    // 输出速度
-    
-    {
-        int m1 = RoboduinoMotor.motorRead(0);
-        int m2 = RoboduinoMotor.motorRead(1);
-        
-        Serial.print("M1: ");
-        Serial.println(m1);
-        Serial.print("M2: ");
-        Serial.println(m2);
-    }
-}
-\endcode
+\include TryMotor1.pde
 
 基于左右轮子的控制用法:
 
-\code
-#include <RoboduinoMotor.h>
-
-void setup()
-{
-    Serial.begin(9600);
-    
-    // 左右轮和电机的映射关系:
-    //
-    // 1. 左轮对应电机M1, 电机正转前进, 反转后退.
-    // 2. 右轮对应电机M2, 电机正转后退, 反转前进.
-    
-    RoboduinoMotor.mapMotor(1, -1, false);
-}
-void loop()
-{
-    if(Serial.available() <= 0) return;
-    
-    int val = Serial.read();
-    if(val == 'a')
-    {
-        // 左轮速度100
-        // 右轮速度100
-        
-        RoboduinoMotor.start(100, 100);
-    }
-    else if(val == 'b')
-    {
-        // 左轮速度50
-        // 右轮速度50
-        
-        RoboduinoMotor.start(50, 50);
-    }
-    else if(val == 'c')
-    {
-        // 左轮速度-50
-        // 右轮速度-50
-        
-        RoboduinoMotor.start(-50, -50);
-    }
-    else if(val == 'd')
-    {
-        // 左轮速度-100
-        // 右轮速度-100
-        
-        RoboduinoMotor.start(-100, -100);
-    }
-    else
-    {
-        // 全部停止
-        
-        RoboduinoMotor.stop();
-    }
-    
-    // 输出速度
-    
-    {
-        int left = RoboduinoMotor.leftSpeed();
-        int right = RoboduinoMotor.rightSpeed();
-        
-        Serial.print("left speed: ");
-        Serial.println(left);
-        Serial.print("right speed: ");
-        Serial.println(right);
-    }
-}
-\endcode
+\include TryMotor2.pde
 
 \todo 是否可以增加定时停止功能? 
 \todo 和速度编码器结合.
@@ -249,18 +123,18 @@ public:
      *
      * 映射关系:
      *
-     *\code
-        if(swapM1M2)
-        {
-            m1Speed = rSpeed*rCoff;
-            m2Speed = lSpeed*lCoff;
-        }
-        else
-        {
-            m1Speed = lSpeed*lCoff;
-            m2Speed = rSpeed*rCoff;
-        }
-     *\endcode
+    \code
+	if(swapM1M2)
+	{
+		m1Speed = rSpeed*rCoff;
+		m2Speed = lSpeed*lCoff;
+	}
+	else
+	{
+		m1Speed = lSpeed*lCoff;
+		m2Speed = rSpeed*rCoff;
+	}
+	\endcode
      *
      *\param lSpeed 左轮速度
      *\param rSpeed 右轮速度

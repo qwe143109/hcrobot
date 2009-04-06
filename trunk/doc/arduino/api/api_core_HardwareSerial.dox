@@ -1,33 +1,41 @@
-ï»¿
+
 /**
 \class HardwareSerial
-\brief ä¸²å£(ç¡¬ä»¶å®ç°)
+\brief ´®¿Ú(Ó²¼şÊµÏÖ)
 
 */
 
 /**
 \fn void HardwareSerial::begin(long speed)
-\brief æ‰“å¼€ä¸²å£
+\brief ´ò¿ª´®¿Ú
 
-\param speed æ³¢ç‰¹ç‡
+\param speed ²¨ÌØÂÊ
 */
 
 /**
 \fn uint8_t HardwareSerial::available(void)
-\brief æœ‰ä¸²å£æ•°æ®
+\brief ÓĞ´®¿ÚÊı¾İ
 */
 
 /**
 \fn int HardwareSerial::read(void)
-\brief è¯»ä¸²å£
+\brief ¶Á´®¿Ú
 */
 
 /**
 \fn void HardwareSerial::flush(void)
-\brief åˆ·æ–°ä¸²å£æ•°æ®
+\brief Ë¢ĞÂ´®¿ÚÊı¾İ
 */
 
 /**
 \fn virtual void HardwareSerial::write(uint8_t)
-\brief å†™ä¸²å£
+\brief Ğ´´®¿Ú
+*/
+
+/**
+\relates HardwareSerial
+\var HardwareSerial Serial
+\brief ´®¿Ú
+
+ddd
 */

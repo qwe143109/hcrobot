@@ -3,9 +3,9 @@
 #---------------------------------------------------------------------------
 # Project related configuration options
 #---------------------------------------------------------------------------
-DOXYFILE_ENCODING      = UTF-8				# 中文必须设置为GB2312编码			
+DOXYFILE_ENCODING      = GBK				# 中文必须设置为GB2312编码			
 PROJECT_NAME           = Arduino			# 工程名字
-PROJECT_NUMBER         = 					# 工程版本号
+PROJECT_NUMBER         = 			# 工程版本号
 OUTPUT_DIRECTORY       = 					# 输出文件目录
 CREATE_SUBDIRS         = NO
 OUTPUT_LANGUAGE        = Chinese			# 设置为中文
@@ -85,7 +85,7 @@ WARN_LOGFILE           =
 #---------------------------------------------------------------------------
 # configuration options related to the input files
 #---------------------------------------------------------------------------
-INPUT                  = .  dox dox\wxxmickey api api_ex		\
+INPUT                  = .  dox  api 		\
 						 arduino-0014\cores\arduino				\
 						 arduino-0014\libraries\EEPROM			\
 						 arduino-0014\libraries\Ethernet		\
@@ -99,7 +99,7 @@ INPUT                  = .  dox dox\wxxmickey api api_ex		\
 						 arduino-0014\libraries\Wire			\
 						 my_libs\Roboduino
 						 # 代码所在的目录
-INPUT_ENCODING         = UTF-8				# 中文编码
+INPUT_ENCODING         = GBK				# 中文编码
 
 							# 要分析文件的后缀名
 							# '\'之后不能有字符
@@ -135,7 +135,9 @@ EXAMPLE_PATH           = . example	\
 						 arduino-0014\libraries\EEPROM\examples\eeprom_clear	\
 						 arduino-0014\libraries\Ethernet\examples\WebServer		\
 						 arduino-0014\libraries\Ethernet\examples\WebClient		\
-						 arduino-0014\libraries\Ethernet\examples\ChatServer		\
+						 arduino-0014\libraries\Ethernet\examples\ChatServer	\
+                         my_libs\Roboduino\examples\TryMotor1                   \
+                         my_libs\Roboduino\examples\TryMotor2                   \
 						 # 例子程序
 EXAMPLE_PATTERNS       = *
 EXAMPLE_RECURSIVE      = NO
