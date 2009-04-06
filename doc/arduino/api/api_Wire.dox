@@ -1,39 +1,39 @@
-ï»¿
+
 /**
 \class TwoWire
-\brief I2Cæ¥å£
+\brief I2C½Ó¿Ú
 
 \fn void TwoWire::begin()
-\brief å¼€å§‹, é»˜è®¤ä¸ºä¸»æœº
+\brief ¿ªÊ¼, Ä¬ÈÏÎªÖ÷»ú
 \fn void TwoWire::begin(uint8_t)
-\brief å¼€å§‹, è®¾ç½®ä»æœºåœ°å€
+\brief ¿ªÊ¼, ÉèÖÃ´Ó»úµØÖ·
 \fn void TwoWire::begin(int)
-\brief å¼€å§‹, è®¾ç½®ä»æœºåœ°å€
+\brief ¿ªÊ¼, ÉèÖÃ´Ó»úµØÖ·
 \fn void TwoWire::beginTransmission(uint8_t)
-\brief å¼€å§‹å’ŒæŒ‡å®šåœ°å€é€šä¿¡
+\brief ¿ªÊ¼ºÍÖ¸¶¨µØÖ·Í¨ĞÅ
 \fn void TwoWire::beginTransmission(int)
-\brief å¼€å§‹å’ŒæŒ‡å®šåœ°å€é€šä¿¡
+\brief ¿ªÊ¼ºÍÖ¸¶¨µØÖ·Í¨ĞÅ
 \fn uint8_t TwoWire::endTransmission(void)
-\brief ç»“æŸé€šä¿¡
+\brief ½áÊøÍ¨ĞÅ
 \fn uint8_t TwoWire::requestFrom(uint8_t, uint8_t)
-\brief è¯·æ±‚
+\brief ÇëÇó
 \fn uint8_t TwoWire::requestFrom(int, int)
-\brief è¯·æ±‚
+\brief ÇëÇó
 \fn void TwoWire::send(uint8_t)
-\brief å‘é€
+\brief ·¢ËÍ
 \fn void TwoWire::send(uint8_t*, uint8_t)
-\brief å‘é€
+\brief ·¢ËÍ
 \fn void TwoWire::send(int)
-\brief å‘é€
+\brief ·¢ËÍ
 \fn void TwoWire::send(char*)
-\brief å‘é€
+\brief ·¢ËÍ
 \fn uint8_t TwoWire::available(void)
-\brief å¯ä»¥è¯»æ•°æ®æ•°ç›®
+\brief ¿ÉÒÔ¶ÁÊı¾İÊıÄ¿
 \fn uint8_t TwoWire::receive(void)
-\brief æ¥æ”¶æ•°æ®
+\brief ½ÓÊÕÊı¾İ
 \fn void TwoWire::onReceive( void (*)(int) )
-\brief è®¾ç½®æ¥æ”¶å›è°ƒå‡½æ•°
+\brief ÉèÖÃ½ÓÊÕ»Øµ÷º¯Êı
 \fn void TwoWire::onRequest( void (*)(void) )
-\brief è®¾ç½®è¯·æ±‚å›è°ƒå‡½æ•°
+\brief ÉèÖÃÇëÇó»Øµ÷º¯Êı
 
 */

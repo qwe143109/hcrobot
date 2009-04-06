@@ -1,77 +1,77 @@
-ï»¿
+
 /**
 \class FirmataClass
-\brief Firmataé€šä¿¡åè®®
+\brief FirmataÍ¨ĞÅĞ­Òé
 
 The Firmata library implements the Firmata protocol for communicating with software on the host computer. This allows you to write custom firmware without having to create your own protocol and objects for the programming environment that you are using.
 
-Firmataæ˜¯ä¸€ä¸ªç”¨äºä¸¤ä¸ªç³»ç»Ÿä¹‹é—´é€šä¿¡çš„åè®®. å¯ä»¥ç”¨Firmataåè®®å®ç°PCå’Œarduinoçš„é€šè®¯, ä¹Ÿå¯ä»¥å®ç°
-arduinoä¹‹é—´çš„é€šè®¯. Firmataåº•å±‚åŸºäºä¸²å£åè®®å®ç°.
+FirmataÊÇÒ»¸öÓÃÓÚÁ½¸öÏµÍ³Ö®¼äÍ¨ĞÅµÄĞ­Òé. ¿ÉÒÔÓÃFirmataĞ­ÒéÊµÏÖPCºÍarduinoµÄÍ¨Ñ¶, Ò²¿ÉÒÔÊµÏÖ
+arduinoÖ®¼äµÄÍ¨Ñ¶. Firmataµ×²ã»ùÓÚ´®¿ÚĞ­ÒéÊµÏÖ.
 
 */
 
 /**
 \fn void FirmataClass::begin()
-\brief å¯åŠ¨é€šä¿¡åè®®, é»˜è®¤19200æ³¢ç‰¹ç‡
+\brief Æô¶¯Í¨ĞÅĞ­Òé, Ä¬ÈÏ19200²¨ÌØÂÊ
 
 \fn void FirmataClass::begin(long)
-\brief å¯åŠ¨é€šä¿¡åè®®, æŒ‡å®šæ³¢ç‰¹ç‡
+\brief Æô¶¯Í¨ĞÅĞ­Òé, Ö¸¶¨²¨ÌØÂÊ
 
 \fn void FirmataClass::printVersion(void)
-\brief å‘é€åè®®ç‰ˆæœ¬å·åˆ°å¯¹æ–¹
+\brief ·¢ËÍĞ­Òé°æ±¾ºÅµ½¶Ô·½
 
 \fn void FirmataClass::blinkVersion(void)
-\brief 13å·æŒ‡ç¤ºç¯æ˜¾ç¤ºç‰ˆæœ¬å·
+\brief 13ºÅÖ¸Ê¾µÆÏÔÊ¾°æ±¾ºÅ
 
 \fn void FirmataClass::printFirmwareVersion(void)
-\brief å‘é€åè®®åå’Œç‰ˆæœ¬å·åˆ°å¯¹æ–¹
+\brief ·¢ËÍĞ­ÒéÃûºÍ°æ±¾ºÅµ½¶Ô·½
 
 \fn void FirmataClass::setFirmwareNameAndVersion(const char *name, byte major, byte minor)
-\brief è®¾ç½®åè®®åå’Œç‰ˆæœ¬å·
+\brief ÉèÖÃĞ­ÒéÃûºÍ°æ±¾ºÅ
 
 \fn int FirmataClass::available(void)
-\brief æ”¶åˆ°ä¿¡æ¯
+\brief ÊÕµ½ĞÅÏ¢
 
 \fn void FirmataClass::processInput(void)
-\brief å¤„ç†ä¿¡æ¯
+\brief ´¦ÀíĞÅÏ¢
 
 \fn void FirmataClass::sendAnalog(byte pin, int value)
-\brief å‘é€æ¨¡æ‹Ÿä¿¡å·
+\brief ·¢ËÍÄ£ÄâĞÅºÅ
 
 \fn void FirmataClass::sendDigital(byte pin, int value)
-\brief å‘é€æ•°å­—ä¿¡å·
+\brief ·¢ËÍÊı×ÖĞÅºÅ
 
 \fn void FirmataClass::sendString(const char* string)
-\brief å‘é€å­—ç¬¦ä¸²
+\brief ·¢ËÍ×Ö·û´®
 
 \fn void FirmataClass::sendSysex(byte command, byte bytec, byte* bytev)
-\brief å‘é€äºŒè¿›åˆ¶æ•°æ®
+\brief ·¢ËÍ¶ş½øÖÆÊı¾İ
 
 */
 
 /**
 
 \fn void FirmataClass::attach(byte command, callbackFunction newFunction)
-\brief è®¾ç½®ä¿¡å·å›è°ƒå‡½æ•°
+\brief ÉèÖÃĞÅºÅ»Øµ÷º¯Êı
 
 */
 
 /**
 
 \fn void FirmataClass::attach(byte command, systemResetCallbackFunction newFunction)
-\brief è®¾ç½®ç³»ç»Ÿé‡å¯å›è°ƒå‡½æ•°
+\brief ÉèÖÃÏµÍ³ÖØÆô»Øµ÷º¯Êı
 
 */
 
 /**
 
 \fn void FirmataClass::attach(byte command, stringCallbackFunction newFunction)
-\brief è®¾ç½®å­—ç¬¦ä¸²å¤„ç†å›è°ƒå‡½æ•°
+\brief ÉèÖÃ×Ö·û´®´¦Àí»Øµ÷º¯Êı
 
 \fn void FirmataClass::attach(byte command, sysexCallbackFunction newFunction)
-\brief è®¾ç½®äºŒè¿›åˆ¶æ•°æ®å¤„ç†å›è°ƒå‡½æ•°
+\brief ÉèÖÃ¶ş½øÖÆÊı¾İ´¦Àí»Øµ÷º¯Êı
 
 \fn void FirmataClass::detach(byte command)
-\brief å–æ¶ˆå›è°ƒå‡½æ•°
+\brief È¡Ïû»Øµ÷º¯Êı
 
 */

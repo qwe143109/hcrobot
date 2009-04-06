@@ -1,18 +1,18 @@
-ï»¿
+
 /**
 \class Servo
-\brief ä¼ºæœç”µæœº
+\brief ËÅ·şµç»ú
 
 \fn uint8_t Servo::attach(int)
-\brief ç»‘å®šå¼•è„š
+\brief °ó¶¨Òı½Å
 \fn uint8_t Servo::attach(int, int, int)
-\brief ç»‘å®šå¼•è„š
+\brief °ó¶¨Òı½Å
 \fn void Servo::detach()
-\brief å–æ¶ˆç»‘å®š
+\brief È¡Ïû°ó¶¨
 \fn void Servo::write(int)
-\brief å†™
+\brief Ğ´
 \fn uint8_t Servo::read()
-\brief è¯»
+\brief ¶Á
 \fn uint8_t Servo::attached()
-\brief æ˜¯å¦å·²ç»ç»‘å®š
+\brief ÊÇ·ñÒÑ¾­°ó¶¨
 */

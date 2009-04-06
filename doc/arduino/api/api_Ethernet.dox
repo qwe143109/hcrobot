@@ -1,42 +1,42 @@
-ï»¿
+
 //========================================================================
 
 /**
 \class EthernetClass
-\brief ç½‘ç»œ
+\brief ÍøÂç
 
-è¯¦ç»†å†…å®¹.
+ÏêÏ¸ÄÚÈİ.
 
 */
 
 
 /**
 \var uint8_t EthernetClass::_state[MAX_SOCK_NUM]
-\brief æ¯ä¸ªé“¾æ¥çš„çŠ¶æ€
+\brief Ã¿¸öÁ´½ÓµÄ×´Ì¬
 
 */
 
 /**
 \var uint16_t EthernetClass::_server_port[MAX_SOCK_NUM]
-\brief æ¯ä¸ªé“¾æ¥çš„ç«¯å£
+\brief Ã¿¸öÁ´½ÓµÄ¶Ë¿Ú
 
 */
 
 
 /**
 \fn void EthernetClass::begin(uint8_t *mac, uint8_t *ip)
-\brief å¼€å¯ç½‘ç»œ
+\brief ¿ªÆôÍøÂç
 \fn void EthernetClass::begin(uint8_t *mac, uint8_t *ip, uint8_t *gateway)
-\brief å¼€å¯ç½‘ç»œ
+\brief ¿ªÆôÍøÂç
 \fn void EthernetClass::begin(uint8_t *mac, uint8_t *ip, uint8_t *gateway, uint8_t *subnet)
-\brief å¼€å¯ç½‘ç»œ
+\brief ¿ªÆôÍøÂç
 
-\param mac     ç½‘å¡åœ°å€
-\param ip      IPåœ°å€
-\param gateway ç½‘å…³åœ°å€, é»˜è®¤å¯¹åº”IPåœ°å€æœ€ä½ä¸º1
-\param subnet  å­ç½‘æ©ç 
+\param mac     Íø¿¨µØÖ·
+\param ip      IPµØÖ·
+\param gateway Íø¹ØµØÖ·, Ä¬ÈÏ¶ÔÓ¦IPµØÖ·×îµÍÎª1
+\param subnet  ×ÓÍøÑÚÂë
 
-ä½¿ç”¨æ–¹å¼:
+Ê¹ÓÃ·½Ê½:
 
 \code
 #include <Ethernet.h>
@@ -57,19 +57,19 @@ void loop () {}
 
 /**
 \class Server
-\brief ç½‘ç»œæœåŠ¡ç«¯
+\brief ÍøÂç·şÎñ¶Ë
 
-ä¾‹å­:
+Àı×Ó:
 \include WebServer.pde
 
 \fn Server::Server(uint16_t)
-\brief æ„é€ å‡½æ•°
+\brief ¹¹Ôìº¯Êı
 \fn void Server::begin()
-\brief å¼€å‘ç½‘ç»œæœåŠ¡
+\brief ¿ª·¢ÍøÂç·şÎñ
 \fn Client Server::available()
-\brief å½“å‰æœ‰æ•ˆé“¾æ¥
+\brief µ±Ç°ÓĞĞ§Á´½Ó
 \fn void Server::write(uint8_t c)
-\brief å‘ç½‘ç»œè¾“å‡ºå­—ç¬¦
+\brief ÏòÍøÂçÊä³ö×Ö·û
 
 */
 
@@ -77,36 +77,36 @@ void loop () {}
 
 /**
 \class Client
-\brief ç½‘ç»œå®¢æˆ·ç«¯
+\brief ÍøÂç¿Í»§¶Ë
 
 \include WebClient.pde
 
 \fn Client::Client(uint8_t)
-\brief æ„é€ å‡½æ•°
+\brief ¹¹Ôìº¯Êı
 \fn Client::Client(uint8_t *, uint16_t)
-\brief æ„é€ å‡½æ•°
+\brief ¹¹Ôìº¯Êı
 \fn uint8_t Client::status()
-\brief é“¾æ¥çŠ¶æ€
+\brief Á´½Ó×´Ì¬
 \fn uint8_t Client::connect()
-\brief è¿æ¥
+\brief Á¬½Ó
 \fn void Client::write(uint8_t)
-\brief å†™å­—ç¬¦
+\brief Ğ´×Ö·û
 \fn int Client::available()
-\brief æœ‰å¯ç”¨æ•°æ®
+\brief ÓĞ¿ÉÓÃÊı¾İ
 \fn int Client::read()
-\brief è¯»
+\brief ¶Á
 \fn void Client::flush()
-\brief åˆ·æ–°æ•°æ®
+\brief Ë¢ĞÂÊı¾İ
 \fn void Client::stop()
-\brief åœæ­¢
+\brief Í£Ö¹
 \fn uint8_t Client::connected()
-\brief æ˜¯å¦é“¾æ¥
+\brief ÊÇ·ñÁ´½Ó
 \fn uint8_t Client::operator==(int)
-\brief æ¯”è¾ƒ
+\brief ±È½Ï
 \fn uint8_t Client::operator!=(int)
-\brief æ¯”è¾ƒ
+\brief ±È½Ï
 \fn Client::operator bool()
-\brief è½¬ä¸ºboolç±»å‹
+\brief ×ªÎªboolÀàĞÍ
 
 */
 //========================================================================

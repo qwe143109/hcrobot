@@ -1,17 +1,17 @@
-ï»¿
+
 /**
-\page arduino_core è¯­è¨€åŸºç¡€
+\page arduino_core ÓïÑÔ»ù´¡
 
 See the extended reference for more advanced features of the Arduino languages and the libraries page for interfacing with particular types of hardware.
 
 Arduino programs can be divided in three main parts: structure, values (variables and constants), and functions. The Arduino language is based on C/C++.
 
-\section arduino_core_01 ç¨‹åºç»“æ„
+\section arduino_core_01 ³ÌĞò½á¹¹
 
- - void setup() åˆå§‹åŒ–
- - void loop() ç¨‹åºä¸»ä½“
+ - void setup() ³õÊ¼»¯
+ - void loop() ³ÌĞòÖ÷Ìå
 
-\section arduino_core_02 å¸¸é‡
+\section arduino_core_02 ³£Á¿
 
 Constants are particular values with specific meanings.
 

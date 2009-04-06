@@ -1,15 +1,15 @@
-ï»¿
+
 /**
 \class Matrix
-\brief LEDç‚¹é˜µæ§åˆ¶
+\brief LEDµãÕó¿ØÖÆ
 
 \fn void Matrix::setBrightness(uint8_t)
-\brief å¸¦å®Œå–„
+\brief ´øÍêÉÆ
 \fn void Matrix::write(uint8_t, uint8_t, uint8_t)
-\brief å†™
+\brief Ğ´
 \fn void Matrix::write(uint8_t, uint8_t, Sprite)
-\brief å†™
+\brief Ğ´
 \fn void Matrix::clear(void)
-\brief æ¸…ç©º
+\brief Çå¿Õ
 
 */

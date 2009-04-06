@@ -1,19 +1,19 @@
-ï»¿
+
 /**
 \class EEPROMClass
 \headerfile EEPROM.h
-\brief EEPROMè¯»å†™
+\brief EEPROM¶ÁÐ´
 
 The microcontroller on the Arduino board has 512 bytes of EEPROM: memory whose values are kept when the board is turned off (like a tiny hard drive). This library enables you to read and write those bytes. 
 
-æ¸…ç©º:
+Çå¿Õ:
 
 \include eeprom_clear.pde
 
-è¯´æ˜Ž
+ËµÃ÷
 
 \fn uint8_t EEPROMClass::read(int)
-\brief è¯»
+\brief ¶Á
 \include eeprom_read.pde
 
 Description
@@ -30,7 +30,7 @@ the value stored in that location (byte)
 
 
 \fn void EEPROMClass::write(int, uint8_t)
-\brief å†™
+\brief Ð´
 \include eeprom_write.pde
 
 Write a byte to the EEPROM.

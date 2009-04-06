@@ -1,39 +1,273 @@
-ï»¿
+
 /**
-\mainpage Arduinoå¼€å‘æ–‡æ¡£
-\author æŸ´æ ‘æ‰[ç¿»è¯‘] (chaishushan@gmail.com)
-\date 2009-03-22 äºæ·±åœ³
-\note è¯¥æ–‡æ¡£æ ¹æ®<a href="http://arduino.cc/">http://arduino.cc/</a>ç¿»è¯‘ï¼Œä¾ç…§<a href="http://www.creativecommons.cn/licenses/by-nd-nc/1.0/">
-åˆ›ä½œå…¬ç”¨çº¦å®š</a>å‘å¸ƒã€‚
-\note è¯¥æ–‡æ¡£çš„doxygenæºæ–‡ä»¶å¯ä»¥ä»<a href="http://chaishushan.googlecode.com/svn/trunk/arduino/">Arduino-doc-cn</a>ä¸‹è½½ã€‚
-\note è¯¥æ–‡æ¡£ä¾æ‰˜HCRå¼€æºé¡¹ç›®.
+\mainpage Arduino¿ª·¢ÎÄµµ
+\author <a href="http://sites.google.com/site/chaishushan/">²ñÊ÷É¼</a>[·­Òë] (chaishushan@gmail.com)
+\note ¸ÃÎÄµµ¸ù¾İ<a href="http://arduino.cc/">http://arduino.cc/</a>·­Òë£¬ÒÀÕÕ<a href="http://www.creativecommons.cn/licenses/by-nd-nc/1.0/">
+´´×÷¹«ÓÃÔ¼¶¨</a>·¢²¼¡£ÎÄµµµÄdoxygenÔ´ÎÄ¼ş¿ÉÒÔ´Ó<a href="http://hcrobot.googlecode.com/svn/trunk/doc/arduino/">Arduino-doc</a>ÏÂÔØ¡£
+\note ¸ÃÎÄµµÒÀÍĞHCR¿ªÔ´ÏîÄ¿.
 
-\section index_01  ç®€ä»‹
+<hr>
+<h1>ArduinorÈëÃÅÏòµ¼</h2>
 
-from: http://zh.wikipedia.org/w/index.php?title=Arduino&variant=zh-hans
+ÄÚÈİ¼ò½é
 
-è®©æ‚¨å¯ä»¥å¿«é€Ÿä½¿ç”¨ Arduino è¯­è¨€ä¸ Macromedia Flash, Processing, Max/MSP, Pure Data, SuperColliderâ€¦ç­‰è½¯ä½“ï¼Œä½œå‡ºäº’åŠ¨ä½œå“ã€‚Arduinoå¯ä»¥ä½¿ç”¨å¼€å‘å®Œæˆçš„ç”µå­å…ƒä»¶ä¾‹å¦‚Switchæˆ–æ„Ÿæµ‹å™¨æˆ–å…¶ä»–æ§åˆ¶å™¨ä»¶ã€LEDã€æ­¥è¿›é©¬è¾¾æˆ–å…¶ä»–è¾“å‡ºè£…ç½®ã€‚Arduinoä¹Ÿå¯ä»¥ç‹¬ç«‹è¿ä½œæˆä¸ºä¸€ä¸ªå¯ä»¥è·Ÿè½¯ä½“æ²Ÿé€šçš„ä»‹é¢ï¼Œä¾‹å¦‚è¯´ï¼š Macromedia Flash, Processing, Max/MSP, Pure Data, VVVV æˆ–å…¶ä»–äº’åŠ¨è½¯ä½“â€¦ã€‚Arduinoå¼€å‘ï¼©ï¼¤ï¼¥ä»‹é¢åŸºäºå¼€æ”¾åŸå§‹ç åŸï¼Œå¯ä»¥è®©æ‚¨å…è´¹ä¸‹è½½ä½¿ç”¨å¼€å‘å‡ºæ›´å¤šä»¤äººæƒŠè‰³çš„äº’åŠ¨ä½œå“ã€‚
+<table  width='100%' border='0' cellpadding='5' cellspacing='0'>
+<tr>
 
+<td width='50%' valign='top'>
+<h2>¿ìËÙÏòµ¼</h2>
 
+¸Ã½Ì³Ì½«¸æËßÄãÈçºÎÊ¹ÓÃArduino, ÈçºÎÅäÖÃArduinoµÄ¿ª·¢»·¾³, ÒÔ¼°ÈçºÎ
+ÉÏ´«ÄãµÄ³ÌĞòµ½Arduino¿ª·¢°åÖĞ. ½Ì³Ì°üº¬Ò»ÏÂ¼¸¸ö²¿·Ö:
 
-æ— .
+ - ¼ò½é: Ëü¸æËßÄãArduinoÊÇÊ²Ã´, ÓĞÊ²Ã´¹¦ÄÜ, Äã¿ÉÒÔÓÃËü×öÊ²Ã´.
+ - ÈçºÎÅäÖÃ¿ª·¢»·¾³, °üº¬Ò»ÏÂ²Ù×÷ÏµÍ³:
+   - Windows
+   - Mac OS X
+   - Linux
+ - Èç¹ûÄãÊ¹ÓÃµÄÊÇÒÔÏÂÈÎÒ»ĞÍºÅµÄ¿ª·¢°å, Ò²ÓĞ×¨ÃÅµÄÈëÃÅ½Ì³Ì:
+   - Arduino Nano
+   - Arduino Mini
+   - Arduino BT
+   - LilyPad Arduino
+   - Arduino Pro
+   - Arduino Pro Mini
+   - Xbee shield
+ - ³£¼ûÎÊÌâ½â´ğ.
+ - Èí¼ş¿ª·¢»·¾³.
+</td>
 
-\section index_userdocs ä½¿ç”¨æ‰‹å†Œ
+<td width='50%' valign='top'>
+<h2>±¾Õ¾ÆäËû×ÊÔ´</h2>
 
- -# \ref arduino_guide_win
- -# \ref arduino_core
+ - Arduino booklet: ¼ÆËã»ú, µç×ÓÑ§, ¼°ArduinoÏà¹Ø½Ì³Ì.
+   
+<h2>¸ü¶à×ÊÔ´(ÓÑÇéÍøÕ¾)</h2>
 
-\section index_link ç›¸å…³è¿æ¥
+ - Learn electronics using Arduino: a great multi-part tutorial with 
+   tons of pictures, code, circuits, even video. Highly recommended.
+ - TodBot's course guides Longer presentation-format documents introducing 
+   Arduino from a Halloween hacking class taught by TodBot: class 1 
+   (getting started), class 2 (input and sensors), class 3 (communication, 
+   servos, and pwm), class 4 (piezo sound & sensors, arduino+processing, 
+   stand-alone operation).
+ - Wiring electronics reference: circuit diagrams for connecting a variety 
+   of basic electronic components.
+ - Schematics to circuits: from Wiring, a guide to transforming circuit 
+   diagrams into physical circuits.
+ - Tom Igoe's Physical Computing Site: lots of information on electronics, 
+   microcontrollers, sensors, actuators, books, etc.
 
- - <a href="http://www.yerobot.com/">http://www.yerobot.com/</a>
- - <a href="http://sites.google.com/site/chaishushan/">ä¸ªäººä¸»é¡µ - æŸ´æ ‘æ‰</a>
- - <a href="http://dfrobot.roboticfan.com/">æœºå™¨äººâ—æ¢¦</a>
+</td>
 
-\htmlonly
-<p>
-$Id: index.dox 2008-04-10 æŸ´æ ‘æ‰ $
-</p>
-\endhtmlonly
+</tr>
+</table>
+
+<hr>
+<h1>Arduino²Î¿¼ÊÖ²á</h2>
+
+<b>Arduino</b>¿ª·¢ÓïÑÔÌá¹©È«²¿µÄCÓïÑÔÌØĞÔºÍC++ÓïÑÔµÄ²¿·ÖÌØĞÔ. Í¨¹ıÁ´½Óµ½
+<b>AVRµÄ<a href="http://www.nongnu.org/avr-libc/">libc</a>¿â</b>, 
+¿ÉÒÔÊ¹ÓÃ¿âÖĞÌá¹©µÄº¯Êı. ¾ßÌåµÄÓ¦ÓÃÏ¸½ÚÇë²Î¿¼Ïà¹ØÎÄµµ.
+
+<table  width='100%' border='0' cellpadding='5' cellspacing='0'>
+<tr>
+
+<td width='50%' valign='top'>
+<h2>³ÌĞò½á¹¹</h2>
+
+ÔÚArduinoÖĞ, ±ê×¼µÄ³ÌĞòÈë¿Úmainº¯ÊıÔÚÄÚ²¿±»¶¨Òå, ÓÃ»§Ö»ĞèÒª¹ØĞÄÒÔÏÂÁ½¸öº¯Êı:
+
+ - void setup()
+ - void loop()
+
+setup() º¯ÊıÓÃÓÚ³õÊ¼»¯, loop() º¯ÊıÓÃÓÚÖ´ĞĞ. ³õÊ¼»¯º¯ÊıÒ»°ã·ÅÔÚ³ÌĞò¿ªÍ·,
+ÓÃÓÚÉèÖÃÒ»Ğ©Òı½ÅµÄÊä³ö/ÊäÈëÄ£Ê½, ³õÊ¼»¯´®¿ÚÍ¨Ñ¶µÈÀàËÆ¹¤×÷.  loop() º¯ÊıÖĞ
+µÄ´úÂë½«±»Ñ­»·Ö´ĞĞ, ÀıÈç: ¶ÁÈëÒı½Å×´Ì¬, ÉèÖÃÒı½ÅÊä³ö×´Ì¬µÈ.
+
+<h3>¿ØÖÆÁ÷³Ì</h3>
+
+ - \ref If
+ - \ref IfElse
+ - \ref For
+ - \ref Switch
+ - \ref While
+ - \ref DoWhile
+ - \ref Break
+ - \ref Continue
+ - \ref Return
+ 
+<h3>Ïà¹ØÓï·¨</h3>
+
+ - \ref SemiColon
+ - \ref Braces
+ - <a href="Comments.html"> <b>// (µ¥ĞĞ×¢ÊÍ)</b></a>
+ - <a href="Comments.html"> <b>/<em>* *</em>/ (¶àĞĞ×¢ÊÍ)</b></a>
+ - <a href="Define.html"> <b><em>#</em>define</b></a>
+ - <a href="Include.html"> <b><em>#</em>include</b></a>
+ 
+<h3> ËãÊõÔËËã·û </h3>
+
+ - \ref Assignment
+ - <a href="Arithmetic.html"> <b>+ (¼Ó)</b></a>
+ - <a href="Arithmetic.html"> <b>- (¼õ)</b></a>
+ - <a href="Arithmetic.html"> <b>* (³Ë)</b></a>
+ - <a href="Arithmetic.html"> <b>/ (³ı)</b></a>
+ - \ref Modulo
+ 
+<h3>±È½ÏÔËËã·û</h3>
+ 
+ - <a href="If.html"> <b>== (equal to)</b></a>
+ - <a href="If.html"> <b>!= (not equal to)</b></a>
+ - <a href="If.html"> <b>< (less than)</b></a>
+ - <a href="If.html"> <b>> (greater than)</b></a>
+ - <a href="If.html"> <b><= (less than or equal to)</b></a>
+ - <a href="If.html"> <b>>= (greater than or equal to)</b></a>
+
+<h3>²¼¶ûÔËËã·û</h3> 
+
+ - <a href="Boolean.html"> <b>&& (and)</b></a>
+ - <a href="Boolean.html"> <b>|| (or)</b></a>
+ - <a href="Boolean.html"> <b>! (not)</b></a>
+ 
+<h3>Ö¸ÕëÔËËã·û</h3>
+
+ - <a href="Pointer.html"> <b>* dereference operator</b></a>
+ - <a href="Pointer.html"> <b>& reference operator</b></a>
+
+<h3>Î»ÔËËã</h3>
+
+ - <a href="BitwiseAnd.html"> <b>& (bitwise and)</b></a>
+ - <a href="BitwiseAnd.html"> <b>| (bitwise or)</b></a>
+ - <a href="BitwiseAnd.html"> <b>^ (bitwise xor)</b></a>
+ - <a href="BitwiseXorNot.html"> <b>~ (bitwise not)</b></a>
+ - <a href="Bitshift.html"> <b><< (bitshift left)</b></a>
+ - <a href="Bitshift.html"> <b>>> (bitshift right)</b></a>
+ 
+ - Port Manipulation
+
+<h3>¸´ºÏÔËËã·û</h3>
+
+ - <a href="Increment.html"> <b>++ (increment)</b></a>
+ - <a href="Increment.html"> <b>-- (decrement)</b></a>
+ - <a href="IncrementCompound.html"> <b>+= (compound addition)</b></a>
+ - <a href="IncrementCompound.html"> <b>-= (compound subtraction)</b></a>
+ - <a href="IncrementCompound.html"> <b>*= (compound multiplication)</b></a>
+ - <a href="IncrementCompound.html"> <b>/= (compound division)</b></a>
+
+<h2>±äÁ¿</h2>
+
+<h3>³£Á¿</h3>
+
+ - <a href="Constants.html"> <b>HIGH | LOW</b></a>
+ - <a href="Constants.html"> <b>INPUT | OUTPUT</b></a>
+ - <a href="Constants.html"> <b>true | false</b></a>
+ - <a href="IntegerConstants.html"> <b>integer constants</b></a>
+ - <a href="Fpconstants.html"> <b>floating point constants</b></a>
+ 
+ - #HIGH | #LOW
+ 
+<h3>Êı¾İÀàĞÍ</h3>
+
+ - \ref DataTypes "void keyword"
+ - \ref DataTypes "boolean"
+ - \ref DataTypes "char"
+ - \ref DataTypes "unsigned char"
+ - \ref DataTypes "byte"
+ - \ref DataTypes "int"
+ - \ref DataTypes "unsigned int"
+ - \ref DataTypes "long"
+ - \ref DataTypes "unsigned long"
+ - \ref DataTypes "float"
+ - \ref DataTypes "double"
+ - \ref DataTypes "string"
+ - \ref DataTypes "array"
+
+<h3> ±äÁ¿×÷ÓÃÓò&ĞŞÊÎ·û </h3>
+
+ - \ref VariableScopeQualifiers "variable scope"
+ - \ref VariableScopeQualifiers "static"
+ - \ref VariableScopeQualifiers "volatile"
+ - \ref VariableScopeQualifiers "const"
+ - \ref VariableScopeQualifiers "PROGMEM"
+
+<h3>¸¨Öú¹¤¾ß</h3>
+
+ - \ref Utilities "cast" (cast operator)
+ - \ref Utilities "sizeof()" (sizeof operator)
+
+</td>
+
+<td width='50%' valign='top'>
+<h2>»ù±¾º¯Êı</h2>
+
+<h3>Êı×ÖI/O</h3>
+
+ - \ref pinMode "pinMode(pin, mode)"
+ - \ref digitalWrite "digitalWrite(pin, value)"
+ - \ref digitalRead "digitalRead(pin)"
+
+<h3>Ä£ÄâI/O</h3>
+
+ - \ref analogReference "analogReference(type)"
+ - \ref analogRead "analogRead(pin)"
+ - \ref analogWrite "analogWrite(pin, value)" - PWM
+
+<h3>¸ß¼¶I/O</h3>
+
+ - \ref shiftOut "shiftOut(dataPin, clockPin, bitOrder, val)"
+ - \ref pulseIn "pulseIn(pin, state, timeout)"
+
+<h3>Ê±¼ä</h3>
+
+ - \ref millis "millis()"
+ - \ref delay "delay(ms)"
+ - \ref delayMicroseconds "delayMicroseconds(us)"
+
+<h3>ÊıÑ§¿â</h3>
+
+ - min(x, y)
+ - max(x, y)
+ - abs(x)
+ - constrain(x, a, b)
+ - \ref map "map(x, in_min, in_max, out_min, out_max)"
+ - \ref lib_libc "pow(base, exponent)"
+ - \ref lib_libc "sqrt(x)"
+
+<h3>Èı½Çº¯Êı</h3>
+
+ - \ref lib_libc "sin(rad)"
+ - \ref lib_libc "cos(rad)"
+ - \ref lib_libc "tan(rad)"
+
+<h3>Ëæ»úÊı</h3>
+
+ - \ref randomSeed "randomSeed(seed)"
+ - \ref random(long) "random(howbig)"
+ - \ref random(long,long) "random(howsmall, howbig)"
+
+<h3>ÉèÖÃÖĞ¶Ï</h3>
+
+ - \ref attachInterrupt "attachInterrupt(interrupt, function, mode)"
+ - \ref detachInterrupt "detachInterrupt(interrupt)"
+
+<h3>ÖĞ¶Ï</h3>
+
+ - interrupts()
+ - noInterrupts()
+
+<h3>´®¿ÚÍ¨Ñ¶</h3>
+
+ - \ref HardwareSerial::begin "Serial.begin(speed)"
+ - \ref HardwareSerial::available "Serial.available()"
+ - \ref HardwareSerial::read "Serial.read()"
+ - \ref HardwareSerial::flush "Serial.flush()"
+ - \ref HardwareSerial::print "Serial.print(data)"
+ - \ref HardwareSerial::println "Serial.println(uint8_t data)"
+</td>
+
+</tr>
+</table>
 
 */
 

@@ -1,52 +1,52 @@
-ï»¿/**
+/**
 \file WMath.cpp
 
 */
 
 /**
 \fn void randomSeed(unsigned int seed)
-\brief è®¾ç½®éšæœºç§å­
+\brief ÉèÖÃËæ»úÖÖ×Ó
 
-å¯ä»¥ç”¨å½“å‰æ—¶é—´ä½œä¸ºéšæœºç§å­. éšæœºç§å­çš„è®¾ç½®å¯¹äº§ç”Ÿçš„éšæœºåºåˆ—æœ‰å½±å“.
+¿ÉÒÔÓÃµ±Ç°Ê±¼ä×÷ÎªËæ»úÖÖ×Ó. Ëæ»úÖÖ×ÓµÄÉèÖÃ¶Ô²úÉúµÄËæ»úĞòÁĞÓĞÓ°Ïì.
 
-\param seed éšæœºç§å­
+\param seed Ëæ»úÖÖ×Ó
 */
 
 /**
 \fn long random(long howbig)
-\brief ç”Ÿæˆéšæœºæ•°
+\brief Éú³ÉËæ»úÊı
 
-ç”Ÿæˆ[0, howbig-1]èŒƒå›´çš„éšæœºæ•°.
+Éú³É[0, howbig-1]·¶Î§µÄËæ»úÊı.
 
-\param howbig æœ€å¤§å€¼
+\param howbig ×î´óÖµ
 */
 
 /**
 \fn long random(long howsmall, long howbig)
-\brief ç”Ÿæˆéšæœºæ•°
+\brief Éú³ÉËæ»úÊı
 
-ç”Ÿæˆ[howsmall, howbig-1]èŒƒå›´çš„éšæœºæ•°.
+Éú³É[howsmall, howbig-1]·¶Î§µÄËæ»úÊı.
 
-\param howsmall æœ€å°å€¼
-\param howbig   æœ€å¤§å€¼
+\param howsmall ×îĞ¡Öµ
+\param howbig   ×î´óÖµ
 */
 
 /**
 \fn long map(long x, long in_min, long in_max, long out_min, long out_max)
-\brief ç­‰æ¯”æ˜ å°„
+\brief µÈ±ÈÓ³Éä
 
-å°†ä½äº[in_min, in_max]ä¹‹é—´çš„xæ˜ å°„åˆ°[out_min, out_max].
+½«Î»ÓÚ[in_min, in_max]Ö®¼äµÄxÓ³Éäµ½[out_min, out_max].
 
-\param x       è¦æ˜ å°„çš„å€¼
-\param in_min  æ˜ å°„å‰åŒºé—´
-\param in_max  æ˜ å°„å‰åŒºé—´
-\param out_min æ˜ å°„ååŒºé—´
-\param out_max æ˜ å°„ååŒºé—´
+\param x       ÒªÓ³ÉäµÄÖµ
+\param in_min  Ó³ÉäÇ°Çø¼ä
+\param in_max  Ó³ÉäÇ°Çø¼ä
+\param out_min Ó³ÉäºóÇø¼ä
+\param out_max Ó³ÉäºóÇø¼ä
 */
 
 /**
 \fn unsigned int makeWord (unsigned int w)
-\brief æ„é€ ä¸€ä¸ªå­—
+\brief ¹¹ÔìÒ»¸ö×Ö
 \fn unsigned int makeWord (unsigned char h, unsigned char l)
-\brief æ„é€ ä¸€ä¸ªå­—
+\brief ¹¹ÔìÒ»¸ö×Ö
 */

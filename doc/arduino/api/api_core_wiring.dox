@@ -1,184 +1,184 @@
-ï»¿/**
+/**
 \file wiring.h
 
-è¯¥æ–‡ä»¶åŒ…å«è®¸å¤šArduinoçš„åŸºæœ¬å‡½æ•°, ä»¥åŠç›¸å…³çš„å¸¸é‡å®šä¹‰. å®ƒä»¬å±äºArduinoçš„
-æ ¸å¿ƒåŠŸèƒ½, åœ¨ä½¿ç”¨è¿™äº›å‡½æ•°æˆ–å¸¸é‡çš„æ—¶å€™ä¸éœ€è¦æŒ‡å®šå¤´æ–‡ä»¶.
+¸ÃÎÄ¼ş°üº¬Ğí¶àArduinoµÄ»ù±¾º¯Êı, ÒÔ¼°Ïà¹ØµÄ³£Á¿¶¨Òå. ËüÃÇÊôÓÚArduinoµÄ
+ºËĞÄ¹¦ÄÜ, ÔÚÊ¹ÓÃÕâĞ©º¯Êı»ò³£Á¿µÄÊ±ºò²»ĞèÒªÖ¸¶¨Í·ÎÄ¼ş.
 */
 
 /**
 \def HIGH 
-\brief é«˜ç”µå¹³
+\brief ¸ßµçÆ½
 \def LOW
-\brief ä½ç”µå¹³
+\brief µÍµçÆ½
 
 \def INPUT
-\brief è¾“å…¥
+\brief ÊäÈë
 \def OUTPUT
-\brief è¾“å‡º
+\brief Êä³ö
 
 \def true
-\brief çœŸ
+\brief Õæ
 \def false
-\brief å‡
+\brief ¼Ù
 
 \def PI
 \brief PI
 \def HALF_PI
-\brief äºŒåˆ†ä¹‹ä¸€PI
+\brief ¶ş·ÖÖ®Ò»PI
 \def TWO_PI
-\brief äºŒå€PI
+\brief ¶ş±¶PI
 
 \def DEG_TO_RAD
-\brief å¼§åº¦è½¬è§’åº¦
+\brief »¡¶È×ª½Ç¶È
 \def RAD_TO_DEG
-\brief è§’åº¦è½¬å¼§åº¦
+\brief ½Ç¶È×ª»¡¶È
 
 \def SERIAL
-\brief å¾…å®Œå–„
+\brief ´ıÍêÉÆ
 \def DISPLAY
-\brief å¾…å®Œå–„
+\brief ´ıÍêÉÆ
 \def LSBFIRST
-\brief å¾…å®Œå–„
+\brief ´ıÍêÉÆ
 \def MSBFIRST
-\brief å¾…å®Œå–„
+\brief ´ıÍêÉÆ
 \def CHANGE
-\brief å¾…å®Œå–„
+\brief ´ıÍêÉÆ
 \def FALLING
-\brief å¾…å®Œå–„
+\brief ´ıÍêÉÆ
 \def RISING
-\brief å¾…å®Œå–„
+\brief ´ıÍêÉÆ
 \def INTERNAL
-\brief å¾…å®Œå–„
+\brief ´ıÍêÉÆ
 \def DEFAULT
-\brief å¾…å®Œå–„
+\brief ´ıÍêÉÆ
 \def EXTERNAL
-\brief å¾…å®Œå–„
+\brief ´ıÍêÉÆ
 
 \def min(a, b) ((a)<(b)?(a):(b))
-\brief æœ€å°å€¼
+\brief ×îĞ¡Öµ
 \def max(a, b) ((a)>(b)?(a):(b))
-\brief æœ€å¤§å€¼
+\brief ×î´óÖµ
 \def abs(x) ((x)>0?(x):-(x))
-\brief ç»å¯¹å€¼
+\brief ¾ø¶ÔÖµ
 
 \def constrain(amt,low,high)
-\brief æ˜¯å¦åœ¨åŒºé—´
+\brief ÊÇ·ñÔÚÇø¼ä
 \def round(x) ((x)>=0?(long)((x)+0.5):(long)((x)-0.5))
-\brief å››èˆäº”å…¥
+\brief ËÄÉáÎåÈë
 \def radians(deg) ((deg)*DEG_TO_RAD)
-\brief è§’åº¦è½¬å¼§åº¦
+\brief ½Ç¶È×ª»¡¶È
 \def degrees(rad) ((rad)*RAD_TO_DEG)
-\brief å¼§åº¦è½¬è§’åº¦
+\brief »¡¶È×ª½Ç¶È
 
 \def sq(x) ((x)*(x))
-\brief å¹³æ–¹
+\brief Æ½·½
 
 \def interrupts()
-\brief å¼€ä¸­æ–­
+\brief ¿ªÖĞ¶Ï
 \def noInterrupts()
-\brief å…³ä¸­æ–­
+\brief ¹ØÖĞ¶Ï
 
 \def clockCyclesPerMicrosecond()   ( F_CPU / 1000000L )
-\brief æ²¡æ¯«ç§’æ—¶é’Ÿå‘¨æœŸ
+\brief Ã»ºÁÃëÊ±ÖÓÖÜÆÚ
 \def clockCyclesToMicroseconds(a)   ( (a) / clockCyclesPerMicrosecond() )
-\brief æ—¶é’Ÿå‘¨æœŸè½¬æ¯«ç§’
+\brief Ê±ÖÓÖÜÆÚ×ªºÁÃë
 \def microsecondsToClockCycles(a)   ( (a) * clockCyclesPerMicrosecond() )
-\brief æ¯«ç§’è½¬æ—¶é’Ÿå‘¨æœŸ
+\brief ºÁÃë×ªÊ±ÖÓÖÜÆÚ
 
 \def bitRead(value, bit)  (((value) >> (bit)) & 0x01)
-\brief è¯»ä¸€ä¸ªbit
+\brief ¶ÁÒ»¸öbit
 \def bitSet(value, bit)   ((value) |= (1UL << (bit)))
-\brief è®¾ç½®ä¸€ä¸ªbit
+\brief ÉèÖÃÒ»¸öbit
 \def bitClear(value, bit) ((value) &= ~(1UL << (bit)))
-\brief æ¸…ç©ºä¸€ä¸ªbit
+\brief Çå¿ÕÒ»¸öbit
 \def bitWrite(value, bit, bitvalue)   (bitvalue ? bitSet(value, bit) : bitClear(value, bit))
-\brief å†™ä¸€ä¸ªbit
+\brief Ğ´Ò»¸öbit
 \def bit(b)   (1 << (b))
-\brief ç”Ÿæˆç›¸åº”bit
+\brief Éú³ÉÏàÓ¦bit
 
 \def lowByte(w)
-\brief ä½å­—èŠ‚
+\brief µÍ×Ö½Ú
 \def highByte(w)
-\brief é«˜å­—èŠ‚
+\brief ¸ß×Ö½Ú
 */
 
 /**
 \typedef unsigned int 	word
-\brief å­—(2å­—èŠ‚)
+\brief ×Ö(2×Ö½Ú)
 */
 
 /**
 \typedef  uint8_t 	boolean
-\brief å¸ƒå°”(1å­—èŠ‚)
+\brief ²¼¶û(1×Ö½Ú)
 */
 
 /**
 \typedef uint8_t 	byte
-\brief å­—èŠ‚
+\brief ×Ö½Ú
 */
 
 
 /**
 \fn void init(void);
-\brief å†…éƒ¨å‡½æ•°
+\brief ÄÚ²¿º¯Êı
 */
 
 /**
 \fn void pinMode(uint8_t pin, uint8_t mode);
-\brief è®¾ç½®å¼•è„šæ¨¡å¼
+\brief ÉèÖÃÒı½ÅÄ£Ê½
 
-é…ç½®å¼•è„šä¸ºè¾“å‡ºæˆ–è¾“å‡ºæ¨¡å¼.
+ÅäÖÃÒı½ÅÎªÊä³ö»òÊä³öÄ£Ê½.
 
-\param pin  å¼•è„šç¼–å·
-\param mode INPUTæˆ–OUTPUT
+\param pin  Òı½Å±àºÅ
+\param mode INPUT»òOUTPUT
 */
 
 /**
 \fn void digitalWrite(uint8_t pin, uint8_t value);
-\brief å†™æ•°å­—å¼•è„š
+\brief Ğ´Êı×ÖÒı½Å
 
-å†™æ•°å­—å¼•è„š, å¯¹åº”å¼•è„šçš„é«˜ä½ç”µå¹³. åœ¨å†™å¼•è„šä¹‹å‰, éœ€è¦å°†å¼•è„šè®¾ç½®ä¸ºOUTPUTæ¨¡å¼.
+Ğ´Êı×ÖÒı½Å, ¶ÔÓ¦Òı½ÅµÄ¸ßµÍµçÆ½. ÔÚĞ´Òı½ÅÖ®Ç°, ĞèÒª½«Òı½ÅÉèÖÃÎªOUTPUTÄ£Ê½.
 
-\param pin   å¼•è„šç¼–å·
-\param value HIGHæˆ–LOW
+\param pin   Òı½Å±àºÅ
+\param value HIGH»òLOW
 */
 
 /**
 \fn int digitalRead(uint8_t pin);
-\brief è¯»æ•°å­—å¼•è„š
+\brief ¶ÁÊı×ÖÒı½Å
 
-è¯»æ•°å­—å¼•è„š, è¿”å›å¼•è„šçš„é«˜ä½ç”µå¹³. åœ¨è¯»å¼•è„šä¹‹å‰, éœ€è¦å°†å¼•è„šè®¾ç½®ä¸ºINPUTæ¨¡å¼.
+¶ÁÊı×ÖÒı½Å, ·µ»ØÒı½ÅµÄ¸ßµÍµçÆ½. ÔÚ¶ÁÒı½ÅÖ®Ç°, ĞèÒª½«Òı½ÅÉèÖÃÎªINPUTÄ£Ê½.
 
-\param pin   å¼•è„šç¼–å·
-\return      HIGHæˆ–LOW
+\param pin   Òı½Å±àºÅ
+\return      HIGH»òLOW
 */
 
 /**
 \fn int analogRead(uint8_t pin);
-\brief è¯»æ¨¡æ‹Ÿå¼•è„š
+\brief ¶ÁÄ£ÄâÒı½Å
 
-è¯»æ¨¡æ‹Ÿå¼•è„š, è¿”å›[0-1023]ä¹‹é—´çš„å€¼. æ¯è¯»ä¸€æ¬¡éœ€è¦èŠ±1å¾®å¦™çš„æ—¶é—´.
+¶ÁÄ£ÄâÒı½Å, ·µ»Ø[0-1023]Ö®¼äµÄÖµ. Ã¿¶ÁÒ»´ÎĞèÒª»¨1Î¢ÃîµÄÊ±¼ä.
 
-\param pin   å¼•è„šç¼–å·
-\return      0åˆ°1023ä¹‹é—´çš„å€¼
+\param pin   Òı½Å±àºÅ
+\return      0µ½1023Ö®¼äµÄÖµ
 */
 
 /**
 \fn void analogReference(uint8_t mode);
-\brief å¾…å®Œå–„
+\brief ²Î¿¼µçÑ¹
 */
 
 /**
 \fn void analogWrite(uint8_t pin, int value);
-\brief å†™æ¨¡æ‹Ÿå¼•è„š
+\brief Ğ´Ä£ÄâÒı½Å
 
-å†™ä¸€ä¸ªæ¨¡æ‹Ÿå€¼(PWM)åˆ°å¼•è„š. å¯ä»¥ç”¨æ¥æ§åˆ¶LEDçš„äº®åº¦, æˆ–è€…æ§åˆ¶ç”µæœºçš„è½¬é€Ÿ. åœ¨æ‰§è¡Œè¯¥æ“ä½œå,
-åº”è¯¥ç­‰å¾…ä¸€å®šæ—¶é—´åæ‰èƒ½å¯¹è¯¥å¼•è„šè¿›è¡Œä¸‹ä¸€æ¬¡çš„è¯»æˆ–å†™æ“ä½œ. PWMçš„é¢‘ç‡å¤§çº¦ä¸º490Hz.
+Ğ´Ò»¸öÄ£ÄâÖµ(PWM)µ½Òı½Å. ¿ÉÒÔÓÃÀ´¿ØÖÆLEDµÄÁÁ¶È, »òÕß¿ØÖÆµç»úµÄ×ªËÙ. ÔÚÖ´ĞĞ¸Ã²Ù×÷ºó,
+Ó¦¸ÃµÈ´ıÒ»¶¨Ê±¼äºó²ÅÄÜ¶Ô¸ÃÒı½Å½øĞĞÏÂÒ»´ÎµÄ¶Á»òĞ´²Ù×÷. PWMµÄÆµÂÊ´óÔ¼Îª490Hz.
 
-åœ¨ä¸€äº›åŸºäºATmega168çš„æ–°çš„Arduinoæ§åˆ¶æ¿(å¦‚Mini å’ŒBT)ä¸­, è¯¥å‡½æ•°æ”¯æŒä»¥ä¸‹å¼•è„š: 3, 5, 6, 9, 10, 11.
-åœ¨åŸºäºATmega8çš„å‹å·ä¸­æ”¯æŒ9, 10, 11å¼•è„š.
+ÔÚÒ»Ğ©»ùÓÚATmega168µÄĞÂµÄArduino¿ØÖÆ°å(ÈçMini ºÍBT)ÖĞ, ¸Ãº¯ÊıÖ§³ÖÒÔÏÂÒı½Å: 3, 5, 6, 9, 10, 11.
+ÔÚ»ùÓÚATmega8µÄĞÍºÅÖĞÖ§³Ö9, 10, 11Òı½Å.
 
-ä¾‹å­:
+Àı×Ó:
 
 \code
 int ledPin = 9;      // LED connected to digital pin 9
@@ -197,67 +197,67 @@ void loop()
 }
 \endcode
 
-\param pin   å¼•è„šç¼–å·
-\param value 0åˆ°255ä¹‹é—´çš„å€¼, 0å¯¹åº”off, 255å¯¹åº”on
+\param pin   Òı½Å±àºÅ
+\param value 0µ½255Ö®¼äµÄÖµ, 0¶ÔÓ¦off, 255¶ÔÓ¦on
 */
 
 /**
 
 \fn void beginSerial(long);
-\brief æ‰“å¼€ä¸²å£
+\brief ´ò¿ª´®¿Ú
 \fn void serialWrite(unsigned char);
-\brief å†™ä¸²å£
+\brief Ğ´´®¿Ú
 \fn int serialAvailable(void);
-\brief ä¸²å£å¯è¯»æ•°æ®æ•°ç›®
+\brief ´®¿Ú¿É¶ÁÊı¾İÊıÄ¿
 \fn int serialRead(void);
-\brief è¯»ä¸²å£
+\brief ¶Á´®¿Ú
 \fn void serialFlush(void);
-\brief åˆ·æ–°ä¸²å£æ•°æ®
+\brief Ë¢ĞÂ´®¿ÚÊı¾İ
 */
 
 /**
 
 \fn unsigned long millis(void);
-\brief æ¯«ç§’
+\brief ºÁÃë
 \fn unsigned long micros(void);
-\brief å¾®ç§’
+\brief Î¢Ãë
 \fn void delay(unsigned long);
-\brief å»¶æ—¶(æ¯«ç§’)
+\brief ÑÓÊ±(ºÁÃë)
 \fn void delayMicroseconds(unsigned int us);
-\brief å»¶æ—¶(å¾®ç§’)
+\brief ÑÓÊ±(Î¢Ãë)
 \fn unsigned long pulseIn(uint8_t pin, uint8_t state, unsigned long timeout);
-\brief å¼•è„šè„‰å†²
+\brief Òı½ÅÂö³å
 */
 
 /**
 
 \fn void shiftOut(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder, byte val);
-\brief å¾…å®Œå–„
+\brief ´ıÍêÉÆ
 */
 
 /**
 \fn void attachInterrupt(uint8_t pin, void (*fun)(void), int mode);
-\brief è®¾ç½®ä¸­æ–­
+\brief ÉèÖÃÖĞ¶Ï
 
-ç»™å¼•è„šè®¾ç½®ä¸­æ–­å‡½æ•°.
+¸øÒı½ÅÉèÖÃÖĞ¶Ïº¯Êı.
 
-\param pin   å¼•è„šç¼–å·
-\param fun   ä¸­æ–­å‡½æ•°
-\param mode  ä¸­æ–­æ¨¡å¼
+\param pin   Òı½Å±àºÅ
+\param fun   ÖĞ¶Ïº¯Êı
+\param mode  ÖĞ¶ÏÄ£Ê½
 */
 
 /**
 \fn void detachInterrupt(uint8_t pin);
-\brief å–æ¶ˆä¸­æ–­
+\brief È¡ÏûÖĞ¶Ï
 
-å–æ¶ˆæŒ‡å®šå¼•è„šçš„ä¸­æ–­å‡½æ•°.
+È¡ÏûÖ¸¶¨Òı½ÅµÄÖĞ¶Ïº¯Êı.
 
-\param pin   å¼•è„šç¼–å·
+\param pin   Òı½Å±àºÅ
 */
 
 /**
 \fn void setup(void)
-\brief åˆå§‹åŒ–
+\brief ³õÊ¼»¯
 \fn void loop(void)
-\brief ä¸»ä½“ç¨‹åº
+\brief Ö÷Ìå³ÌĞò
 */

@@ -1,13 +1,13 @@
-ï»¿
+
 /**
 \class Stepper
-\brief æ­¥è¿›ç”µæœº
+\brief ²½½øµç»ú
 
 \fn void Stepper::setSpeed(long whatSpeed)
-\brief è®¾ç½®é€Ÿåº¦
+\brief ÉèÖÃËÙ¶È
 \fn void Stepper::step(int number_of_steps)
-\brief è®¾ç½®æ­¥é•¿
+\brief ÉèÖÃ²½³¤
 \fn int Stepper::version(void)
-\brief ç‰ˆæœ¬å·
+\brief °æ±¾ºÅ
 
 */
