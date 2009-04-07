@@ -1,6 +1,12 @@
-ï»¿
+
 #ifndef RoboduinoIO_H
 #define RoboduinoIO_H
+
+/**
+\brief RoboduinoIOÀ©Õ¹°å
+
+À©Õ¹°åµÄ¿ØÖÆ. ¸ÃÀà¿ÉÄÜ²»ÊÇ±ØĞëµÄ.
+*/
 
 class RoboduinoIOClass
 {

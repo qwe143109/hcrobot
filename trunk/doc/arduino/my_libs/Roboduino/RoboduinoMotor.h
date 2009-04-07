@@ -1,4 +1,4 @@
-ï»¿/*
+/*
   RoboduinoMotor.h - Library for Roboduino Motor.
   Created by ChaiShushan(chaishushan@gmail.com), March 28, 2009.
   Released into the public domain.
@@ -10,300 +10,199 @@
 #include <inttypes.h>
 
 /**
-\brief Roboduinoç”µæœºæ§åˆ¶
-\author æŸ´æ ‘æ‰(chaishushan@gmail.com)
-\date 2009-03-29 äºæ·±åœ³
+\brief Roboduinoµç»ú¿ØÖÆ
+\author ²ñÊ÷É¼(chaishushan@gmail.com)
+\date 2009-03-29 ÓÚÉîÛÚ
 
-Roboduino Motoræ‰©å±•æ¿è¯´æ˜
+Roboduino MotorÀ©Õ¹°åËµÃ÷
 
 \image html Roboduino.jpg
 
-é‡‡ç”¨L293Bä¸“ç”¨ç”µæœºé©±åŠ¨èŠ¯ç‰‡, 1Aå¤§ç”µæµHæ¡¥é©±åŠ¨å å±‚è®¾è®¡, å¯ä¸å…¶ä»–æ¨¡å—é…åˆä½¿ç”¨,
-å ç”¨æ•°å­—ç«¯å£PIN6/PIN7/PIN8/PIN9.
+²ÉÓÃL293B×¨ÓÃµç»úÇı¶¯Ğ¾Æ¬, 1A´óµçÁ÷HÇÅÇı¶¯µş²ãÉè¼Æ, ¿ÉÓëÆäËûÄ£¿éÅäºÏÊ¹ÓÃ,
+Õ¼ÓÃÊı×Ö¶Ë¿ÚPIN6/PIN7/PIN8/PIN9.
 
- -# é©±åŠ¨éƒ¨åˆ†å·¥ä½œç”µæµIo: <= 1A
- -# é©±åŠ¨å½¢å¼: åŒè·¯å¤§åŠŸç‡Hæ¡¥é©±åŠ¨
- -# é©±åŠ¨ç”µå‹: 7V < Vin < 20V
+ -# Çı¶¯²¿·Ö¹¤×÷µçÁ÷Io: <= 1A
+ -# Çı¶¯ĞÎÊ½: Ë«Â·´ó¹¦ÂÊHÇÅÇı¶¯
+ -# Çı¶¯µçÑ¹: 7V < Vin < 20V
 
-å¯¹ç”µæœºæ§åˆ¶è¿›è¡Œäº†åŸºæœ¬å°è£…, ä½¿ç”¨æ›´åŠ ç®€å•. åŒæ—¶, é€šè¿‡å°†M1å’ŒM2ç”µæœº
-æ˜ å°„ä¸ºå·¦å³è½®å­, æä¾›äº†åŸºäºå·¦å³è½®çš„æ›´é«˜çº§çš„æ§åˆ¶å‡½æ•°.
+¶Ôµç»ú¿ØÖÆ½øĞĞÁË»ù±¾·â×°, Ê¹ÓÃ¸ü¼Ó¼òµ¥. Í¬Ê±, Í¨¹ı½«M1ºÍM2µç»ú
+Ó³ÉäÎª×óÓÒÂÖ×Ó, Ìá¹©ÁË»ùÓÚ×óÓÒÂÖµÄ¸ü¸ß¼¶µÄ¿ØÖÆº¯Êı.
 
-åŸºäºç”µæœºçš„ç”¨æ³•å¦‚ä¸‹:
+»ùÓÚµç»úµÄÓÃ·¨ÈçÏÂ:
 
-\code
-#include <RoboduinoMotor.h>
+\include TryMotor1.pde
 
-void setup()
-{
-    Serial.begin(9600);
-}
-void loop()
-{
-    if(Serial.available() <= 0) return;
-    
-    int val = Serial.read();
-    if(val == 'a')
-    {
-        // M1/M2æ­£è½¬
-        
-        RoboduinoMotor::instance().motorWrite(0, 100);
-        RoboduinoMotor::instance().motorWrite(1, 100);
-    }
-    else if(val == 'b')
-    {
-        // M1/M2åè½¬
-        
-        RoboduinoMotor::instance().motorWrite(0, -100);
-        RoboduinoMotor::instance().motorWrite(1, -100);
-    }
-    else
-    {
-        // åœæ­¢
-        
-        RoboduinoMotor::instance().motorWrite(0, 0);
-        RoboduinoMotor::instance().motorWrite(1, 0);
-    }
-    
-    // è¾“å‡ºé€Ÿåº¦
-    
-    {
-        uint8_t m1 = RoboduinoMotor::instance().motorRead(0);
-        uint8_t m2 = RoboduinoMotor::instance().motorRead(1);
-        
-        Serial.print("M1: ");
-        Serial.println(m1);
-        Serial.print("M2: ");
-        Serial.println(m2);
-    }
-}
-\endcode
+»ùÓÚ×óÓÒÂÖ×ÓµÄ¿ØÖÆÓÃ·¨:
 
-åŸºäºå·¦å³è½®å­çš„æ§åˆ¶ç”¨æ³•:
+\include TryMotor2.pde
 
-\code
-#include <RoboduinoMotor.h>
-
-void setup()
-{
-    Serial.begin(9600);
-    
-    // å·¦å³è½®å’Œç”µæœºçš„æ˜ å°„å…³ç³»:
-    //
-    // 1. å·¦è½®å¯¹åº”ç”µæœºM2, ç”µæœºæ­£è½¬å‰è¿›, åè½¬åé€€.
-    // 2. å³è½®å¯¹åº”ç”µæœºM1, ç”µæœºæ­£è½¬åé€€, åè½¬å‰è¿›.
-    
-    RoboduinoMotor::instance().mapMotor(1, -1, true);
-}
-void loop()
-{
-    if(Serial.available() <= 0) return;
-    
-    int val = Serial.read();
-    if(val == 'a')
-    {
-        // å·¦è½®é€Ÿåº¦100
-        // å³è½®é€Ÿåº¦-100
-        
-        RoboduinoMotor::instance().start(100, -100);
-    }
-    else if(val == 'b')
-    {
-        // å·¦è½®é€Ÿåº¦-100
-        // å³è½®åœæ­¢
-        
-        RoboduinoMotor::instance().start(-100, 0);
-    }
-    else
-    {
-        // å…¨éƒ¨åœæ­¢
-        
-        RoboduinoMotor::instance().stop();
-    }
-    
-    // è¾“å‡ºé€Ÿåº¦
-    
-    {
-        uint8_t left = RoboduinoMotor::instance().leftSpeed();
-        uint8_t right = RoboduinoMotor::instance().rightSpeed();
-        
-        Serial.print("left speed: ");
-        Serial.println(left);
-        Serial.print("right speed: ");
-        Serial.println(right);
-    }
-}
-\endcode
-
-\todo æ˜¯å¦å¯ä»¥å¢åŠ å®šæ—¶åœæ­¢åŠŸèƒ½? 
-\todo å’Œé€Ÿåº¦ç¼–ç å™¨ç»“åˆ.
+\todo ÊÇ·ñ¿ÉÒÔÔö¼Ó¶¨Ê±Í£Ö¹¹¦ÄÜ? 
+\todo ºÍËÙ¶È±àÂëÆ÷½áºÏ.
 */
 
-class RoboduinoMotor
+class RoboduinoMotorClass
 {
-    RoboduinoMotor();
-    RoboduinoMotor(const RoboduinoMotor&);
-    RoboduinoMotor& operator=(const RoboduinoMotor&);
+    RoboduinoMotorClass(const RoboduinoMotorClass&);
+    RoboduinoMotorClass& operator=(const RoboduinoMotorClass&);
     
     //================================================================
     //================================================================
     
 public:
+    RoboduinoMotorClass();
 
-    /// ç”µæœºå¼•è„š
+    /// µç»úÒı½Å
 
     enum MotorPin
     {
-        M1_Enable   = 6,    ///< M1ç”µæœºä½¿èƒ½
-        M1_Ctrl     = 7,    ///< M1ç”µæœºç”µå‹
-        M2_Enable   = 9,    ///< M2ç”µæœºä½¿èƒ½
-        M2_Ctrl     = 8     ///< M2ç”µæœºç”µå‹
+        M1_Enable   = 6,    ///< M1µç»úÊ¹ÄÜ
+        M1_Ctrl     = 7,    ///< M1µç»úµçÑ¹
+        M2_Enable   = 9,    ///< M2µç»úÊ¹ÄÜ
+        M2_Ctrl     = 8     ///< M2µç»úµçÑ¹
     };
     
-    /// é€Ÿåº¦èŒƒå›´
+    /// ËÙ¶È·¶Î§
     
     enum MotorSpeed
     {
-        SpeedMax    = 100   ///< é€Ÿåº¦èŒƒå›´[-100,100]
+        SpeedMax    = 100   ///< ËÙ¶È·¶Î§[-100,100]
     };
-
-    /// è·å–ç”µæœºå¯¹è±¡å¼•ç”¨
-    
-    static RoboduinoMotor& instance();
     
     //================================================================
-    // ä½çº§æ§åˆ¶(æœ€åŸºæœ¬çš„å‡½æ•°)
+    // µÍ¼¶¿ØÖÆ(×î»ù±¾µÄº¯Êı)
     //================================================================
     
     /**
-     *\brief è¯»ç”µæœºé€Ÿåº¦
+     *\brief ¶Áµç»úËÙ¶È
      *
-     * ç›®å‰ç”µæœºåªæœ‰å…¨é€ŸçŠ¶æ€100, å‰è¿›å¯¹åº”æ­£æ•°, åé€€å¯¹åº”è´Ÿæ•°.
-     * å¦‚æœä¸º0è¡¨ç¤ºç”µæœºåœæ­¢.
+     * Ä¿Ç°µç»úÖ»ÓĞÈ«ËÙ×´Ì¬100, Ç°½ø¶ÔÓ¦ÕıÊı, ºóÍË¶ÔÓ¦¸ºÊı.
+     * Èç¹ûÎª0±íÊ¾µç»úÍ£Ö¹.
      *
-     *\param idx ç”µæœºç´¢å¼•(ä»0å¼€å§‹)
+     *\param idx µç»úË÷Òı(´Ó0¿ªÊ¼)
      */
-    uint8_t motorRead(uint8_t idx)const;
+    int8_t motorRead(int8_t idx)const;
     
     /**
-     *\brief è®¾ç½®ç”µæœºé€Ÿåº¦
+     *\brief ÉèÖÃµç»úËÙ¶È
      *
-     * ç›®å‰ç”µæœºåªæœ‰å…¨é€ŸçŠ¶æ€100, å‰è¿›å¯¹åº”æ­£æ•°, åé€€å¯¹åº”è´Ÿæ•°.
-     * å¦‚æœä¸º0è¡¨ç¤ºç”µæœºåœæ­¢.
+     * Ä¿Ç°µç»úÖ»ÓĞÈ«ËÙ×´Ì¬100, Ç°½ø¶ÔÓ¦ÕıÊı, ºóÍË¶ÔÓ¦¸ºÊı.
+     * Èç¹ûÎª0±íÊ¾µç»úÍ£Ö¹.
      *
-     *\param idx ç”µæœºç´¢å¼•(ä»0å¼€å§‹)
-     *\param val ç”µæœºé€Ÿåº¦, æ­£è´Ÿè¡¨ç¤ºæ–¹å‘
+     *\param idx µç»úË÷Òı(´Ó0¿ªÊ¼)
+     *\param val µç»úËÙ¶È, Õı¸º±íÊ¾·½Ïò
      */
-    void motorWrite(uint8_t idx, uint8_t val);
+    void motorWrite(int8_t idx, int8_t val);
     
     //================================================================
-    // é«˜çº§æ§åˆ¶(åŸºäºä½çº§å‡½æ•°å°è£…)
+    // ¸ß¼¶¿ØÖÆ(»ùÓÚµÍ¼¶º¯Êı·â×°)
     //================================================================
     
     /**
-     *\brief æ˜ å°„ç”µæœºåˆ°å·¦å³è½®
+     *\brief Ó³Éäµç»úµ½×óÓÒÂÖ
      *
-     * å°†ç”µæœºæ˜ å°„åˆ°çœŸå®çš„å·¦å³è½®, ä»¥åŠè®¾ç½®ç”µæœºå’Œå·¦å³è½®ä¹‹é—´çš„ç³»æ•°.
-     * å¦‚æœç³»æ•°ä¸ºè´Ÿæ•°, åˆ™è¡¨ç¤ºç”µæœºæ–¹å‘å’Œè½®å­çš„çœŸå®æ–¹å‘ç›¸å.
+     * ½«µç»úÓ³Éäµ½ÕæÊµµÄ×óÓÒÂÖ, ÒÔ¼°ÉèÖÃµç»úºÍ×óÓÒÂÖÖ®¼äµÄÏµÊı.
+     * Èç¹ûÏµÊıÎª¸ºÊı, Ôò±íÊ¾µç»ú·½ÏòºÍÂÖ×ÓµÄÕæÊµ·½ÏòÏà·´.
      *
-     * é»˜è®¤æƒ…å†µä¸‹, M1å¯¹åº”å·¦è½®, M2å¯¹åº”å³è½®. å¦‚æœå·¦å³è½®æ˜ å°„ç›¸å,
-     * å¯ä»¥é€šè¿‡è®¾ç½®<c>swapM1M2</c>å®ç°.
+     * Ä¬ÈÏÇé¿öÏÂ, M1¶ÔÓ¦×óÂÖ, M2¶ÔÓ¦ÓÒÂÖ. Èç¹û×óÓÒÂÖÓ³ÉäÏà·´,
+     * ¿ÉÒÔÍ¨¹ıÉèÖÃ<c>swapM1M2</c>ÊµÏÖ.
      *
-     *\param lCoff    å·¦è½®æ˜ å°„åˆ°ç”µæœºçš„ç³»æ•°
-     *\param rCoff    å³è½®æ˜ å°„åˆ°ç”µæœºçš„ç³»æ•°
-     *\param swapM1M2 å·¦å³è½®çš„æ˜ å°„å…³ç³».
-     *                trueè¡¨ç¤ºM1å¯¹åº”å³è½®, M2å¯¹åº”å·¦è½®.
-     *                falseè¡¨ç¤ºM1å¯¹åº”å·¦è½®, M2å¯¹åº”å³è½®(ä¸éœ€è¦äº¤æ¢).
+     *\param lCoff    ×óÂÖÓ³Éäµ½µç»úµÄÏµÊı
+     *\param rCoff    ÓÒÂÖÓ³Éäµ½µç»úµÄÏµÊı
+     *\param swapM1M2 ×óÓÒÂÖµÄÓ³Éä¹ØÏµ.
+     *                true±íÊ¾M1¶ÔÓ¦ÓÒÂÖ, M2¶ÔÓ¦×óÂÖ.
+     *                false±íÊ¾M1¶ÔÓ¦×óÂÖ, M2¶ÔÓ¦ÓÒÂÖ(²»ĞèÒª½»»»).
      */
     
-    void mapMotor(uint8_t lCoff, uint8_t rCoff, bool swapM1M2);
+    void mapMotor(int8_t lCoff, int8_t rCoff, bool swapM1M2);
     
     /**
-     *\brief å¯åŠ¨ç”µæœº
+     *\brief Æô¶¯µç»ú
      *
-     * é€šè¿‡å·¦å³è½®è®¾ç½®é€Ÿåº¦. é€Ÿåº¦æœ€ç»ˆæ ¹æ® \ref RoboduinoMotor#mapMotor
-     * æŒ‡å®šçš„å‚æ•°æ˜ å°„åˆ°å…·ä½“çš„ç”µæœº.
+     * Í¨¹ı×óÓÒÂÖÉèÖÃËÙ¶È. ËÙ¶È×îÖÕ¸ù¾İ \ref RoboduinoMotor#mapMotor
+     * Ö¸¶¨µÄ²ÎÊıÓ³Éäµ½¾ßÌåµÄµç»ú.
      *
-     * æ˜ å°„å…³ç³»:
+     * Ó³Éä¹ØÏµ:
      *
-     *\code
-        if(swapM1M2)
-        {
-            m1Speed = rSpeed*rCoff;
-            m2Speed = lSpeed*lCoff;
-        }
-        else
-        {
-            m1Speed = lSpeed*lCoff;
-            m2Speed = rSpeed*rCoff;
-        }
-      \endcode
+    \code
+	if(swapM1M2)
+	{
+		m1Speed = rSpeed*rCoff;
+		m2Speed = lSpeed*lCoff;
+	}
+	else
+	{
+		m1Speed = lSpeed*lCoff;
+		m2Speed = rSpeed*rCoff;
+	}
+	\endcode
      *
-     *\param lSpeed å·¦è½®é€Ÿåº¦
-     *\param rSpeed å³è½®é€Ÿåº¦
+     *\param lSpeed ×óÂÖËÙ¶È
+     *\param rSpeed ÓÒÂÖËÙ¶È
      */
     
-    void start(uint8_t lSpeed, uint8_t rSpeed);
+    void start(int8_t lSpeed, int8_t rSpeed);
     
-    /// åœæ­¢
+    /// Í£Ö¹
     
     void stop();
     
     /**
-     *\brief å·¦è½®é€Ÿåº¦
+     *\brief ×óÂÖËÙ¶È
      *
-     * è¿™é‡Œè¿”å›çš„æ˜¯é€šè¿‡ \ref RoboduinoMotor#start å‡½æ•°è®¾ç½®çš„é€Ÿåº¦.
-     * å¦‚æœç”¨æˆ·æ˜¯é€šè¿‡ \ref RoboduinoMotor#motorWrite è®¾ç½®ç”µæœºé€Ÿåº¦, é‚£ä¹ˆ
-     * åº”è¯¥ç”¨ \ref RoboduinoMotor#motorRead æŸ¥è¯¢. 
+     * ÕâÀï·µ»ØµÄÊÇÍ¨¹ı \ref RoboduinoMotor#start º¯ÊıÉèÖÃµÄËÙ¶È.
+     * Èç¹ûÓÃ»§ÊÇÍ¨¹ı \ref RoboduinoMotor#motorWrite ÉèÖÃµç»úËÙ¶È, ÄÇÃ´
+     * Ó¦¸ÃÓÃ \ref RoboduinoMotor#motorRead ²éÑ¯. 
      */
-    uint8_t leftSpeed()const;
+    int8_t leftSpeed()const;
     /**
-     *\brief å³è½®é€Ÿåº¦
+     *\brief ÓÒÂÖËÙ¶È
      *
-     * è¿™é‡Œè¿”å›çš„æ˜¯é€šè¿‡ \ref RoboduinoMotor#start å‡½æ•°è®¾ç½®çš„é€Ÿåº¦.
-     * å¦‚æœç”¨æˆ·æ˜¯é€šè¿‡ \ref RoboduinoMotor#motorWrite è®¾ç½®ç”µæœºé€Ÿåº¦, é‚£ä¹ˆ
-     * åº”è¯¥ç”¨ \ref RoboduinoMotor#motorRead æŸ¥è¯¢. 
+     * ÕâÀï·µ»ØµÄÊÇÍ¨¹ı \ref RoboduinoMotor#start º¯ÊıÉèÖÃµÄËÙ¶È.
+     * Èç¹ûÓÃ»§ÊÇÍ¨¹ı \ref RoboduinoMotor#motorWrite ÉèÖÃµç»úËÙ¶È, ÄÇÃ´
+     * Ó¦¸ÃÓÃ \ref RoboduinoMotor#motorRead ²éÑ¯. 
      */
-    uint8_t rightSpeed()const;
-    
-    //================================================================
-    //================================================================
-    
-private:
-
-    // è®¾ç½®ç®¡è„šæ¨¡å¼
-    
-    static void initPinMode();
+    int8_t rightSpeed()const;
     
     //================================================================
     //================================================================
 	
 private:
 
-    bool        m_bMapMotor;    // æ˜¯å¦ä¿®æ”¹äº†æ˜ å°„
+    bool        m_bMapMotor;    // ÊÇ·ñĞŞ¸ÄÁËÓ³Éä
     
     //================================================================
     
-    bool        m_bSwapM1M2;    // æ˜¯å¦äº¤æ¢ç”µæœº
+    bool        m_bSwapM1M2;    // ÊÇ·ñ½»»»µç»ú
     
-    uint8_t     m_u8LCoff;      // å·¦è½®ç³»æ•°
-    uint8_t     m_u8RCoff;      // å³è½®ç³»æ•°
+    int8_t         m_u8LCoff;      // ×óÂÖÏµÊı
+    int8_t         m_u8RCoff;      // ÓÒÂÖÏµÊı
     
-    uint8_t     m_u8LSpeed;     // å·¦è½®é€Ÿåº¦
-    uint8_t     m_u8RSpeed;     // å³è½®é€Ÿåº¦
-    
-    //================================================================
-    
-    uint8_t     m_u8M1Speed;    // M1ç”µæœºé€Ÿåº¦
-    uint8_t     m_u8M2Speed;    // M2ç”µæœºé€Ÿåº¦
+    int8_t         m_u8LSpeed;     // ×óÂÖËÙ¶È
+    int8_t         m_u8RSpeed;     // ÓÒÂÖËÙ¶È
     
     //================================================================
     
-    static bool             sm_bPinMode;    // ç®¡è„šæ¨¡å¼
-    static RoboduinoMotor   sm_motor;       // å•ä»¶
+    int8_t         m_u8M1Speed;    // M1µç»úËÙ¶È
+    int8_t         m_u8M2Speed;    // M2µç»úËÙ¶È
     
     //================================================================
     //================================================================
 };
+
+/**
+\relates RoboduinoMotorClass
+\brief ²Ù×÷ÊµÌå
+
+ÓÉÓÚÖ»ÓĞÒ»¸öµç»ú¿ØÖÆ¶ÔÏó, Òò´ËÒ»°ãÖ±½ÓÍ¨¹ı \ref RoboduinoMotor À´¿ØÖÆ.
+ÀıÈç:
+
+\code
+RoboduinoMotor.start(100, 100);
+\endcode
+*/
+
+extern RoboduinoMotorClass RoboduinoMotor;
+
 
 #endif	// RoboduinoMotor_H
 

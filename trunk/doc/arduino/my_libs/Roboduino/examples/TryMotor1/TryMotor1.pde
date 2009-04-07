@@ -1,4 +1,4 @@
-Ôªø#include <RoboduinoMotor.h>
+#include <RoboduinoMotor.h>
 
 void setup()
 {
@@ -11,31 +11,45 @@ void loop()
     int val = Serial.read();
     if(val == 'a')
     {
-        // M1/M2Ê≠£ËΩ¨
+        // M1/M2’˝◊™
         
-        RoboduinoMotor::instance().motorWrite(0, 100);
-        RoboduinoMotor::instance().motorWrite(1, 100);
+        RoboduinoMotor.motorWrite(0, 100);
+        RoboduinoMotor.motorWrite(1, 100);
     }
     else if(val == 'b')
     {
-        // M1/M2ÂèçËΩ¨
+        // M1/M2’˝◊™
         
-        RoboduinoMotor::instance().motorWrite(0, -100);
-        RoboduinoMotor::instance().motorWrite(1, -100);
+        RoboduinoMotor.motorWrite(0, 50);
+        RoboduinoMotor.motorWrite(1, 50);
+    }
+    else if(val == 'c')
+    {
+        // M1/M2∑¥◊™
+        
+        RoboduinoMotor.motorWrite(0, -50);
+        RoboduinoMotor.motorWrite(1, -50);
+    }
+    else if(val == 'd')
+    {
+        // M1/M2∑¥◊™
+        
+        RoboduinoMotor.motorWrite(0, -100);
+        RoboduinoMotor.motorWrite(1, -100);
     }
     else
     {
-        // ÂÅúÊ≠¢
+        // Õ£÷π
         
-        RoboduinoMotor::instance().motorWrite(0, 0);
-        RoboduinoMotor::instance().motorWrite(1, 0);
+        RoboduinoMotor.motorWrite(0, 0);
+        RoboduinoMotor.motorWrite(1, 0);
     }
     
-    // ËæìÂá∫ÈÄüÂ∫¶
+    //  ‰≥ˆÀŸ∂»
     
     {
-        uint8_t m1 = RoboduinoMotor::instance().motorRead(0);
-        uint8_t m2 = RoboduinoMotor::instance().motorRead(0);
+        int m1 = RoboduinoMotor.motorRead(0);
+        int m2 = RoboduinoMotor.motorRead(1);
         
         Serial.print("M1: ");
         Serial.println(m1);
