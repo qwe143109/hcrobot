@@ -1,15 +1,15 @@
-ï»¿#include <RoboduinoMotor.h>
+#include <RoboduinoMotor.h>
 
 void setup()
 {
     Serial.begin(9600);
     
-    // å·¦å³è½®å’Œç”µæœºçš„æ˜ å°„å…³ç³»:
+    // ×óÓÒÂÖºÍµç»úµÄÓ³Éä¹ØÏµ:
     //
-    // 1. å·¦è½®å¯¹åº”ç”µæœºM2, ç”µæœºæ­£è½¬å‰è¿›, åè½¬åé€€.
-    // 2. å³è½®å¯¹åº”ç”µæœºM1, ç”µæœºæ­£è½¬åé€€, åè½¬å‰è¿›.
+    // 1. ×óÂÖ¶ÔÓ¦µç»úM1, µç»úÕı×ªÇ°½ø, ·´×ªºóÍË.
+    // 2. ÓÒÂÖ¶ÔÓ¦µç»úM2, µç»úÕı×ªºóÍË, ·´×ªÇ°½ø.
     
-    RoboduinoMotor::instance().mapMotor(1, -1, true);
+    RoboduinoMotor.mapMotor(1, -1, false);
 }
 void loop()
 {
@@ -18,30 +18,44 @@ void loop()
     int val = Serial.read();
     if(val == 'a')
     {
-        // å·¦è½®é€Ÿåº¦100
-        // å³è½®é€Ÿåº¦-100
+        // ×óÂÖËÙ¶È100
+        // ÓÒÂÖËÙ¶È100
         
-        RoboduinoMotor::instance().start(100, -100);
+        RoboduinoMotor.start(100, 100);
     }
     else if(val == 'b')
     {
-        // å·¦è½®é€Ÿåº¦-100
-        // å³è½®åœæ­¢
+        // ×óÂÖËÙ¶È50
+        // ÓÒÂÖËÙ¶È50
         
-        RoboduinoMotor::instance().start(-100, 0);
+        RoboduinoMotor.start(50, 50);
+    }
+    else if(val == 'c')
+    {
+        // ×óÂÖËÙ¶È-50
+        // ÓÒÂÖËÙ¶È-50
+        
+        RoboduinoMotor.start(-50, -50);
+    }
+    else if(val == 'd')
+    {
+        // ×óÂÖËÙ¶È-100
+        // ÓÒÂÖËÙ¶È-100
+        
+        RoboduinoMotor.start(-100, -100);
     }
     else
     {
-        // å…¨éƒ¨åœæ­¢
+        // È«²¿Í£Ö¹
         
-        RoboduinoMotor::instance().stop();
+        RoboduinoMotor.stop();
     }
     
-    // è¾“å‡ºé€Ÿåº¦
+    // Êä³öËÙ¶È
     
     {
-        uint8_t left = RoboduinoMotor::instance().leftSpeed();
-        uint8_t right = RoboduinoMotor::instance().rightSpeed();
+        int left = RoboduinoMotor.leftSpeed();
+        int right = RoboduinoMotor.rightSpeed();
         
         Serial.print("left speed: ");
         Serial.println(left);
@@ -49,4 +63,3 @@ void loop()
         Serial.println(right);
     }
 }
-

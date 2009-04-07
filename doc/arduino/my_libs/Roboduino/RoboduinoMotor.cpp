@@ -1,4 +1,4 @@
-ï»¿/*
+/*
   RoboduinoMotor.h - Library for Roboduino Motor.
   Created by ChaiShushan(chaishushan@gmail.com), March 28, 2009.
   Released into the public domain.
@@ -10,57 +10,34 @@
 //====================================================================
 //====================================================================
 
-bool RoboduinoMotor::sm_bPinMode = false;
-RoboduinoMotor RoboduinoMotor::sm_motor;
+// ²Ù×÷ÊµÌå
 
-// èŽ·å–å¯¹è±¡å¼•ç”¨
+RoboduinoMotorClass RoboduinoMotor;
 
-RoboduinoMotor& RoboduinoMotor::instance()
+//====================================================================
+//====================================================================
+
+RoboduinoMotorClass::RoboduinoMotorClass()
 {
-    if(!sm_bPinMode) initPinMode();
-    return sm_motor;
-}
-
-// è®¾ç½®ç®¡è„šæ¨¡å¼
+    m_bMapMotor = false;    // ÊÇ·ñÐÞ¸ÄÁËÓ³Éä
+    m_bSwapM1M2 = false;    // ÊÇ·ñ½»»»µç»ú
     
-void RoboduinoMotor::initPinMode()
-{
-    if(sm_bPinMode) return;
+    m_u8LCoff   = 1;        // ×óÂÖÏµÊý
+    m_u8RCoff   = 1;        // ÓÒÂÖÏµÊý
     
-    // è®¾ç½®å¼•è„šæ¨¡å¼
+    m_u8LSpeed  = 0;        // ×óÂÖËÙ¶È
+    m_u8RSpeed  = 0;        // ÓÒÂÖËÙ¶È
     
-    pinMode(M1_Enable, OUTPUT);
-    pinMode(M1_Ctrl  , OUTPUT);
-    pinMode(M2_Enable, OUTPUT);
-    pinMode(M2_Ctrl  , OUTPUT);
-    
-    sm_bPinMode = true;
+    m_u8M1Speed = 0;        // M1µç»úËÙ¶È
+    m_u8M2Speed = 0;        // M2µç»úËÙ¶È
 }
 
 //====================================================================
 //====================================================================
 
-RoboduinoMotor::RoboduinoMotor()
-{
-    m_bMapMotor = false;    // æ˜¯å¦ä¿®æ”¹äº†æ˜ å°„
-    m_bSwapM1M2 = false;    // æ˜¯å¦äº¤æ¢ç”µæœº
-    
-    m_u8LCoff   = 1;        // å·¦è½®ç³»æ•°
-    m_u8RCoff   = 1;        // å³è½®ç³»æ•°
-    
-    m_u8LSpeed  = 0;        // å·¦è½®é€Ÿåº¦
-    m_u8RSpeed  = 0;        // å³è½®é€Ÿåº¦
-    
-    m_u8M1Speed = 0;        // M1ç”µæœºé€Ÿåº¦
-    m_u8M2Speed = 0;        // M2ç”µæœºé€Ÿåº¦
-}
+// ¶Áµç»úËÙ¶È
 
-//====================================================================
-//====================================================================
-
-// è¯»ç”µæœºé€Ÿåº¦
-
-uint8_t RoboduinoMotor::motorRead(uint8_t idx)const
+int8_t RoboduinoMotorClass::motorRead(int8_t idx)const
 {
     if(idx == 0)
     {
@@ -76,63 +53,68 @@ uint8_t RoboduinoMotor::motorRead(uint8_t idx)const
     }
 }
     
-// è®¾ç½®ç”µæœºé€Ÿåº¦
-// ç›®å‰åªæ”¯æŒå…¨é€Ÿå‰è¿›/å…¨é€ŸåŽé€€/åœæ­¢
+// ÉèÖÃµç»úËÙ¶È
+// Ä¿Ç°Ö»Ö§³ÖÈ«ËÙÇ°½ø/È«ËÙºóÍË/Í£Ö¹
 
-void RoboduinoMotor::motorWrite(uint8_t idx, uint8_t val)
+void RoboduinoMotorClass::motorWrite(int8_t idx, int8_t val)
 {
     if(idx != 0 && idx != 1) return;
+
+    // ¶ÔÓ¦Òý½Å
     
-    // å¯¹åº”å¼•è„š
+    int8_t enPin = (idx==0)? M1_Enable: M2_Enable;
+    int8_t inPin = (idx==0)? M1_Ctrl  : M2_Ctrl;
+
+    // ÉèÖÃÒý½ÅÄ£Ê½
     
-    int enPin = (idx==0)? M1_Enable: M2_Enable;
-    int inPin = (idx==0)? M1_Ctrl  : M2_Ctrl;
+    pinMode(enPin, OUTPUT);
+    pinMode(inPin, OUTPUT);
     
-    // è®¾ç½®é€Ÿåº¦
+    // ÉèÖÃËÙ¶È
     
     if(val > 0)
     {
-        // æ­£è½¬
+        // Õý×ª
         
-        digitalWrite(enPin, HIGH);
+		analogWrite(enPin, map(val, 0, 100, 0, 255));
         digitalWrite(inPin, HIGH);
         
-        // è®°å½•ç”µæœºé€Ÿåº¦
+        // ¼ÇÂ¼µç»úËÙ¶È
         
         if(idx == 0)
         {
-            m_u8M1Speed = 100;
+            m_u8M1Speed = val;
         }
         else
         {
-            m_u8M2Speed = 100;
+            m_u8M2Speed = val;
         } 
     }
     else if(val < 0)
     {
-        // åè½¬
+        // ·´×ª
         
-        digitalWrite(enPin, HIGH);
+		analogWrite(enPin, map(-val, 0, 100, 0, 255));
         digitalWrite(inPin, LOW);
         
-        // è®°å½•ç”µæœºé€Ÿåº¦
+        // ¼ÇÂ¼µç»úËÙ¶È
         
         if(idx == 0)
         {
-            m_u8M1Speed = -100;
+            m_u8M1Speed = val;
         }
         else
         {
-            m_u8M2Speed = -100;
+            m_u8M2Speed = val;
         }
     }
     else
     {
-        // åœæ­¢
+        // Í£Ö¹
         
         digitalWrite(enPin, LOW);
         
-        // è®°å½•ç”µæœºé€Ÿåº¦
+        // ¼ÇÂ¼µç»úËÙ¶È
         
         if(idx == 0)
         {
@@ -146,19 +128,19 @@ void RoboduinoMotor::motorWrite(uint8_t idx, uint8_t val)
 }
     
 //====================================================================
-// é«˜çº§æŽ§åˆ¶(åŸºäºŽä½Žçº§å‡½æ•°å°è£…)
+// ¸ß¼¶¿ØÖÆ(»ùÓÚµÍ¼¶º¯Êý·â×°)
 //====================================================================
 
-// æ˜ å°„ç”µæœºåˆ°å·¦å³è½®
+// Ó³Éäµç»úµ½×óÓÒÂÖ
     
-void RoboduinoMotor::mapMotor(uint8_t lCoff, uint8_t rCoff, bool swapM1M2)
+void RoboduinoMotorClass::mapMotor(int8_t lCoff, int8_t rCoff, bool swapM1M2)
 {
     m_bSwapM1M2 = swapM1M2;
     
-    m_u8RCoff = lCoff;
+    m_u8LCoff = lCoff;
     m_u8RCoff = rCoff;
     
-    if(m_u8RCoff == 1 && m_u8RCoff == 1 && (!m_bSwapM1M2))
+    if(m_u8LCoff == 1 && m_u8RCoff == 1 && (!m_bSwapM1M2))
     {
         m_bMapMotor = false;
     }
@@ -168,23 +150,23 @@ void RoboduinoMotor::mapMotor(uint8_t lCoff, uint8_t rCoff, bool swapM1M2)
     }
 }
     
-// å¯åŠ¨ç”µæœº
+// Æô¶¯µç»ú
     
-void RoboduinoMotor::start(uint8_t lSpeed, uint8_t rSpeed)
+void RoboduinoMotorClass::start(int8_t lSpeed, int8_t rSpeed)
 {
-    // é€Ÿåº¦è°ƒæ•´åˆ°[-100, 100]
+    // ËÙ¶Èµ÷Õûµ½[-100, 100]
     
     if(lSpeed > SpeedMax) lSpeed = SpeedMax;
     if(lSpeed < (0-SpeedMax)) lSpeed = (0-SpeedMax);
     if(rSpeed > SpeedMax) rSpeed = SpeedMax;
     if(rSpeed < (0-SpeedMax)) rSpeed = (0-SpeedMax);
     
-    // è®°å½•è½®å­é€Ÿåº¦
+    // ¼ÇÂ¼ÂÖ×ÓËÙ¶È
     
     m_u8LSpeed = lSpeed;
     m_u8RSpeed = rSpeed;
     
-    // è®¡ç®—ç”µæœºé€Ÿåº¦
+    // ¼ÆËãµç»úËÙ¶È
     
     if(m_bMapMotor)
     {
@@ -205,14 +187,15 @@ void RoboduinoMotor::start(uint8_t lSpeed, uint8_t rSpeed)
         m_u8M2Speed = rSpeed;
     }
     
-    // å¯åŠ¨ç”µæœº
+    // Æô¶¯µç»ú
     
-    motorWrite(m_u8M1Speed, m_u8M2Speed);
+    motorWrite(0, m_u8M1Speed);
+    motorWrite(1, m_u8M2Speed);
 }
     
-// åœæ­¢
+// Í£Ö¹
     
-void RoboduinoMotor::stop()
+void RoboduinoMotorClass::stop()
 {
     m_u8LSpeed = 0;
     m_u8RSpeed = 0;
@@ -221,16 +204,16 @@ void RoboduinoMotor::stop()
     motorWrite(1, 0);
 }
     
-// å·¦è½®é€Ÿåº¦
+// ×óÂÖËÙ¶È
 
-uint8_t RoboduinoMotor::leftSpeed()const
+int8_t RoboduinoMotorClass::leftSpeed()const
 {
     return m_u8LSpeed;
 }
 
-// å³è½®é€Ÿåº¦
+// ÓÒÂÖËÙ¶È
 
-uint8_t RoboduinoMotor::rightSpeed()const
+int8_t RoboduinoMotorClass::rightSpeed()const
 {
     return m_u8RSpeed;
 }
