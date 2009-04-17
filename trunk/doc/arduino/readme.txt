@@ -1,4 +1,8 @@
 ﻿
+最新arduino代码在hardware目录(用户要自己创建), 对于以下SVN地址:
+
+http://arduino.googlecode.com/svn/trunk/hardware
+
 改进:
 
 1. 尝试将中文部分文档改为UTF-8编码.

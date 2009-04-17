@@ -53,6 +53,12 @@ void loop () {}
 \endcode
 */
 
+/**
+\relates EthernetClass
+\var EthernetClass Ethernet
+\brief ÍøÂç¶ÔÏó
+*/
+
 //========================================================================
 
 /**

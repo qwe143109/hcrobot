@@ -3,118 +3,23 @@
 // Control Structures
 //==================================================================================
 
-/**
-\page If if
-
-内容.
-*/
-
-
-/**
-\page IfElse if...else
-*/
-
-/**
-\page For for
-*/
-
-/**
-\page Switch switch
-*/
-
-/**
-\page While while
-*/
-
-/**
-\page DoWhile do... while
-*/
-
-/**
-\page Break break
-*/
-
-
-/**
-\page Continue continue
-*/
-
-/**
-\page Return return
-*/
-
 //==================================================================================
 // Further Syntax
 //==================================================================================
 
-/**
-\page SemiColon ; (semicolon)
-*/
-
-/**
-\page Braces {} (curly braces)
-*/
-
-/**
-\page Comments 注释
-*/
-
-/**
-\page Define 宏定义
-*/
-
-/**
-\page Include 包含头文件
-*/
 
 //==================================================================================
 // Arithmetic Operators
 //==================================================================================
 
-/**
-\page Assignment = (赋值)
-*/
-
-/**
-\page Arithmetic 加减乘除
-*/
-
-
-/**
-\page Modulo % (取模)
-*/
 
 //==================================================================================
 // Comparison Operators
 //==================================================================================
 
-/**
-\page Boolean 布尔运算
-*/
 
-/**
-\page Increment 自增运算
-*/
 
-/**
-\page IncrementCompound 复合增加
-*/
 
-/**
-\page Pointer 指针
-*/
-
-/**
-\page BitwiseAnd 位运算: 与
-*/
-
-/**
-\page BitwiseXorNot 位运算: 异或
-*/
-
-/**
-\page Bitshift 移位
-*/
 
 /**
 \page Constants 常量
