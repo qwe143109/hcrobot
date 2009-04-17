@@ -1,7 +1,13 @@
 ﻿
-最新arduino代码在hardware目录(用户要自己创建), 对于以下SVN地址:
+arduino对于arduino-hardware目录, SVN地址:
 
 http://arduino.googlecode.com/svn/trunk/hardware
+
+例子对应arduino-examples目录, SVN地址:
+
+http://arduino.googlecode.com/svn/trunk/build/shared/dist/examples
+
+上面2个目录自己创建, 然后将代码从arduino的开发网站co就可以了.
 
 改进:
 
