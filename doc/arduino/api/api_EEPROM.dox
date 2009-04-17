@@ -52,3 +52,9 @@ The datasheet also specifies that a write cycle takes 3.3 ms to complete. Other 
 Hence, you do not specifically need to add a delay to an EEPROM write, just be aware of the built-in time delay. 
 */
 
+
+/**
+\relates EEPROMClass
+\var EEPROMClass EEPROM
+\brief ²Ù×÷ÊµÌå
+*/

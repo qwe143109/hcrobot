@@ -37,3 +37,9 @@
 \brief 设置请求回调函数
 
 */
+
+/**
+\relates TwoWire
+\var TwoWire Wire
+\brief I2C对象
+*/

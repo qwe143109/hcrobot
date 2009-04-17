@@ -75,3 +75,9 @@ arduino之间的通讯. Firmata底层基于串口协议实现.
 \brief 取消回调函数
 
 */
+
+/**
+\relates FirmataClass
+\var FirmataClass Firmata
+\brief 待完善
+*/

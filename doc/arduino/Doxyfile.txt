@@ -85,25 +85,25 @@ WARN_LOGFILE           =
 #---------------------------------------------------------------------------
 # configuration options related to the input files
 #---------------------------------------------------------------------------
-INPUT                  = .  dox  api 		\
-						 arduino-0014\cores\arduino				\
-						 arduino-0014\libraries\EEPROM			\
-						 arduino-0014\libraries\Ethernet		\
-						 arduino-0014\libraries\Firmata			\
-						 arduino-0014\libraries\LiquidCrystal	\
-						 arduino-0014\libraries\Matrix			\
-						 arduino-0014\libraries\Servo			\
-						 arduino-0014\libraries\SoftwareSerial	\
-						 arduino-0014\libraries\Sprite			\
-						 arduino-0014\libraries\Stepper			\
-						 arduino-0014\libraries\Wire			\
+INPUT                  = .  dox dox\guide dox\reference api 		\
+						 hardware\cores\arduino				\
+						 hardware\libraries\EEPROM			\
+						 hardware\libraries\Ethernet		\
+						 hardware\libraries\Firmata			\
+						 hardware\libraries\LiquidCrystal	\
+						 hardware\libraries\Matrix			\
+						 hardware\libraries\Servo			\
+						 hardware\libraries\SoftwareSerial	\
+						 hardware\libraries\Sprite			\
+						 hardware\libraries\Stepper			\
+						 hardware\libraries\Wire			\
 						 my_libs\Roboduino
 						 # 代码所在的目录
 INPUT_ENCODING         = GBK				# 中文编码
 
 							# 要分析文件的后缀名
 							# '\'之后不能有字符
-FILE_PATTERNS          = *.h *.c *.cpp \
+FILE_PATTERNS          = *.h *.c *.cpp *.cxx \
                          *.dox 
 RECURSIVE              = NO
 EXCLUDE                = 
@@ -111,37 +111,37 @@ EXCLUDE_SYMLINKS       = NO
 EXCLUDE_PATTERNS       = 
 EXCLUDE_SYMBOLS        = 
 EXAMPLE_PATH           = . example	\
-						 arduino-0014\examples\Analog\AnalogInput	\
-						 arduino-0014\examples\Analog\Calibration	\
-						 arduino-0014\examples\Analog\Fading	\
-						 arduino-0014\examples\Analog\Smoothing	\
-						 arduino-0014\examples\Communication\ASCIITable	\
-						 arduino-0014\examples\Communication\Dimmer	\
-						 arduino-0014\examples\Communication\Graph	\
-						 arduino-0014\examples\Communication\PhysicalPixel	\
-						 arduino-0014\examples\Communication\VirtualColorMixer	\
-						 arduino-0014\examples\Digital\Blink	\
-						 arduino-0014\examples\Digital\BlinkWithoutDelay	\
-						 arduino-0014\examples\Digital\Button	\
-						 arduino-0014\examples\Digital\Debounce	\
-						 arduino-0014\examples\Digital\Loop	\
-						 arduino-0014\examples\Digital\Melody	\
-						 arduino-0014\examples\Sensors\ADXL3xx	\
-						 arduino-0014\examples\Sensors\Knock	\
-						 arduino-0014\examples\Sensors\Memsic2125	\
-						 arduino-0014\examples\Sensors\Ping	\
-						 arduino-0014\libraries\EEPROM\examples\eeprom_read		\
-						 arduino-0014\libraries\EEPROM\examples\eeprom_write	\
-						 arduino-0014\libraries\EEPROM\examples\eeprom_clear	\
-						 arduino-0014\libraries\Ethernet\examples\WebServer		\
-						 arduino-0014\libraries\Ethernet\examples\WebClient		\
-						 arduino-0014\libraries\Ethernet\examples\ChatServer	\
+						 hardware\examples\Analog\AnalogInput	\
+						 hardware\examples\Analog\Calibration	\
+						 hardware\examples\Analog\Fading	\
+						 hardware\examples\Analog\Smoothing	\
+						 hardware\examples\Communication\ASCIITable	\
+						 hardware\examples\Communication\Dimmer	\
+						 hardware\examples\Communication\Graph	\
+						 hardware\examples\Communication\PhysicalPixel	\
+						 hardware\examples\Communication\VirtualColorMixer	\
+						 hardware\examples\Digital\Blink	\
+						 hardware\examples\Digital\BlinkWithoutDelay	\
+						 hardware\examples\Digital\Button	\
+						 hardware\examples\Digital\Debounce	\
+						 hardware\examples\Digital\Loop	\
+						 hardware\examples\Digital\Melody	\
+						 hardware\examples\Sensors\ADXL3xx	\
+						 hardware\examples\Sensors\Knock	\
+						 hardware\examples\Sensors\Memsic2125	\
+						 hardware\examples\Sensors\Ping	\
+						 hardware\libraries\EEPROM\examples\eeprom_read		\
+						 hardware\libraries\EEPROM\examples\eeprom_write	\
+						 hardware\libraries\EEPROM\examples\eeprom_clear	\
+						 hardware\libraries\Ethernet\examples\WebServer		\
+						 hardware\libraries\Ethernet\examples\WebClient		\
+						 hardware\libraries\Ethernet\examples\ChatServer	\
                          my_libs\Roboduino\examples\TryMotor1                   \
                          my_libs\Roboduino\examples\TryMotor2                   \
 						 # 例子程序
 EXAMPLE_PATTERNS       = *
 EXAMPLE_RECURSIVE      = NO
-IMAGE_PATH             = image
+IMAGE_PATH             = image my_libs\Roboduino\image
 INPUT_FILTER           = 
 FILTER_PATTERNS        = 
 FILTER_SOURCE_FILES    = NO
