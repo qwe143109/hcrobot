@@ -1,6 +1,16 @@
 //HCR romeo Code
 //www.RoboticFan.com
-//Version 0.32 28th Nov 2009 By Ricky
+//Version 0.33 27th Jan 2010 By Ricky
+
+
+
+/*V0.33
+Add GP2D12 smooth function to get a more reliable reading
+Add Motion sensor to capture the motion and light the LED 
+*/
+
+///V0.32
+
 
 
 
@@ -36,6 +46,9 @@ boolean BumperEnable=true;
 unsigned int BumperR_pin = 12;                // 连接右边的碰撞到 Pin 12
 unsigned int BumperL_pin = 10;                // 连接左边的碰撞到 Pin 10
 unsigned int BumperC_pin = 11;                // 连接中间的碰撞到 Pin 11
+unsigned int imPin = 3;                // Motion sensor Pin 9
+
+
 
 byte BumperValue=0x00;
 
@@ -49,19 +62,22 @@ unsigned int IR_06_pin=5;                    //连接3号红外到模拟输入Pin1
 unsigned int IR_07_pin=6;                    //连接3号红外到模拟输入Pin1
 
 int IR_value[]={0,0,0,0,0,0,0};
+int IR_value_pre[]={0,0,0,0,0,0,0};
 
 unsigned int Light_pin=2;
 boolean LightStatus=false;
 
 //Motor
 
-/*老版Romeo控制端口
+/*老版Romeo控制端口*/
+
+/*
 unsigned int E1 = 7;
 unsigned int E2 = 8;
 unsigned int M1 = 6;
 unsigned int M2 = 9;
-*/
 
+*/
 
 unsigned int E1 = 4;
 unsigned int E2 = 7;
@@ -85,6 +101,8 @@ void loop()
   ReadIR();
   ReadControlCmd();  
   SendSensorData();
+  
+  InfraMotionCatch();
  // PackIRData();//Send IR data
   //PackBumperData();//Send  Bumper  Data
   // Serial.println("Drive");
@@ -120,7 +138,7 @@ void InitHCR()
   pinMode(BumperL_pin, INPUT);      // 设置Pin12为输入
   pinMode(BumperC_pin, INPUT);      // 设置Pin12为输入
   pinMode(Light_pin,OUTPUT);
-    digitalWrite(Light_pin, HIGH);
+  digitalWrite(Light_pin, HIGH);
 }
 
 
@@ -224,17 +242,7 @@ void ParseCmd(byte cmd[],int cmdlength)
           }
             case 0x14://Turn on Light
           {
-            
-            if(LightStatus==false)
-            {
-                   digitalWrite(Light_pin, LOW);
-                   LightStatus=true;
-            }
-            else
-            {
-                 digitalWrite(Light_pin, HIGH);
-                 LightStatus=false;
-            }
+            LEDLight(true);
             
             break;
           }
@@ -295,6 +303,37 @@ void DriveMotorS(byte S1, byte S2)//Drive Motor Speed Mode
   
 }
 
+//Motion Capture
+
+void InfraMotionCatch()
+{
+   if(digitalRead(imPin))
+   {
+      LEDLight(true);
+   }
+   else
+   {
+      LEDLight(false);
+   }
+
+   
+}
+
+
+void LEDLight(boolean onoff)
+{
+   
+            if(onoff==true)
+            {
+                   digitalWrite(Light_pin, LOW);
+                   LightStatus=true;
+            }
+            else
+            {
+                 digitalWrite(Light_pin, HIGH);
+                 LightStatus=false;
+            }
+}
 
 
 ////读取传感器部分
@@ -305,8 +344,8 @@ void ReadBumper()
    BumperValue=digitalRead(BumperL_pin)<<2;
    BumperValue|=digitalRead(BumperC_pin)<<1;
    BumperValue|=digitalRead(BumperR_pin);
- // Serial.print(BumperValue,BYTE); //供测试用途
- // delay(100);
+  Serial.print(BumperValue,BYTE); //供测试用途
+  delay(100);
  // PackBumperData(); //如果bumper被触发,自动发送触发信息到上位机
   
   if(BumperValue!=0x07)
@@ -321,7 +360,7 @@ void ReadBumper()
 
 void ReadIR() ////Use Sharp GP2D12
 {
-  delay(30); ////Refer to Sharp GP2d12's mannual, at least 30ms delay will be required for a valid reading
+  delay(50); ////Refer to Sharp GP2d12's mannual, at least 30ms delay will be required for a valid reading
   IR_value[0]=min(ReadGP2D12(IR_01_pin),80);
   IR_value[1]=min(ReadGP2D12(IR_02_pin),80);
   IR_value[2]=min(ReadGP2D12(IR_03_pin),80);
@@ -330,6 +369,29 @@ void ReadIR() ////Use Sharp GP2D12
   IR_value[5]=min(ReadGP2D12(IR_06_pin),80);
   IR_value[6]=min(ReadGP2D12(IR_07_pin),80);
 
+  for(int i=0;i<IRNUMBER;i++)
+  {
+      IR_value_pre[i]=IR_value[i];
+  }
+
+  
+}
+
+int smooth(int data, float filterVal, float smoothedVal)
+
+{
+
+
+  if (filterVal > 1){      // check to make sure param's are within range
+    filterVal = .99;
+  }
+  else if (filterVal <= 0){
+    filterVal = 0;
+  }
+
+  smoothedVal = (data * (1 - filterVal)) + (smoothedVal  *  filterVal);
+
+  return (int)smoothedVal;
 }
 
 int ReadGP2D12(int pin)
@@ -339,7 +401,7 @@ int ReadGP2D12(int pin)
   if (analogValue < 3)
 		return 0; // invalid value
 
-   return (int)((6787.0 /((float)analogValue - 3.0)) - 4.0);
+   return (int)smooth(((6787.0 /((float)analogValue - 3.0)) - 4.0),0.97,IR_value_pre[pin]);
 }
 
 void Stop()
@@ -368,7 +430,7 @@ void BumperEventHandler()
       Stop();
        DriveMotorP(0xB0,0xB0);
        delay(34000);
-       DriveMotorP(0x40,0xB0);
+      DriveMotorP(0x40,0xB0);
        delay(74000);
        Stop();
       break;
